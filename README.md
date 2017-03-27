@@ -1,0 +1,2 @@
+# Jolly-ohtu
+Ohtu miniprojekti
