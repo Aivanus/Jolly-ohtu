@@ -1,4 +1,4 @@
 # Jolly-ohtu
 Ohtu miniprojekti
 
-https://github.com/Aivanus/ohtu-viikko3
+[![Build Status](https://travis-ci.org/Aivanus/Jolly-ohtu.svg?branch=master)](https://travis-ci.org/Aivanus/Jolly-ohtu)
