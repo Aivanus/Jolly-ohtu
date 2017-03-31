@@ -1,6 +1,7 @@
 /build/
 /.nb-gradle/
 .gradle/
+bin/
 
 # Ignore Visual Studio Code stuff
 .vscode/*
