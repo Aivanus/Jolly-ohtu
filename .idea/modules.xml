@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Jolly-ohtu.iml" filepath="$PROJECT_DIR$/.idea/modules/Jolly-ohtu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Jolly-ohtu_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Jolly-ohtu_main.iml" group="Jolly-ohtu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Jolly-ohtu_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Jolly-ohtu_test.iml" group="Jolly-ohtu" />
     </modules>
   </component>
 </project>
