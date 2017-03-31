@@ -7,7 +7,9 @@ buildscript {
     }
 }
 
-
+plugins {
+    id 'com.github.kt3k.coveralls' version '2.8.1'
+}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -15,18 +17,31 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'application'
 mainClassName = 'JollyOhtu.Main'
+// Apply plugin for checking line coverage
+apply plugin: "jacoco"
+
+// Configure jacoco
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
 
 jar {
-    baseName = 'gs-spring-boot'
-    version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    baseName = 'Jolly_othu'
+    //version =  '0.1.0'
 }
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+//sourceCompatibility = 1.8
+//targetCompatibility = 1.8
 
 dependencies {
     // tag::jetty[]
@@ -38,5 +53,5 @@ dependencies {
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
-    testCompile("junit:junit")
+    testCompile("junit:junit:4.12")
 }

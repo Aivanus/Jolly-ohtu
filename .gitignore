@@ -1,2 +1,11 @@
 /build/
 /.nb-gradle/
+.gradle/
+bin/
+
+# Ignore Visual Studio Code stuff
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
