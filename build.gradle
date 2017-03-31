@@ -7,14 +7,14 @@ buildscript {
     }
 }
 
+
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'application'
-
-// Set main class of the application
-mainClassName = 'Main'
+mainClassName = 'JollyOhtu.Main'
 
 jar {
     manifest {
