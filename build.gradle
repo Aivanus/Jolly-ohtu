@@ -17,8 +17,11 @@ apply plugin: 'application'
 mainClassName = 'Main'
 
 jar {
-    baseName = 'gs-spring-boot'
-    version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    baseName = 'Jolly_othu'
+    //version =  '0.1.0'
 }
 
 repositories {
