@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/index")
-public class JollyOhtuController{
-    @RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody String sayHello(@RequestParam(value="name", required = false)String name) {
+public class JollyOhtuController {
+
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody
+    String sayHello(@RequestParam(value = "name", required = false) String name) {
         return "Hello JollyOhtu gradle";
     }
-
-
+    
+    
 }
