@@ -52,7 +52,8 @@ dependencies {
     //Spring JPA and Database
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.h2database:h2")
-    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
+    compile("org.hibernate:hibernate-core:5.2.9.Final")
     // end::jetty[]
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
