@@ -39,13 +39,7 @@ public class BookTest {
     
     @Test
     public void bookIsCreatedCorrectly() {
-        Book book = new Book("Pekka", "Testauskirja", "Julkaisija", 2017);
-        assertEquals("Book: author='Pekka', title='Testauskirja', publisher='Julkaisija', year='2017'", book.toString());
+        Book book = new Book("Lee Child", "Killing Floor", "Bantam (UK)", 1997);
+        assertEquals("Book: author='Lee Child', title='Killing Floor', publisher='Bantam (UK)', year='1997'", book.toString());
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
