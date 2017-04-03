@@ -30,9 +30,9 @@ jacocoTestReport {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Main-Class': 'JollyOhtu.Main'
     }
-    baseName = 'Jolly_othu'
+    baseName = 'Jolly_ohtu'
     //version =  '0.1.0'
 }
 
@@ -49,6 +49,11 @@ dependencies {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
+    //Spring JPA and Database
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
+    compile("org.hibernate:hibernate-core:5.2.9.Final")
     // end::jetty[]
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
