@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Arttu
  */
-public interface BookReporsitory extends CrudRepository<Book, Long> {
+public interface BookRepository extends CrudRepository<Book, Long> {
 
     List<Book> findByTitle(String title);
 }
