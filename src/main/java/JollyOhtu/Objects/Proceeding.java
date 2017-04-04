@@ -10,6 +10,9 @@ import javax.persistence.Id;
  */
 public class Proceeding {
 
+    public Proceeding() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
