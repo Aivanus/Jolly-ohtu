@@ -8,19 +8,23 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 public class Stepdefs {
-    @Given("^Test is initialised$")
-    public void test_is_initialised() throws Throwable {
-        Assert.assertTrue(true);
+    @Given("^Add book view is selected$")
+    public void add_book_view_is_selected() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
-    @When("^it is run$")
-    public void it_is_run() throws Throwable {
-        Assert.assertTrue(true);
+    @When("^Valid book author \"([^\"]*)\", title \"([^\"]*)\", year (\\d+) and publisher \"([^\"]*)\" are given$")
+    public void valid_book_author_title_year_and_publisher_are_given(String arg1, String arg2, int arg3, String arg4) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
-    @Then("^the value should be (\\d+)$")
-    public void the_value_should_be(int arg1) throws Throwable {
-        Assert.assertTrue(true);
+    @Then("^new book reference is created$")
+    public void new_book_reference_is_created() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
+
 
 }
