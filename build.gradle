@@ -74,9 +74,15 @@ dependencies {
     compile 'org.webjars:bootstrap:3.3.7-1'
 
     
-    // dependecies for testing
+    // dependecies for testing 
+    testCompile group: 'org.fluentlenium', name: 'fluentlenium-core', version: '0.10.3'
+    testCompile group: 'org.fluentlenium', name: 'fluentlenium-assertj', version: '0.10.3' 
     testCompile 'info.cukes:cucumber-java:' + cucumberVersion
-    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion  
+    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion   
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion 
     testCompile("junit:junit:4.12")
 }
 
