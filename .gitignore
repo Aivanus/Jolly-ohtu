@@ -2,6 +2,8 @@
 /.nb-gradle/
 .gradle/
 bin/
+.idea/
+.settings/
 
 # Ignore Visual Studio Code stuff
 .vscode/*
