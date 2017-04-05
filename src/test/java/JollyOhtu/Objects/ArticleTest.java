@@ -21,6 +21,12 @@ public class ArticleTest {
     }
 
     @Test
+    public void emptyConstructor() throws Exception {
+        Article article = new Article();
+        assertEquals("Article{author=null, title=null, journal=null, year=0, volume=0, number=0, pages=null, month=0, note=null}", article.toString());
+    }
+
+    @Test
     public void articleIsCreatedProperly() throws Exception {
         Article article = new Article("Author", "Title", "Journal", 1995, 1);
         assertEquals("Article{author=Author, title=Title, journal=Journal, year=1995, volume=1, number=0, pages=null, month=0, note=null}", article.toString());
