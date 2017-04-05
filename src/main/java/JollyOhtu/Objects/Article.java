@@ -9,6 +9,7 @@ import javax.persistence.Entity;
  *
  * @author ritakosk
  */
+@Entity
 public class Article {
 
     public Article() {
