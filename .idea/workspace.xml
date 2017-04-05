@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="312fda27-bf73-4186-a2a7-0ac4bb724b24" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/JollyOhtu/Controllers/BookControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/JollyOhtu/Controllers/BookControllerTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -32,8 +30,8 @@
       <file leaf-file-name="BookControllerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/JollyOhtu/Controllers/BookControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+            <state relative-caret-position="954">
+              <caret line="53" column="4" lean-forward="true" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1386,7 +1384,7 @@
       <option name="presentableId" value="Default" />
       <updated>1491407503192</updated>
       <workItem from="1491407504629" duration="388000" />
-      <workItem from="1491410612987" duration="6588000" />
+      <workItem from="1491410612987" duration="6785000" />
     </task>
     <servers />
   </component>
@@ -1423,7 +1421,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6976000" />
+    <option name="totallyTimeSpent" value="7173000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1592,8 +1590,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/JollyOhtu/Controllers/BookControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+        <state relative-caret-position="954">
+          <caret line="53" column="4" lean-forward="true" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

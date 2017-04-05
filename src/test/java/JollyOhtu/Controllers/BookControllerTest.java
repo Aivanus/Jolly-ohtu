@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
+/*@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 
@@ -34,7 +34,7 @@ public class BookControllerTest {
 
     }
 
-    /*@Test
+    @Test
     public void addBook() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/add_book").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -49,6 +49,6 @@ public class BookControllerTest {
     @Test
     public void bookDeleteAll() throws Exception {
 
-    }*/
+    }
 
-}
+} */
