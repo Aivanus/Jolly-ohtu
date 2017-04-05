@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <body>
+        <div th:fragment="messages">
+            <div th:if="${success} != null">
+            <div class="alert alert-success">
+                <p th:text="${success}" />
+            </div>
+        </div>
+        
+        <div th:if="${error} != null">
+            <div class="alert alert-danger">
+                <p th:text="${error}" />
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
