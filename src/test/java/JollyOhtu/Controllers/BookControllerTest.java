@@ -23,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class BookControllerTest {
     @Autowired
     private MockMvc mvc;
+
     @Before
     public void setUp() throws Exception {
 
@@ -33,7 +34,7 @@ public class BookControllerTest {
 
     }
 
-    @Test
+    /*@Test
     public void addBook() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/add_book").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -48,6 +49,6 @@ public class BookControllerTest {
     @Test
     public void bookDeleteAll() throws Exception {
 
-    }
+    }*/
 
 }
