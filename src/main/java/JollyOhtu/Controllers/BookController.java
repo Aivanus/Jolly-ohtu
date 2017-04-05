@@ -22,6 +22,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class BookController {
+
     @Autowired
     private BookRepository repository;
 
@@ -30,23 +31,22 @@ public class BookController {
         model.addAttribute("book", new Book());
         return "add_book";
     }
-    
-    @RequestMapping(value ="/add_book", method = POST)
-    public String bookSubmit(@ModelAttribute Book book, Model model){
+
+    @RequestMapping(value = "/add_book", method = POST)
+    public String bookSubmit(@ModelAttribute Book book, Model model) {
         Book tallennettu = repository.save(book);
-        if(tallennettu != null){
+        if (tallennettu != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
             model.addAttribute("book", new Book());
-        }else{
+        } else {
             model.addAttribute("error", new String("An error occurred. Reference was not saved."));
         }
         return "add_book";
     }
-    
-    
+
     //HUOM. vain testausta varten
-    @RequestMapping(value="/delete_books")
-    public String bookDeleteAll(){
+    @RequestMapping(value = "/delete_books")
+    public String bookDeleteAll() {
         repository.deleteAll();
         return "index";
     }
