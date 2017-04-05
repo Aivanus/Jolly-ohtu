@@ -5,25 +5,19 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class Stepdefs {
     
-//    WebDriver driver = new ChromeDriver();
-    WebDriver driver = new HtmlUnitDriver();
-//    String baseUrl = "http://localhost:8080";
     
     @Given("^Add book view is selected$")
     public void add_book_view_is_selected() throws Throwable {
-//        driver.get(baseUrl);
-//        System.out.println(driver.getPageSource());
-//        WebElement element = driver.findElement(By.linkText("Add Book"));
-//        element.click();
-//        System.out.println(driver.getPageSource());
+
     }
 
     @When("^Valid book author \"([^\"]*)\", title \"([^\"]*)\", year (\\d+) and publisher \"([^\"]*)\" are given$")
