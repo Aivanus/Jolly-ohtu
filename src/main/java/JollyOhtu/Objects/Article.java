@@ -1,4 +1,3 @@
-
 package JollyOhtu.Objects;
 
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,10 @@ import javax.persistence.Entity;
  * @author ritakosk
  */
 public class Article {
-    
+
+    public Article() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,7 +22,7 @@ public class Article {
     private String journal;
     private int year;
     private int volume;
-    
+
     //optional
     private int number;
     private String pages;
@@ -51,7 +53,5 @@ public class Article {
     public String toString() {
         return "Article{" + "author=" + author + ", title=" + title + ", journal=" + journal + ", year=" + year + ", volume=" + volume + ", number=" + number + ", pages=" + pages + ", month=" + month + ", note=" + note + '}';
     }
-    
-       
-    
+
 }
