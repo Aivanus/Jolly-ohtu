@@ -21,6 +21,12 @@ public class ProceedingTest {
     }
 
     @Test
+    public void emptyConstructor() throws Exception {
+        Proceeding proceeding = new Proceeding();
+        assertEquals("Proceeding: title=null year=0", proceeding.toString());
+    }
+
+    @Test
     public void proceedingIsCreatedCorrectly() throws Exception {
         Proceeding proceeding = new Proceeding("Title", 1995);
         assertEquals("Proceeding: title=Title year=1995", proceeding.toString());
