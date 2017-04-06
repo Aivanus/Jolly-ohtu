@@ -1,4 +1,8 @@
 language: java
-
 after_success:
-- ./gradlew jacocoTestReport coveralls
+- "./gradlew jacocoTestReport coveralls"
+deploy:
+  provider: heroku
+  api_key:
+    secure: rzRUy1QoaYLjZ9gOpkAudnC93RSTxOJ9Wptx8mtZeYOph6FlX4KTPRc079nQU/Zc5Rac+pC8yvN+P2BlQ/+aGP3S9vAGDFyNjelJQDqxlOPZh1/+vxqNHRvbfpVoBp86V6cdQoSasC8/FLCIrL0497R3ABxi1xt0RppZVWeHQmcpyAGjFyE3AnWAKBIzMMmv/cojwqxb03xJFhem/TBCjw5v4+PfozfsmyWpD3BAgZJsInNW1/oNe4VcALADxe0lsdfvVA2YjY/dheTtdKyc1wD3FKAUJ07tYbAQ3CFRvZ7RJOa9iASEovmBHfF0JpliXj2elcdeVFftJCE5muTwS2MUNVtiKUZ/+qNxQg4H5LjZxmq7KrRVuwzxAh+fEEf0L4/S8cm9hEj8v/VsfcsGh2kOAUX7a4mmqvdBc3x6uXJrkz6Vhvs4bQdyqzZse1LhypvXynBzAICj6EbelOfHvyqagTMalh7j79guQItjqent5iQIdxweyz4hNBIGNsosq2MlPk7HW8Dt5Y/x1smXHFdRW/zzx/3AjBXjh7RY94pWB3C7VGY3kOhpmSw6CR1I2RbNJK6DtCKWc3VyOZfLEL2gFqQVbCwCF3WvhilS3gb3Irle1VopoB0/uK39+mzpyt/fMi66ba/pFDSp7aZU2Me7z56zEEHKRpy9JhsJR0A=
+  app: sheltered-gorge-31986
