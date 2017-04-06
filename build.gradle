@@ -22,7 +22,7 @@ apply plugin: 'build-dashboard'
 apply plugin: "jacoco"
 
 task( browse, dependsOn: jar, type: JavaExec ) {
-    main = 'ohtu.Tester'
+    main = 'JollyOhtu.Tester'
     classpath = sourceSets.main.runtimeClasspath
 }
 
