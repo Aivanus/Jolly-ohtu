@@ -18,7 +18,128 @@ import static org.junit.Assert.*;
  * @author Arttu
  */
 public class BookTest {
-    
+    private Book b;
+    @Test
+    public void getId() throws Exception {
+
+    }
+
+    @Test
+    public void setId() throws Exception {
+
+    }
+
+    @Test
+    public void getAuthor() throws Exception {
+        assertEquals("author", b.getAuthor());
+
+    }
+
+    @Test
+    public void setAuthor() throws Exception {
+        b.setAuthor("author1");
+        assertEquals("author1", b.getAuthor());
+
+    }
+
+    @Test
+    public void getTitle() throws Exception {
+        assertEquals("title", b.getTitle());
+
+    }
+
+    @Test
+    public void setTitle() throws Exception {
+    b.setTitle("title1");
+        assertEquals("title1", b.getTitle());
+    }
+
+    @Test
+    public void getPublisher() throws Exception {
+        assertEquals("publisher", b.getPublisher());
+
+    }
+
+    @Test
+    public void setPublisher() throws Exception {
+        b.setPublisher("publisher1");
+        assertEquals("publisher1", b.getPublisher());
+
+    }
+
+    @Test
+    public void getYear() throws Exception {
+        assertEquals(1995, b.getYear());
+
+    }
+
+    @Test
+    public void setYear() throws Exception {
+        b.setYear(1996);
+        assertEquals(1996, b.getYear());
+
+    }
+
+    @Test
+    public void getVolume() throws Exception {
+
+    }
+
+    @Test
+    public void setVolume() throws Exception {
+
+    }
+
+    @Test
+    public void getSeries() throws Exception {
+
+    }
+
+    @Test
+    public void setSeries() throws Exception {
+
+    }
+
+    @Test
+    public void getAddress() throws Exception {
+
+    }
+
+    @Test
+    public void setAddress() throws Exception {
+
+    }
+
+    @Test
+    public void getEdition() throws Exception {
+
+    }
+
+    @Test
+    public void setEdition() throws Exception {
+
+    }
+
+    @Test
+    public void getMonth() throws Exception {
+
+    }
+
+    @Test
+    public void setMonth() throws Exception {
+
+    }
+
+    @Test
+    public void getNote() throws Exception {
+
+    }
+
+    @Test
+    public void setNote() throws Exception {
+
+    }
+
     public BookTest() {
     }
     
@@ -32,6 +153,7 @@ public class BookTest {
     
     @Before
     public void setUp() {
+        b = new Book("author", "title", "publisher", 1995);
     }
     
     @After
