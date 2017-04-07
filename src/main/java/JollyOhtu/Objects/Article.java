@@ -134,5 +134,12 @@ public class Article {
     public String toString() {
         return "Article{" + "author=" + author + ", title=" + title + ", journal=" + journal + ", year=" + year + ", volume=" + volume + ", number=" + number + ", pages=" + pages + ", month=" + month + ", note=" + note + '}';
     }
-
+    
+    public Boolean mandatoryFieldsAreFilled(){
+        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.journal.equalsIgnoreCase("")){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

@@ -35,7 +35,9 @@ public class BookController {
     @RequestMapping(value = "/add_book", method = POST)
     public String bookSubmit(@ModelAttribute Book book, Model model) {
         Book tallennettu = repository.save(book);
-        if (tallennettu != null) {
+        if (!tallennettu.mandatoryFieldsAreFilled()){
+            model.addAttribute("error", new String("You must fill in the fields marked by *"));
+        } else if (tallennettu != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
             model.addAttribute("book", new Book());
         } else {
