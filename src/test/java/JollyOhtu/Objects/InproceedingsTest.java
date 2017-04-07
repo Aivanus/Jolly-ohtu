@@ -49,7 +49,7 @@ public class InproceedingsTest {
         assertEquals("Inproceedings{author=Author, title=Title, booktitle=Booktitle,"
                 + " year=1995, editor=Editor, volumeNumber=5, series=Series, pages=5-25,"
                 + " address=Address, month=4, organization=Organization,"
-                + " publisher=Publisher, note=Note", inproceedings.toString());
+                + " publisher=Publisher, note=Note}", inproceedings.toString());
     }
 
 
@@ -125,7 +125,7 @@ public class InproceedingsTest {
      */
     @Test
     public void testGetBooktitle() {
-        String expResult = "title";
+        String expResult = "booktitle";
         String result = inpro.getBooktitle();
         assertEquals(expResult, result);
     }

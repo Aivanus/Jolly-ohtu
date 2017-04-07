@@ -139,7 +139,7 @@ public class BookTest {
     @Test
     public void setEdition() throws Exception {
         b.setEdition("edition1");
-        assertEquals("editions1", b.getEdition());
+        assertEquals("edition1", b.getEdition());
     }
 
     @Test
