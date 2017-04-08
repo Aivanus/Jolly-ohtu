@@ -5,8 +5,8 @@
  */
 package JollyOhtu.Controllers;
 
-import JollyOhtu.Objects.Article;
-import JollyOhtu.Repository.ArticleRepository;
+import JollyOhtu.Objects.Inproceedings;
+import JollyOhtu.Repository.InproceedingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,37 +20,35 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * @author ritakosk
  */
 @Controller
-public class ArticleController {
+public class InproceedingsController {
 
     @Autowired
-    private ArticleRepository artRepo;
+    private InproceedingsRepository inproRepo;
 
-    @RequestMapping(value = "/add_article", method = GET)
-    public String articleForm(Model model) {
-        model.addAttribute("article", new Article());
-        return "add_article";
+    @RequestMapping(value = "/add_inproceedings", method = GET)
+    public String inproceedingsForm(Model model) {
+        model.addAttribute("inproceedings", new Inproceedings());
+        return "add_inproceedings";
     }
 
-    @RequestMapping(value = "/add_article", method = POST)
-    public String articleSubmit(@ModelAttribute Article article, Model model) {
-        
-        if (!article.mandatoryFieldsAreFilled()) {
+    @RequestMapping(value = "/add_inproceedings", method = POST)
+    public String inproceedingsSubmit(@ModelAttribute Inproceedings inpro, Model model) {
+        if(!inpro.mandatoryFieldsAreFilled()){
             model.addAttribute("error", new String("You must fill in the fields marked by *"));
-        } else if (artRepo.save(article) != null) {
+        } else if (inproRepo.save(inpro) != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
-            model.addAttribute("article", new Article());
+            model.addAttribute("inproceedings", new Inproceedings());
         } else {
             model.addAttribute("error", new String("There was an error saving"
                     + " the reference. Reference not saved"));
         }
-//        System.out.println(artRepo.count()); //for testing
-        return "add_article";
+        return "add_inproceedings"; 
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_articles", method = GET)
-    public String articleDeleteAll() {
-        artRepo.deleteAll();
+    @RequestMapping(value = "/delete_inproceedings", method = GET)
+    public String inproceedingsDeleteAll() {
+        inproRepo.deleteAll();
         return "index";
     }
 
