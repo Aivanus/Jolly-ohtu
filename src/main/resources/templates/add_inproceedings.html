@@ -14,6 +14,7 @@
 
         <div class="container">   
             <form action="#" th:action="@{/add_inproceedings}" th:object="${inproceedings}" method="post">
+                <p>Fields marked by * are mandatory.</p>
                 <div class="form-group">
                     <label>Author *</label>
                     <input type="text" class="form-control" th:field= "*{author}" id="author"></input>
@@ -71,7 +72,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-default">Add</button>
-                <p>Fields marked by * are mandatory.</p>
+                
             </form>
 
             <button onclick="hideShow()">Additional fields</button>

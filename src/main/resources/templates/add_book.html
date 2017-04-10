@@ -1,4 +1,4 @@
-    <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>JollyOhtu</title>
@@ -10,10 +10,11 @@
     <body>
         <div th:include="fragments/header"></div>
         <div th:include="fragments/messages"></div>
-        
-        
+
+
         <div class="container">
             <form action="#" th:action="@{/add_book}" th:object="${book}" method="post">
+                <p>Fields marked by * are mandatory.</p>     
                 <div class="form-group">
                     <label>Author *</label>
                     <input type="text" class="form-control" th:field="*{author}" id="author"></input>
@@ -30,7 +31,7 @@
                     <label>Publisher *</label>
                     <input type="text" class="form-control" th:field="*{publisher}" id ="publisher"></input>
                 </div>
-                
+
                 <div id="additional" class="cointainer">
                     <div class="form-group">
                         <label>Volume</label>
@@ -57,22 +58,22 @@
                         <input type="text" class="form-control" th:field= "*{note}" id="note"></input>
                     </div>
                 </div>
-                
+
                 <button type="submit" value="Submit" class="btn btn-default">Add</button>
-                <p>Fields marked by * are mandatory.</p>                
+
             </form>
-            
+
             <button onclick="hideShow()">Additional fields</button>
         </div>
 
         <div th:include="fragments/footer"></div>
-         
+
         <script type="text/javascript"
         src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
         <script>
                 var x = document.getElementById("additional");
                 x.style.display = 'none';
-                function hideShow() {                    
+                function hideShow() {
                     if (x.style.display === 'none') {
                         x.style.display = 'block';
                     } else {
