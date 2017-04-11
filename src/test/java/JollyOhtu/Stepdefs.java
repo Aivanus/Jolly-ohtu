@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 //@SpringBootTest
 public class Stepdefs {
 
-    private WebDriver driver = new HtmlUnitDriver();
+    private WebDriver driver = new FirefoxDriver();
     String baseUrl = "https://sheltered-gorge-31986.herokuapp.com/";
     
     @Test
