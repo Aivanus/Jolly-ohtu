@@ -38,10 +38,27 @@ public class Book {
         this.year = year;
     }
 
+    public Book(String author, String title, String publisher, int year, int volume, String series, String address, String edition, int month, String note) {
+        this.author = author;
+        this.title = title;
+        this.publisher = publisher;
+        this.year = year;
+        this.volume = volume;
+        this.series = series;
+        this.address = address;
+        this.edition = edition;
+        this.month = month;
+        this.note = note;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return String.format("Book: author='%s', title='%s', publisher='%s', year='%d'",
-                author, title, publisher, year);
+        return String.format("Book: author='%s', title='%s', publisher='%s', "
+                + "year='%d', volume='%d', series='%s', address='%s', edition='%s', "
+                + "month='%d', note='%s'",
+                author, title, publisher, year, volume, series, address, edition, month, note);
     }
 
     public Long getId() {
@@ -132,6 +149,12 @@ public class Book {
         this.note = note;
     }
     
-    
+    public Boolean mandatoryFieldsAreFilled(){
+        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.publisher.equalsIgnoreCase("")){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

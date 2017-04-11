@@ -1,0 +1,78 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>JollyOhtu</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css"
+              href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+
+    </head>
+    <body>
+        <div th:include="fragments/header"></div>     
+
+        <div class="container">           
+            <div class="form-group">
+                <label>Author</label>
+                <input type="text" class="form-control" id="author"></input>
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" id="title"></input>
+            </div>
+            <div class="form-group">
+                <label>Journal</label>
+                <input type="text" class="form-control" id="journal"></input>
+            </div>
+            <div  class="form-group">
+                <label>Year</label>
+                <input type="number" class="form-control" id="year"></input>
+            </div>
+            <div class="form-group">
+                <label>Volume</label>
+                <input type="number" class="form-control" id="volume"></input>
+            </div>
+
+            <button onclick="hideShow()">Additional fields</button>
+
+            <div id="additional" class="cointainer">
+                <div class="form-group">
+                    <label>Number</label>
+                    <input type="number" class="form-control" id="number"></input>
+                </div>
+                <div class="form-group">
+                    <label>Pages</label>
+                    <input type="number" class="form-control" id="pages-start"></input>
+                    <a>-</a>
+                    <input type="number" class="form-control" id="pages-end"></input>
+                </div>
+                <div class="form-group">
+                    <label>Month</label>
+                    <input type="number" class="form-control" id="month"></input>
+                </div>
+                <div class="form-group">
+                    <label>Note</label>
+                    <input type="text" class="form-control" id="note"></input>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-default">Add</button>
+        
+        </div>
+
+        <script type="text/javascript"
+                src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+        <script>
+            var x = document.getElementById("additional");
+            x.style.display = 'none';
+            function hideShow() {
+                var x = document.getElementById("additional");
+                if (x.style.display === 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+        </script>
+    </body>
+</html>
