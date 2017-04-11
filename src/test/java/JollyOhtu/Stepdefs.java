@@ -23,7 +23,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class Stepdefs {
 
     private WebDriver driver = new FirefoxDriver();
-    String baseUrl = "https://sheltered-gorge-31986.herokuapp.com/";
+//    private WebDriver driver = new ChromeDriver();
+//    String baseUrl = "https://sheltered-gorge-31986.herokuapp.com/";
+    String baseUrl = "http://localhost:8080/";
     
     @Test
     public void inititalizeTest(){
