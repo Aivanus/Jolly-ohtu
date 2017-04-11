@@ -21,10 +21,6 @@ public class DriverFactory {
     ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>() {
         @Override
         protected WebDriver initialValue() {
-//      return new FirefoxDriver(); // or other browser drivers
-//      return new HtmlUnitDriver(); // or other browser drivers
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ivan\\Documents\\GitHub\\bdd\\chromedriver.exe");
-
             return new ChromeDriver(); // or other browser drivers
         }
     };
