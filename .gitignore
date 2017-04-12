@@ -4,6 +4,8 @@
 bin/
 .idea/
 .settings/
+nbproject/
+out/
 
 # Ignore Visual Studio Code stuff
 .vscode/*
