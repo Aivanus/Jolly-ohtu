@@ -11,12 +11,13 @@ public class ServerRule extends ExternalResource {
 private ConfigurableApplicationContext appCont;
     @Override
     protected void before() throws Throwable {
-//        SpringApplication.run(Main.class, "");
+        // Starts application for testing on localhost
         appCont = SpringApplication.run(Main.class, "");
     }
 
     @Override
     protected void after() {
+        // Closes opened application
         appCont.close();
     }
     

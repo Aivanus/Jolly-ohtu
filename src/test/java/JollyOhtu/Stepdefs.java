@@ -22,13 +22,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 //@SpringBootTest
 public class Stepdefs {
 
+    /*
+     Always use FirefoxDriver for pushing to github, otherwise Travis will fail 
+     */
     private WebDriver driver = new FirefoxDriver();
 //    private WebDriver driver = new ChromeDriver();
-//    String baseUrl = "https://sheltered-gorge-31986.herokuapp.com/";
     String baseUrl = "http://localhost:8080/";
-    
+
+    /*
+     This test is needed, because at least one test must be in this class, otherwise tests will fail.
+     */
     @Test
-    public void inititalizeTest(){
+    public void inititalizeTest() {
         assertTrue(true);
         driver.quit();
     }
@@ -47,10 +52,10 @@ public class Stepdefs {
         element = driver.findElement(By.id("title"));
         element.sendKeys(title);
         element = driver.findElement(By.id("year"));
-        element.sendKeys(""+year);
+        element.sendKeys("" + year);
         element = driver.findElement(By.id("publisher"));
         element.sendKeys(publisher);
-        
+
         element = driver.findElement(By.xpath("//button[contains(.,'Add')]"));
         element.submit();
     }
@@ -64,7 +69,7 @@ public class Stepdefs {
     public void tearDown() {
         driver.quit();
     }
-    
+
     // Helper methods
     private void pageHasContent(String content) {
         assertTrue(driver.getPageSource().contains(content));

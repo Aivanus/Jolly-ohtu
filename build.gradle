@@ -21,15 +21,7 @@ apply plugin: 'build-dashboard'
 // Apply plugin for checking line coverage
 apply plugin: "jacoco"
 
-task( browse, dependsOn: jar, type: JavaExec ) {
-    main = 'JollyOhtu.Tester'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-
 mainClassName = 'JollyOhtu.Main'
-
-
 
 // Configure jacoco
 jacocoTestReport {
@@ -89,11 +81,6 @@ dependencies {
     testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
     testCompile 'info.cukes:cucumber-spring:' + cucumberVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion 
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: seleniumVersion
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: seleniumVersion
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-htmlunit-driver', version: '2.52.0'
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: seleniumVersion
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion 
     testCompile("junit:junit:4.12")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
