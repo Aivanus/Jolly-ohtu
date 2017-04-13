@@ -1,10 +1,12 @@
 package JollyOhtu;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,9 +19,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 //@SpringBootTest
 public class Stepdefs {
 
-    /*
-     Always use FirefoxDriver for pushing to github, otherwise Travis will fail 
-     */
     private WebDriver driver = null;
     String baseUrl = "http://localhost:8080/";
 
@@ -31,7 +30,7 @@ public class Stepdefs {
             driver = new FirefoxDriver();
         }
     }
-    
+
     @Given("^Add book view is selected$")
     public void add_book_view_is_selected() throws Throwable {
         driver.get(baseUrl);
@@ -41,17 +40,23 @@ public class Stepdefs {
 
     @When("^Valid book author \"([^\"]*)\", title \"([^\"]*)\", year (\\d+) and publisher \"([^\"]*)\" are given$")
     public void valid_book_author_title_year_and_publisher_are_given(String author, String title, int year, String publisher) throws Throwable {
-        WebElement element = driver.findElement(By.id("author"));
-        element.sendKeys(author);
-        element = driver.findElement(By.id("title"));
-        element.sendKeys(title);
-        element = driver.findElement(By.id("year"));
-        element.sendKeys("" + year);
-        element = driver.findElement(By.id("publisher"));
-        element.sendKeys(publisher);
+        driver.findElement(By.id("author")).sendKeys(author);
+        driver.findElement(By.id("title")).sendKeys(title);
+        driver.findElement(By.id("year")).sendKeys("" + year);
+        driver.findElement(By.id("publisher")).sendKeys(publisher);
 
-        element = driver.findElement(By.xpath("//button[contains(.,'Add')]"));
-        element.submit();
+        driver.findElement(By.xpath("//button[contains(.,'Add')]")).submit();
+
+    }
+
+    @When("^Valid mandatory book information is entered:$")
+    public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {      
+        driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
+        driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
+        driver.findElement(By.id("year")).sendKeys(table.get(2).get(1));
+        driver.findElement(By.id("publisher")).sendKeys(table.get(3).get(1));
+        // Click submit
+        driver.findElement(By.xpath("//button[contains(.,'Add')]")).submit();
     }
 
     @Then("^new book reference is created$")
