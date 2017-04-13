@@ -10,7 +10,7 @@ Feature: As a user I want to be able to add book references
       | year      | 1984             |
       | publisher | PaperPress       |
     And User presses button Add
-    Then New book reference is created
+    Then Message "Reference was saved succesfully!" is presented
 
   Scenario: User can create a book reference with valid mandatory and optional fields
     When Valid mandatory book information is entered:
@@ -27,11 +27,11 @@ Feature: As a user I want to be able to add book references
       | month   | 5                |
       | note    | smtn             |
     And User presses button Add
-    Then New book reference is created
+    Then Message "Reference was saved succesfully!" is presented
 
-Scenario: User cannot create a book reference if some of mandatory fields is empty
+  Scenario: User cannot create a book reference if some of mandatory fields is empty
     When Mandatory book information with only author and title is entered:
-      | author    | Not a book     |
-      | title     | Interesting Book |
+      | author | Not a book       |
+      | title  | Interesting Book |
     And User presses button Add
-    Then Error message is shown
+    Then Message "You must fill in the fields marked by *" is presented
