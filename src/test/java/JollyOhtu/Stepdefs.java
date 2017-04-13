@@ -1,68 +1,100 @@
 package JollyOhtu;
 
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
 //@SpringBootTest
 public class Stepdefs {
 
-    /*
-     Always use FirefoxDriver for pushing to github, otherwise Travis will fail 
-     */
-    private WebDriver driver = new FirefoxDriver();
-//    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver = null;
     String baseUrl = "http://localhost:8080/";
 
-    /*
-     This test is needed, because at least one test must be in this class, otherwise tests will fail.
-     */
-    @Test
-    public void inititalizeTest() {
-        assertTrue(true);
-        driver.quit();
+    @Before
+    public void setUp() {
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            driver = new ChromeDriver();
+        } else {
+            driver = new FirefoxDriver();
+        }
     }
 
     @Given("^Add book view is selected$")
     public void add_book_view_is_selected() throws Throwable {
         driver.get(baseUrl);
-        WebElement element = driver.findElement(By.linkText("Add Book"));
-        element.click();
+        driver.findElement(By.linkText("Add Book")).click();
     }
 
-    @When("^Valid book author \"([^\"]*)\", title \"([^\"]*)\", year (\\d+) and publisher \"([^\"]*)\" are given$")
-    public void valid_book_author_title_year_and_publisher_are_given(String author, String title, int year, String publisher) throws Throwable {
-        WebElement element = driver.findElement(By.id("author"));
-        element.sendKeys(author);
-        element = driver.findElement(By.id("title"));
-        element.sendKeys(title);
-        element = driver.findElement(By.id("year"));
-        element.sendKeys("" + year);
-        element = driver.findElement(By.id("publisher"));
-        element.sendKeys(publisher);
-
-        element = driver.findElement(By.xpath("//button[contains(.,'Add')]"));
-        element.submit();
+    @Given("^Add article view is selected$")
+    public void add_article_view_is_selected() throws Throwable {
+        driver.get(baseUrl);
+        driver.findElement(By.linkText("Add Article")).click();
     }
 
-    @Then("^new book reference is created$")
-    public void new_book_reference_is_created() throws Throwable {
-        pageHasContent("Reference was saved succesfully!");
+    @Given("^Add inproceedings view is selected$")
+    public void add_inproceedings_view_is_selected() throws Throwable {
+        driver.get(baseUrl);
+        driver.findElement(By.linkText("Add Inproceedings")).click();
+    }
+
+    @When("^Valid mandatory book information is entered:$")
+    public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Optional fields are chosen$")
+    public void optional_fields_are_chosen() throws Throwable {
+        driver.findElement(By.xpath("//button[contains(.,'Additional fields')]")).click();
+    }
+
+    @When("^Valid optional field information is entered:$")
+    public void valid_optional_field_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Mandatory book information with only author and title is entered:$")
+    public void mandatory_book_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Valid mandatory article information is entered:$")
+    public void valid_mandatory_article_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^User presses button Add$")
+    public void user_presses_button_add() throws Throwable {
+        driver.findElement(By.xpath("//button[contains(.,'Add')]")).submit();
+    }
+
+    @When("^Mandatory article information with only author and title is entered:$")
+    public void mandatory_article_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Mandatory inproceedings information with only author and title is entered:$")
+    public void mandatory_inproceedings_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @Then("^Message \"([^\"]*)\" is presented$")
+    public void message_is_presented(String message) throws Throwable {
+        pageHasContent(message);
     }
 
     @After
@@ -73,5 +105,20 @@ public class Stepdefs {
     // Helper methods
     private void pageHasContent(String content) {
         assertTrue(driver.getPageSource().contains(content));
+    }
+
+    private void enterValuesById(List<List<String>> table) {
+        for (List<String> table1 : table) {
+            driver.findElement(By.id(table1.get(0))).sendKeys(table1.get(1));
+        }
+    }
+
+    // Use for debugging to pause selenium 
+    private void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Stepdefs.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
