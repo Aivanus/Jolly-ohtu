@@ -53,14 +53,14 @@ public class Stepdefs {
     }
 
     @When("^Valid mandatory book information is entered:$")
-    public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {      
+    public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
         driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
         driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
         driver.findElement(By.id("year")).sendKeys(table.get(2).get(1));
-        driver.findElement(By.id("publisher")).sendKeys(table.get(3).get(1));   
+        driver.findElement(By.id("publisher")).sendKeys(table.get(3).get(1));
     }
-    
-     @When("^Optional fields are chosen$")
+
+    @When("^Optional fields are chosen$")
     public void optional_fields_are_chosen() throws Throwable {
         driver.findElement(By.xpath("//button[contains(.,'Additional fields')]")).click();
     }
@@ -75,14 +75,25 @@ public class Stepdefs {
         driver.findElement(By.id("note")).sendKeys(table.get(5).get(1));
     }
 
+    @When("^Mandatory book information with only author and title is entered:$")
+    public void mandatory_book_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
+        driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
+    }
+
     @When("^User presses button Add$")
     public void user_presses_button_add() throws Throwable {
         driver.findElement(By.xpath("//button[contains(.,'Add')]")).submit();
     }
 
-    @Then("^new book reference is created$")
+    @Then("^New book reference is created$")
     public void new_book_reference_is_created() throws Throwable {
         pageHasContent("Reference was saved succesfully!");
+    }
+
+    @Then("^Error message is shown$")
+    public void error_message_is_shown() throws Throwable {
+        pageHasContent("You must fill in the fields marked by *");
     }
 
     @After
@@ -94,8 +105,8 @@ public class Stepdefs {
     private void pageHasContent(String content) {
         assertTrue(driver.getPageSource().contains(content));
     }
-    
-    private void sleep(int millis){
+
+    private void sleep(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException ex) {
