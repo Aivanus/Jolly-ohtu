@@ -37,15 +37,19 @@ public class Stepdefs {
     @Given("^Add book view is selected$")
     public void add_book_view_is_selected() throws Throwable {
         driver.get(baseUrl);
-        WebElement element = driver.findElement(By.linkText("Add Book"));
-        element.click();
+        driver.findElement(By.linkText("Add Book")).click();
     }
 
     @Given("^Add article view is selected$")
     public void add_article_view_is_selected() throws Throwable {
         driver.get(baseUrl);
-        WebElement element = driver.findElement(By.linkText("Add Article"));
-        element.click();
+        driver.findElement(By.linkText("Add Article")).click();
+    }
+
+    @Given("^Add inproceedings view is selected$")
+    public void add_inproceedings_view_is_selected() throws Throwable {
+        driver.get(baseUrl);
+        driver.findElement(By.linkText("Add Inproceedings")).click();
     }
 
     @When("^Valid mandatory book information is entered:$")
@@ -76,6 +80,16 @@ public class Stepdefs {
     @When("^User presses button Add$")
     public void user_presses_button_add() throws Throwable {
         driver.findElement(By.xpath("//button[contains(.,'Add')]")).submit();
+    }
+
+    @When("^Mandatory article information with only author and title is entered:$")
+    public void mandatory_article_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Mandatory inproceedings information with only author and title is entered:$")
+    public void mandatory_inproceedings_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
     }
 
     @Then("^Message \"([^\"]*)\" is presented$")
