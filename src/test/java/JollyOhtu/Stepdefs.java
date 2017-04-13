@@ -40,24 +40,21 @@ public class Stepdefs {
         WebElement element = driver.findElement(By.linkText("Add Book"));
         element.click();
     }
-
-    @When("^Valid book author \"([^\"]*)\", title \"([^\"]*)\", year (\\d+) and publisher \"([^\"]*)\" are given$")
-    public void valid_book_author_title_year_and_publisher_are_given(String author, String title, int year, String publisher) throws Throwable {
-        driver.findElement(By.id("author")).sendKeys(author);
-        driver.findElement(By.id("title")).sendKeys(title);
-        driver.findElement(By.id("year")).sendKeys("" + year);
-        driver.findElement(By.id("publisher")).sendKeys(publisher);
-
-        driver.findElement(By.xpath("//button[contains(.,'Add')]")).submit();
-
+    
+     @Given("^Add article view is selected$")
+    public void add_article_view_is_selected() throws Throwable {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("Add Article"));
+        element.click();
     }
 
     @When("^Valid mandatory book information is entered:$")
     public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
-        driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
-        driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
-        driver.findElement(By.id("year")).sendKeys(table.get(2).get(1));
-        driver.findElement(By.id("publisher")).sendKeys(table.get(3).get(1));
+//        driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
+//        driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
+//        driver.findElement(By.id("year")).sendKeys(table.get(2).get(1));
+//        driver.findElement(By.id("publisher")).sendKeys(table.get(3).get(1));
+        enterValuesById(table);
     }
 
     @When("^Optional fields are chosen$")
@@ -67,19 +64,31 @@ public class Stepdefs {
 
     @When("^Valid optional field information is entered:$")
     public void valid_optional_field_information_is_entered(List<List<String>> table) throws Throwable {
-        driver.findElement(By.id("volume")).sendKeys(table.get(0).get(1));
-        driver.findElement(By.id("series")).sendKeys(table.get(1).get(1));
-        driver.findElement(By.id("address")).sendKeys(table.get(2).get(1));
-        driver.findElement(By.id("edition")).sendKeys(table.get(3).get(1));
-        driver.findElement(By.id("month")).sendKeys(table.get(4).get(1));
-        driver.findElement(By.id("note")).sendKeys(table.get(5).get(1));
+//        driver.findElement(By.id("volume")).sendKeys(table.get(0).get(1));
+//        driver.findElement(By.id("series")).sendKeys(table.get(1).get(1));
+//        driver.findElement(By.id("address")).sendKeys(table.get(2).get(1));
+//        driver.findElement(By.id("edition")).sendKeys(table.get(3).get(1));
+//        driver.findElement(By.id("month")).sendKeys(table.get(4).get(1));
+//        driver.findElement(By.id("note")).sendKeys(table.get(5).get(1));
+        enterValuesById(table);
     }
 
     @When("^Mandatory book information with only author and title is entered:$")
     public void mandatory_book_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
-        driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
-        driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
+//        driver.findElement(By.id("author")).sendKeys(table.get(0).get(1));
+//        driver.findElement(By.id("title")).sendKeys(table.get(1).get(1));
+        enterValuesById(table);
     }
+    
+    @When("^Valid mandatory article information is entered:$")
+    public void valid_mandatory_article_information_is_entered(DataTable arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        // For automatic transformation, change DataTable to one of
+        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+        // E,K,V must be a scalar (String, Integer, Date, enum etc)
+        throw new PendingException();
+    }
+
 
     @When("^User presses button Add$")
     public void user_presses_button_add() throws Throwable {
@@ -95,6 +104,12 @@ public class Stepdefs {
     public void error_message_is_shown() throws Throwable {
         pageHasContent("You must fill in the fields marked by *");
     }
+    
+    @Then("^Message \"([^\"]*)\" is presented$")
+    public void message_is_presented(String message) throws Throwable {
+        pageHasContent(message);
+    }
+
 
     @After
     public void tearDown() {
@@ -106,6 +121,13 @@ public class Stepdefs {
         assertTrue(driver.getPageSource().contains(content));
     }
 
+    private void enterValuesById(List<List<String>> table) {
+        for (List<String> table1 : table) {
+            driver.findElement(By.id(table1.get(0))).sendKeys(table1.get(1));
+        }
+    }
+
+    // Use for debugging to pause selenium 
     private void sleep(int millis) {
         try {
             Thread.sleep(millis);
