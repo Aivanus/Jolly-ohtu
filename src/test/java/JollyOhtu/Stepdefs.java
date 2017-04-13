@@ -1,6 +1,7 @@
 package JollyOhtu;
 
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -8,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 //@RunWith(SpringRunner.class)
@@ -18,19 +20,18 @@ public class Stepdefs {
     /*
      Always use FirefoxDriver for pushing to github, otherwise Travis will fail 
      */
-    private WebDriver driver = new FirefoxDriver();
-//    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver = null;
     String baseUrl = "http://localhost:8080/";
 
-    /*
-     This test is needed, because at least one test must be in this class, otherwise tests will fail.
-     */
-//    @Test
-//    public void inititalizeTest() {
-//        assertTrue(true);
-//        driver.quit();
-//    }
-
+    @Before
+    public void setUp() {
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            driver = new ChromeDriver();
+        } else {
+            driver = new FirefoxDriver();
+        }
+    }
+    
     @Given("^Add book view is selected$")
     public void add_book_view_is_selected() throws Throwable {
         driver.get(baseUrl);
