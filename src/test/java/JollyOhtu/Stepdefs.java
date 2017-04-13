@@ -19,8 +19,8 @@ public class Stepdefs {
     /*
      Always use FirefoxDriver for pushing to github, otherwise Travis will fail 
      */
-//    private WebDriver driver = new FirefoxDriver();
-    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver = new FirefoxDriver();
+//    private WebDriver driver = new ChromeDriver();
     String baseUrl = "http://localhost:8080/";
 
     /*
