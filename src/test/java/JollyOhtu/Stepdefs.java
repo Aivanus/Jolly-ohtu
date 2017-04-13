@@ -6,16 +6,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
@@ -25,18 +19,18 @@ public class Stepdefs {
     /*
      Always use FirefoxDriver for pushing to github, otherwise Travis will fail 
      */
-    private WebDriver driver = new FirefoxDriver();
-//    private WebDriver driver = new ChromeDriver();
+//    private WebDriver driver = new FirefoxDriver();
+    private WebDriver driver = new ChromeDriver();
     String baseUrl = "http://localhost:8080/";
 
     /*
      This test is needed, because at least one test must be in this class, otherwise tests will fail.
      */
-    @Test
-    public void inititalizeTest() {
-        assertTrue(true);
-        driver.quit();
-    }
+//    @Test
+//    public void inititalizeTest() {
+//        assertTrue(true);
+//        driver.quit();
+//    }
 
     @Given("^Add book view is selected$")
     public void add_book_view_is_selected() throws Throwable {
