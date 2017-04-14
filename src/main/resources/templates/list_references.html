@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JollyOhtu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+
+</head>
+<body>
+<div th:include="fragments/header"></div>
+<div th:include="fragments/messages"></div>
+
+<p th:text="'list_refernces, ' + ${reference} + '!'" />
+
+</body>
+</html>
