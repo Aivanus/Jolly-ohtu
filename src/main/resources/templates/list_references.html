@@ -2,16 +2,101 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>JollyOhtu</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+          href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
 
 </head>
 <body>
 <div th:include="fragments/header"></div>
 <div th:include="fragments/messages"></div>
+<h4>Books</h4>
+<table border="1">
+    <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Publisher</th>
+        <th>Year</th>
+        <th>Series</th>
+        <th>Address</th>
+        <th>Edition</th>
+        <th>Month</th>
+        <th>Note</th>
+    </tr>
+    <tr th:each="book : ${books}">
 
-<p th:text="'list_refernces, ' + ${reference} + '!'" />
+        <td th:text="${book.author}">Title...</td>
+        <td th:text="${book.title}">Title...</td>
+        <td th:text="${book.publisher}">Publisher...</td>
+        <td th:text="${book.year}">Year...</td>
+        <td th:text="${book.series}">Series...</td>
+        <td th:text="${book.address}">Address...</td>
+        <td th:text="${book.edition}">Edition...</td>
+        <td th:text="${book.month}">Month...</td>
+        <td th:text="${book.note}">Note...</td>
+    </tr>
+</table>
+<h4>Articles</h4>
+<table border="1">
+    <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Journal</th>
+        <th>Year</th>
+        <th>Volume</th>
+        <th>Number</th>
+        <th>Pages</th>
+        <th>Month</th>
+        <th>Note</th>
+    </tr>
+    <tr th:each="article : ${articles}">
+
+        <td th:text="${article.author}">Author...</td>
+        <td th:text="${article.title}">Title...</td>
+        <td th:text="${article.journal}">Publisher...</td>
+        <td th:text="${article.year}">Year...</td>
+        <td th:text="${article.volume}">Volume...</td>
+        <td th:text="${article.number}">Year...</td>
+        <td th:text="${article.pages}">Year...</td>
+        <td th:text="${article.month}">Year...</td>
+        <td th:text="${article.note}">Year...</td>
+
+    </tr>
+</table>
+<h4>Inproceedins</h4>
+<table border="1">
+    <tr>
+        <th> Author </th>
+        <th> Title </th>
+        <th>Booktitle</th>
+        <th>Year</th>
+        <th>Editor</th>
+        <th>Volume number</th>
+        <th> Series </th>
+        <th>pages</th>
+        <th>address</th>
+        <th>Month</th>
+        <th>Organization</th>
+        <th>Publisher</th>
+        <th>Note</th>
+    </tr>
+    <tr th:each="inproceeding : ${inproceedings}">
+
+        <td th:text="${inproceeding.author}">Author...</td>
+        <td th:text="${inproceeding.title}">Title...</td>
+        <td th:text="${inproceeding.booktitle}">Publisher...</td>
+        <td th:text="${inproceeding.year}">Year...</td>
+        <td th:text="${inproceeding.editor}">Year...</td>
+        <td th:text="${inproceeding.volumeNumber}">Year...</td>
+        <td th:text="${inproceeding.series}">Year...</td>
+        <td th:text="${inproceeding.pages}">Year...</td>
+        <td th:text="${inproceeding.address}">Year...</td>
+        <td th:text="${inproceeding.month}">Year...</td>
+        <td th:text="${inproceeding.organization}">Year...</td>
+        <td th:text="${inproceeding.publisher}">Year...</td>
+        <td th:text="${inproceeding.note}">Year...</td>
+    </tr>
+</table>
 
 </body>
 </html>

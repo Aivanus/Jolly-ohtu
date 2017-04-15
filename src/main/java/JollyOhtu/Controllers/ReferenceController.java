@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +29,12 @@ public class ReferenceController {
     private List<Object> references = new ArrayList<>();
 
     @RequestMapping(value = "/list_references", method = GET)
-    public String listReferences(Model model, String reference) {
-        model.addAttribute("reference", reference);
-
-        return "list_references";
+    public ModelAndView listReferences() {
+        ModelAndView mav = new ModelAndView("list_references");
+        mav.addObject("books", bookRepo.findAll());
+        mav.addObject("articles", artRepo.findAll());
+        mav.addObject("inproceedings", inproRepo.findAll());
+        return mav;
     }
 
     public void getReferences() {
