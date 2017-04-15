@@ -33,9 +33,13 @@ public class ArticleController {
 
     @RequestMapping(value = "/add_article", method = POST)
     public String articleSubmit(@ModelAttribute Article article, Model model) {
-        
-        if (!article.mandatoryFieldsAreFilled()) {
+
+        if (article.mandatoryFieldsArentFilled()) {
             model.addAttribute("error", new String("You must fill in the fields marked by *"));
+        } else if (article.articleHasInvalidInfo()) {
+            model.addAttribute("error", new String("Invalid input. Check your input."));
+        } else if (articleIsADuplicate(article, artRepo)) {
+            model.addAttribute("error", new String("The article reference already exists."));
         } else if (artRepo.save(article) != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
             model.addAttribute("article", new Article());
@@ -52,6 +56,14 @@ public class ArticleController {
     public String articleDeleteAll() {
         artRepo.deleteAll();
         return "index";
+    }
+
+    private boolean articleIsADuplicate(Article article, ArticleRepository artRepo) {
+        return artRepo.findByAuthorAndTitleAndJournalAndYearAndVolumeAndNumberAndPagesAndMonthAndNote(article.getAuthor(), article.getTitle(),
+                article.getJournal(), article.getYear(), article.getVolume(),
+                article.getNumber(), article.getPages(), article.getMonth(),
+                article.getNote()).size() > 0;
+
     }
 
 }

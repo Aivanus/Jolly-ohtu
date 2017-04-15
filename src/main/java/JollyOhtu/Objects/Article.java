@@ -134,9 +134,17 @@ public class Article {
     public String toString() {
         return "Article{" + "author=" + author + ", title=" + title + ", journal=" + journal + ", year=" + year + ", volume=" + volume + ", number=" + number + ", pages=" + pages + ", month=" + month + ", note=" + note + '}';
     }
-    
-    public Boolean mandatoryFieldsAreFilled(){
-        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.journal.equalsIgnoreCase("")){
+
+    public Boolean mandatoryFieldsArentFilled() {
+        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.journal.equalsIgnoreCase("")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean articleHasInvalidInfo() {
+        if (this.month >= 0 && this.month < 13) {
             return false;
         } else {
             return true;
