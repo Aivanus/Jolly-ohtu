@@ -11,4 +11,9 @@ import org.springframework.data.repository.CrudRepository;
 public interface ArticleRepository extends CrudRepository<Article, Long> {
 
     List<Article> findByTitle(String title);
+
+
+    public List<Article> findByAuthorAndTitleAndJournalAndYearAndVolumeAndNumberAndPagesAndMonthAndNote(
+            String author, String title, String journal, int year, int volume,
+            int number, String pages, int month, String note);
 }
