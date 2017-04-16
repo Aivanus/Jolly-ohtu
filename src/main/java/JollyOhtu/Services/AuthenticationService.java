@@ -5,8 +5,12 @@
  */
 package JollyOhtu.Services;
 
+import JollyOhtu.Objects.Article;
 import JollyOhtu.Objects.Book;
+import JollyOhtu.Objects.Inproceedings;
+import JollyOhtu.Repository.ArticleRepository;
 import JollyOhtu.Repository.BookRepository;
+import JollyOhtu.Repository.InproceedingsRepository;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +21,7 @@ import java.util.List;
 public class AuthenticationService {
     
     
-    public  List<String> validateAddBook(Book book, BookRepository books){
+    public static List<String> validateAddBook(Book book, BookRepository books){
         
         List<String> errors = new ArrayList<String>();
         if (!book.mandatoryFieldsAreFilled()){
@@ -26,6 +30,32 @@ public class AuthenticationService {
         if(books.copyExists(book)){
             errors.add(new String("Reference already exists!"));
         }
+        return errors;
+    }
+    
+    public static List<String> validateAddArticle(Article article, ArticleRepository articles){
+        List<String> errors = new ArrayList<String>();
+         if (article.mandatoryFieldsArentFilled()) {
+            errors.add(new String("You must fill in the fields marked by *"));
+        } else if (article.articleHasInvalidInfo()) {
+            errors.add(new String("Invalid input. Check your input."));
+        } else if (articles.copyExists(article)) {
+            errors.add(new String("The article reference already exists."));
+        }
+        return errors;
+    }
+    
+    public static List<String> validateAddInproceedings(Inproceedings inpro, InproceedingsRepository inpros){
+        List<String> errors = new ArrayList<String>();
+        if (inpro.mandatoryFieldsArentFilled()) {
+            errors.add(new String("You must fill in the fields marked by *"));
+        } 
+        if (inpro.inproceedingsHasInvalidInfo()) {
+            errors.add(new String("Invalid input. Check your input."));
+        } 
+        if (inpros.copyExists(inpro)) {
+            errors.add(new String("The article reference already exists."));
+        } 
         return errors;
     }
 }
