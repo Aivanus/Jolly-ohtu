@@ -5,20 +5,22 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-    
+
     <body>
         <div th:fragment="messages">
             <div th:if="${success} != null">
-            <div class="alert alert-success">
-                <p th:text="${success}" />
+                <div class="alert alert-success">
+                    <p th:text="${success}" />
+                </div>
             </div>
-        </div>
-        
-        <div th:if="${error} != null">
-            <div class="alert alert-danger">
-                <p th:text="${error}" />
+
+            <div th:if="${errors} != null">
+                <div th:each="error : ${errors}">
+                     <div class="alert alert-danger">
+                        <p th:text="${error}" />
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </body>
 </html>

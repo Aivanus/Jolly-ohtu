@@ -34,16 +34,16 @@ public class InproceedingsController {
     @RequestMapping(value = "/add_inproceedings", method = POST)
     public String inproceedingsSubmit(@ModelAttribute Inproceedings inpro, Model model) {
         if (inpro.mandatoryFieldsArentFilled()) {
-            model.addAttribute("error", new String("You must fill in the fields marked by *"));
+            model.addAttribute("errors", new String("You must fill in the fields marked by *"));
         } else if (inpro.inproceedingsHasInvalidInfo()) {
-            model.addAttribute("error", new String("Invalid input. Check your input."));
+            model.addAttribute("errors", new String("Invalid input. Check your input."));
         } else if (inproceedingsIsADuplicate(inpro, inproRepo)) {
-            model.addAttribute("error", new String("The article reference already exists."));
+            model.addAttribute("errors", new String("The article reference already exists."));
         } else if (inproRepo.save(inpro) != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
             model.addAttribute("inproceedings", new Inproceedings());
         } else {
-            model.addAttribute("error", new String("There was an error saving"
+            model.addAttribute("errors", new String("There was an error saving"
                     + " the reference. Reference not saved"));
         }
         return "add_inproceedings";

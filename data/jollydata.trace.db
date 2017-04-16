@@ -2153,6 +2153,17 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Iva
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:348)
 	... 95 more
+<<<<<<< HEAD
+2017-04-16 16:31:31 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "SYSTEM_SEQUENCES" not found; SQL statement:
+select sequence_name from information_schema.system_sequences [42102-193]
+2017-04-16 16:44:21 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "SYSTEM_SEQUENCES" not found; SQL statement:
+select sequence_name from information_schema.system_sequences [42102-193]
+2017-04-16 16:48:31 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "SYSTEM_SEQUENCES" not found; SQL statement:
+select sequence_name from information_schema.system_sequences [42102-193]
+=======
 2017-04-15 23:33:54 jdbc[12]: exception
 org.h2.jdbc.JdbcSQLException: Column "INPROCEEDI0_.VOLUMENUMBER" not found; SQL statement:
 select inproceedi0_.id as id1_2_, inproceedi0_.address as address2_2_, inproceedi0_.author as author3_2_, inproceedi0_.booktitle as booktitl4_2_, inproceedi0_.editor as editor5_2_, inproceedi0_.month as month6_2_, inproceedi0_.note as note7_2_, inproceedi0_.organization as organiza8_2_, inproceedi0_.pages as pages9_2_, inproceedi0_.publisher as publish10_2_, inproceedi0_.series as series11_2_, inproceedi0_.title as title12_2_, inproceedi0_.volumenumber as volumen13_2_, inproceedi0_.year as year14_2_ from inproceedings inproceedi0_ [42122-193]
@@ -4281,3 +4292,4 @@ select inproceedi0_.id as id1_2_, inproceedi0_.address as address2_2_, inproceed
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590)
 	at java.lang.Thread.run(Thread.java:745)
+>>>>>>> master

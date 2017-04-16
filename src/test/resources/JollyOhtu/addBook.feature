@@ -16,7 +16,7 @@ Feature: As a user I want to be able to add book references
     When Valid mandatory book information is entered:
       | author    | Jonh Johnman     |
       | title     | Interesting Book |
-      | year      | 1984             |
+      | year      | 1985             |
       | publisher | PaperPress       |
     And Optional fields are chosen
     And Valid optional field information is entered:
@@ -35,3 +35,19 @@ Feature: As a user I want to be able to add book references
       | title  | Interesting Book |
     And User presses button Add
     Then Message "You must fill in the fields marked by *" is presented
+
+  Scenario: User cannot create a book reference if reference already exists
+    When Valid mandatory book information is entered:
+        | author | testi          |
+        | title  | testi          |
+        | year   | 1337           |
+        | publisher| testi        |
+    And User presses button Add
+    And Message "Reference was saved succesfully!" is presented
+    And Valid mandatory book information is entered:
+        | author | testi          |
+        | title  | testi          |
+        | year   | 1337           |
+        | publisher| testi        |
+    And User presses button Add
+    Then Message "Reference already exists!" is presented
