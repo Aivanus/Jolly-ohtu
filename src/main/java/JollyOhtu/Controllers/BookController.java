@@ -35,8 +35,8 @@ public class BookController {
 
     @RequestMapping(value = "/add_book", method = POST)
     public String bookSubmit(@ModelAttribute Book book, Model model) {
-        AuthenticationService authentication = new AuthenticationService();
-        List<String> errors = authentication.validateAddBook(book, repository);
+        
+        List<String> errors = AuthenticationService.validateAddBook(book, repository);
         if (errors.isEmpty()) {
             Book tallennettu = repository.save(book);
             if (tallennettu != null) {
