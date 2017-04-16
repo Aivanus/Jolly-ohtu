@@ -33,8 +33,12 @@ public class InproceedingsController {
 
     @RequestMapping(value = "/add_inproceedings", method = POST)
     public String inproceedingsSubmit(@ModelAttribute Inproceedings inpro, Model model) {
-        if(!inpro.mandatoryFieldsAreFilled()){
+        if (inpro.mandatoryFieldsArentFilled()) {
             model.addAttribute("errors", new String("You must fill in the fields marked by *"));
+        } else if (inpro.inproceedingsHasInvalidInfo()) {
+            model.addAttribute("errors", new String("Invalid input. Check your input."));
+        } else if (inproceedingsIsADuplicate(inpro, inproRepo)) {
+            model.addAttribute("errors", new String("The article reference already exists."));
         } else if (inproRepo.save(inpro) != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
             model.addAttribute("inproceedings", new Inproceedings());
@@ -42,7 +46,7 @@ public class InproceedingsController {
             model.addAttribute("errors", new String("There was an error saving"
                     + " the reference. Reference not saved"));
         }
-        return "add_inproceedings"; 
+        return "add_inproceedings";
     }
 
     //HUOM. vain testausta varten
@@ -52,4 +56,12 @@ public class InproceedingsController {
         return "index";
     }
 
+    private boolean inproceedingsIsADuplicate(Inproceedings inpro, InproceedingsRepository inproRepo) {
+        return inproRepo.findByAuthorAndTitleAndBooktitleAndYearAndEditorAndVolumeNumberAndSeriesAndPagesAndAddressAndMonthAndOrganizationAndPublisherAndNote(
+                inpro.getAuthor(), inpro.getTitle(), inpro.getBooktitle(),
+                inpro.getYear(), inpro.getEditor(), inpro.getVolumeNumber(),
+                inpro.getSeries(), inpro.getPages(), inpro.getAddress(),
+                inpro.getMonth(), inpro.getOrganization(), inpro.getPublisher(),
+                inpro.getNote()).size() > 0;
+    }
 }
