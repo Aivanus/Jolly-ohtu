@@ -55,9 +55,9 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("Book: author='%s', title='%s', publisher='%s', "
-                + "year='%d', volume='%d', series='%s', address='%s', edition='%s', "
-                + "month='%d', note='%s'",
+        return String.format("@book{ tunnus, \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
+                + "year = \"%d\",\n volume = \"%d\",\n series = \"%s\",\n address = \"%s\",\n edition = \"%s\",\n "
+                + "month = \"%d\",\n note = \"%s\"} \n",
                 author, title, publisher, year, volume, series, address, edition, month, note);
     }
 

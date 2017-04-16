@@ -132,11 +132,13 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article{" + "author=" + author + ", title=" + title + ", journal=" + journal + ", year=" + year + ", volume=" + volume + ", number=" + number + ", pages=" + pages + ", month=" + month + ", note=" + note + '}';
+        return String.format("@article{ tunnus, \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
+                + "year = \"%d\",\n volume = \"%d\",\n number = \"%d\",\n pages = \"%s\", month = \"%d\",\n note = \"%s\"} \n",
+                author, title, journal, year, volume, number, pages, month, note);
     }
-    
-    public Boolean mandatoryFieldsAreFilled(){
-        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.journal.equalsIgnoreCase("")){
+
+    public Boolean mandatoryFieldsAreFilled() {
+        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.journal.equalsIgnoreCase("")) {
             return false;
         } else {
             return true;
