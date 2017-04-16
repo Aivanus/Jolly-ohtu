@@ -7,6 +7,8 @@ package JollyOhtu.Controllers;
 
 import JollyOhtu.Objects.Inproceedings;
 import JollyOhtu.Repository.InproceedingsRepository;
+import JollyOhtu.Services.AuthenticationService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,19 +35,18 @@ public class InproceedingsController {
 
     @RequestMapping(value = "/add_inproceedings", method = POST)
     public String inproceedingsSubmit(@ModelAttribute Inproceedings inpro, Model model) {
-        if (inpro.mandatoryFieldsArentFilled()) {
-            model.addAttribute("errors", new String("You must fill in the fields marked by *"));
-        } else if (inpro.inproceedingsHasInvalidInfo()) {
-            model.addAttribute("errors", new String("Invalid input. Check your input."));
-        } else if (inproceedingsIsADuplicate(inpro, inproRepo)) {
-            model.addAttribute("errors", new String("The article reference already exists."));
-        } else if (inproRepo.save(inpro) != null) {
-            model.addAttribute("success", new String("Reference was saved succesfully!"));
-            model.addAttribute("inproceedings", new Inproceedings());
-        } else {
-            model.addAttribute("errors", new String("There was an error saving"
-                    + " the reference. Reference not saved"));
+        List<String> errors = AuthenticationService.validateAddInproceedings(inpro, inproRepo);
+        if (errors.isEmpty()) {
+            if (inproRepo.save(inpro) != null) {
+                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("inproceedings", new Inproceedings());
+            } else {
+                errors.add(new String("There was an error saving"
+                        + " the reference. Reference not saved"));
+            }
         }
+        model.addAttribute("errors", errors);
+        
         return "add_inproceedings";
     }
 
@@ -56,12 +57,4 @@ public class InproceedingsController {
         return "index";
     }
 
-    private boolean inproceedingsIsADuplicate(Inproceedings inpro, InproceedingsRepository inproRepo) {
-        return inproRepo.findByAuthorAndTitleAndBooktitleAndYearAndEditorAndVolumeNumberAndSeriesAndPagesAndAddressAndMonthAndOrganizationAndPublisherAndNote(
-                inpro.getAuthor(), inpro.getTitle(), inpro.getBooktitle(),
-                inpro.getYear(), inpro.getEditor(), inpro.getVolumeNumber(),
-                inpro.getSeries(), inpro.getPages(), inpro.getAddress(),
-                inpro.getMonth(), inpro.getOrganization(), inpro.getPublisher(),
-                inpro.getNote()).size() > 0;
-    }
 }

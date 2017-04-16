@@ -19,7 +19,13 @@ public interface BookRepository extends CrudRepository<Book, Long> {
             + " from Book b where b.title = :#{#book.title} and"
             + " b.year=:#{#book.year} and"
             + " b.publisher=:#{#book.publisher} and"
-            + " b.author =:#{#book.author}")
+            + " b.author =:#{#book.author} and"
+            + " b.volume =:#{#book.volume} and"
+            + " b.series =:#{#book.series} and"
+            + " b.address =:#{#book.address} and"
+            + " b.note =:#{#book.note} and"
+            + " b.month =:#{#book.month} and"
+            + " b.edition =:#{#book.edition}")
     boolean copyExists(@Param("book") Book book);
 
     List<Book> findByTitle(String title);

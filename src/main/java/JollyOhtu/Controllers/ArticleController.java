@@ -7,6 +7,8 @@ package JollyOhtu.Controllers;
 
 import JollyOhtu.Objects.Article;
 import JollyOhtu.Repository.ArticleRepository;
+import JollyOhtu.Services.AuthenticationService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,19 +36,18 @@ public class ArticleController {
     @RequestMapping(value = "/add_article", method = POST)
     public String articleSubmit(@ModelAttribute Article article, Model model) {
 
-        if (article.mandatoryFieldsArentFilled()) {
-            model.addAttribute("errors", new String("You must fill in the fields marked by *"));
-        } else if (article.articleHasInvalidInfo()) {
-            model.addAttribute("errors", new String("Invalid input. Check your input."));
-        } else if (articleIsADuplicate(article, artRepo)) {
-            model.addAttribute("errors", new String("The article reference already exists."));
-        } else if (artRepo.save(article) != null) {
-            model.addAttribute("success", new String("Reference was saved succesfully!"));
-            model.addAttribute("article", new Article());
-        } else {
-            model.addAttribute("errors", new String("There was an error saving"
-                    + " the reference. Reference not saved"));
+        List<String> errors = AuthenticationService.validateAddArticle(article, artRepo);
+        if (errors.isEmpty()) {
+            if (artRepo.save(article) != null) {
+                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("article", new Article());
+            } else {
+                errors.add(new String("There was an error saving"
+                        + " the reference. Reference not saved"));
+            }
         }
+        model.addAttribute("errors", errors);
+
 //        System.out.println(artRepo.count()); //for testing
         return "add_article";
     }
@@ -58,12 +59,5 @@ public class ArticleController {
         return "index";
     }
 
-    private boolean articleIsADuplicate(Article article, ArticleRepository artRepo) {
-        return artRepo.findByAuthorAndTitleAndJournalAndYearAndVolumeAndNumberAndPagesAndMonthAndNote(article.getAuthor(), article.getTitle(),
-                article.getJournal(), article.getYear(), article.getVolume(),
-                article.getNumber(), article.getPages(), article.getMonth(),
-                article.getNote()).size() > 0;
-
-    }
 
 }
