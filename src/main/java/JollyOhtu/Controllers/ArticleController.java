@@ -35,12 +35,12 @@ public class ArticleController {
     public String articleSubmit(@ModelAttribute Article article, Model model) {
         
         if (!article.mandatoryFieldsAreFilled()) {
-            model.addAttribute("error", new String("You must fill in the fields marked by *"));
+            model.addAttribute("errors", new String("You must fill in the fields marked by *"));
         } else if (artRepo.save(article) != null) {
             model.addAttribute("success", new String("Reference was saved succesfully!"));
             model.addAttribute("article", new Article());
         } else {
-            model.addAttribute("error", new String("There was an error saving"
+            model.addAttribute("errors", new String("There was an error saving"
                     + " the reference. Reference not saved"));
         }
 //        System.out.println(artRepo.count()); //for testing
