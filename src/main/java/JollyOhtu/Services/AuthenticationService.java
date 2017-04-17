@@ -27,8 +27,11 @@ public class AuthenticationService {
         if (!book.mandatoryFieldsAreFilled()){
             errors.add(new String("You must fill in the fields marked by *"));
         }
+        if (book.bookHasInvalidInfo()) {
+            errors.add(new String("Invalid input. Check your input."));
+        }
         if(books.copyExists(book)){
-            errors.add(new String("Reference already exists!"));
+            errors.add(new String("The book reference already exists."));
         }
         return errors;
     }
@@ -37,9 +40,9 @@ public class AuthenticationService {
         List<String> errors = new ArrayList<String>();
          if (article.mandatoryFieldsArentFilled()) {
             errors.add(new String("You must fill in the fields marked by *"));
-        } else if (article.articleHasInvalidInfo()) {
+        } if (article.articleHasInvalidInfo()) {
             errors.add(new String("Invalid input. Check your input."));
-        } else if (articles.copyExists(article)) {
+        } if (articles.copyExists(article)) {
             errors.add(new String("The article reference already exists."));
         }
         return errors;

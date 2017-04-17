@@ -55,6 +55,12 @@ public class Stepdefs {
     public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
+    
+    @When("^No mandatory book information is entered:$")
+    public void no_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
 
     @When("^Optional fields are chosen$")
     public void optional_fields_are_chosen() throws Throwable {
@@ -65,6 +71,12 @@ public class Stepdefs {
     public void valid_optional_field_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
+    
+    @When("^Invalid optional field information is entered:$")
+    public void invalid_optional_field_information_is_entered(List<List<String>> table) throws Throwable {
+       enterValuesById(table);
+    }
+
 
     @When("^Mandatory book information with only author and title is entered:$")
     public void mandatory_book_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
