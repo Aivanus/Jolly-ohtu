@@ -57,7 +57,7 @@ public class Book {
     public String toString() {
         return String.format("@book{ tunnus, \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
                 + "year = \"%d\",\n volume = \"%d\",\n series = \"%s\",\n address = \"%s\",\n edition = \"%s\",\n "
-                + "month = \"%d\",\n note = \"%s\"} \n",
+                + "month = \"%d\",\n note = \"%s\"}\n",
                 author, title, publisher, year, volume, series, address, edition, month, note);
     }
 

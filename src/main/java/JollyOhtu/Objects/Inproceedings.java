@@ -52,12 +52,12 @@ public class Inproceedings {
 
     @Override
     public String toString() {
-        return "@inproceedings{ tunnus, \n" + "author = \"" + author + "\", \n title = \"" + title + 
-                "\", \n booktitle = \"" + booktitle + "\", \n year = \"" + year + "\", \n editor = \"" + 
-                editor + "\", \n volumeNumber = \"" + volumeNumber + "\", \n series = \"" + 
-                series + "\", \n pages = \"" + pages + "\", \n address = \"" + address + 
-                "\", \n month = \"" + month + "\", \n organization = \"" + organization + 
-                "\", \n publisher = \"" + publisher + "\", \n note = \"" + note + "\"} \n";
+        return "@inproceedings{ tunnus, \n " + "author = \"" + author + "\",\n title = \"" + title + 
+                "\",\n booktitle = \"" + booktitle + "\",\n year = \"" + year + "\",\n editor = \"" + 
+                editor + "\",\n volumeNumber = \"" + volumeNumber + "\",\n series = \"" + 
+                series + "\",\n pages = \"" + pages + "\",\n address = \"" + address + 
+                "\",\n month = \"" + month + "\",\n organization = \"" + organization + 
+                "\",\n publisher = \"" + publisher + "\",\n note = \"" + note + "\"} \n";
     }
 
     public Long getId() {

@@ -133,7 +133,7 @@ public class Article {
     @Override
     public String toString() {
         return String.format("@article{ tunnus, \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
-                + "year = \"%d\",\n volume = \"%d\",\n number = \"%d\",\n pages = \"%s\", month = \"%d\",\n note = \"%s\"} \n",
+                + "year = \"%d\",\n volume = \"%d\",\n number = \"%d\",\n pages = \"%s\",\n month = \"%d\",\n note = \"%s\"} \n",
                 author, title, journal, year, volume, number, pages, month, note);
     }
 
