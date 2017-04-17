@@ -157,5 +157,13 @@ public class Book {
             return true;
         }
     }
+    
+    public boolean bookHasInvalidInfo(){
+        if (this.month >= 0 && this.month < 13) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }
