@@ -24,7 +24,7 @@ Feature: As a user I want to be able to add article references
     And Valid optional field information is entered:
       | number | 43      |
       | pages  | 9001    |
-      | month  | 11      |
+      | month  | 1       |
       | note   | nothing |
     And User presses button Add
     Then Message "Reference was saved succesfully!" is presented

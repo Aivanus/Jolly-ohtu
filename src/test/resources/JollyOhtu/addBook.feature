@@ -15,8 +15,8 @@ Feature: As a user I want to be able to add book references
   Scenario: User can create a book reference with valid mandatory and optional fields
     When Valid mandatory book information is entered:
       | author    | Jonh Johnman     |
-      | title     | Interesting Book |
-      | year      | 1985             |
+      | title     | Interesting Book 2 |
+      | year      | 1995             |
       | publisher | PaperPress       |
     And Optional fields are chosen
     And Valid optional field information is entered:
@@ -24,8 +24,8 @@ Feature: As a user I want to be able to add book references
       | series  | 12               |
       | address | Bakerstreet 1337 |
       | edition | 42               |
-      | month   | 5                |
-      | note    | smtn             |
+      | month   | 1                |
+      | note    | smtn else            |
     And User presses button Add
     Then Message "Reference was saved succesfully!" is presented
 
@@ -57,7 +57,7 @@ Feature: As a user I want to be able to add book references
       | series  | 12               |
       | address | Bakerstreet 1337 |
       | edition | 42               |
-      | month   | 5                |
+      | month   | 1                |
       | note    | smtn             |
     And User presses button Add
     Then Message "You must fill in the fields marked by *" is presented

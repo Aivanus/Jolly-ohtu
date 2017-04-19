@@ -25,7 +25,7 @@ Feature: As a user I want to be able to add inproceedings references
       | series       | 13             |
       | pages        | 57             |
       | address      | Tortuga        |
-      | month        | 6              |
+      | month        | 1              |
       | organization | Pirates        |
       | publisher    | Davy Jones inc |
       | note         | Yarrrr!        |
@@ -55,7 +55,7 @@ Feature: As a user I want to be able to add inproceedings references
       | series       | 13             |
       | pages        | 57             |
       | address      | Tortuga        |
-      | month        | 6              |
+      | month        | 1              |
       | organization | Pirates        |
       | publisher    | Davy Jones inc |
       | note         | Yarrrr!        |
