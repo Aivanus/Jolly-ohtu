@@ -38,19 +38,19 @@ Feature: As a user I want to be able to add book references
 
   Scenario: User cannot create a book reference if all of the mandatory fields are empty
     When No mandatory book information is entered:
-        |author||
-        |title ||
-        |year  ||
-        |publisher||
+      | author    |  |
+      | title     |  |
+      | year      |  |
+      | publisher |  |
     And User presses button Add
     Then Message "You must fill in the fields marked by *" is presented
 
   Scenario: User cannot create a book reference with empty mandatory fields and valid optional fields
     When No mandatory book information is entered:
-        |author||
-        |title ||
-        |year  ||
-        |publisher||
+      | author    |  |
+      | title     |  |
+      | year      |  |
+      | publisher |  |
     And Optional fields are chosen
     And Valid optional field information is entered:
       | volume  | 1                |
@@ -64,13 +64,13 @@ Feature: As a user I want to be able to add book references
 
   Scenario: User cannot create a book reference with invalid month
     When Valid mandatory book information is entered:
-        | author | test          |
-        | title  | test          |
-        | year   | 1337           |
-        | publisher| test        |
+      | author    | test |
+      | title     | test |
+      | year      | 1337 |
+      | publisher | test |
     And Optional fields are chosen
     And Invalid optional field information is entered:
-        | volume  | 1                |
+      | volume  | 1                |
       | series  | 12               |
       | address | Bakerstreet 1337 |
       | edition | 42               |
@@ -81,16 +81,16 @@ Feature: As a user I want to be able to add book references
 
   Scenario: User cannot create a book reference if reference already exists
     When Valid mandatory book information is entered:
-        | author | testi          |
-        | title  | testi          |
-        | year   | 1337           |
-        | publisher| testi        |
+      | author    | testi |
+      | title     | testi |
+      | year      | 1337  |
+      | publisher | testi |
     And User presses button Add
     And Message "Reference was saved succesfully!" is presented
     And Valid mandatory book information is entered:
-        | author | testi          |
-        | title  | testi          |
-        | year   | 1337           |
-        | publisher| testi        |
+      | author    | testi |
+      | title     | testi |
+      | year      | 1337  |
+      | publisher | testi |
     And User presses button Add
     Then Message "The book reference already exists." is presented
