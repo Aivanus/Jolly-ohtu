@@ -57,7 +57,7 @@ public class AuthenticationService {
             errors.add(new String("Invalid input. Check your input."));
         } 
         if (inpros.copyExists(inpro)) {
-            errors.add(new String("The article reference already exists."));
+            errors.add(new String("The inproceedings reference already exists."));
         } 
         return errors;
     }

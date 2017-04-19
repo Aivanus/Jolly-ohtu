@@ -1,6 +1,5 @@
 package JollyOhtu;
 
-
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -14,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
@@ -55,12 +53,11 @@ public class Stepdefs {
     public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
-    
+
     @When("^No mandatory book information is entered:$")
     public void no_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
-
 
     @When("^Optional fields are chosen$")
     public void optional_fields_are_chosen() throws Throwable {
@@ -71,12 +68,11 @@ public class Stepdefs {
     public void valid_optional_field_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
-    
+
     @When("^Invalid optional field information is entered:$")
     public void invalid_optional_field_information_is_entered(List<List<String>> table) throws Throwable {
-       enterValuesById(table);
+        enterValuesById(table);
     }
-
 
     @When("^Mandatory book information with only author and title is entered:$")
     public void mandatory_book_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
@@ -85,6 +81,11 @@ public class Stepdefs {
 
     @When("^Valid mandatory article information is entered:$")
     public void valid_mandatory_article_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^No mandatory article information is entered:$")
+    public void no_mandatory_article_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
 
@@ -100,6 +101,16 @@ public class Stepdefs {
 
     @When("^Mandatory inproceedings information with only author and title is entered:$")
     public void mandatory_inproceedings_information_with_only_author_and_title_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Valid mandatory inproceedings information is entered:$")
+    public void valid_mandatory_inproceedings_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^No mandatory inproceedings information is entered:$")
+    public void no_mandatory_inproceedings_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
 
