@@ -51,10 +51,10 @@ public class InproceedingsController {
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_inproceedings", method = GET)
-    public String inproceedingsDeleteAll() {
-        inproRepo.deleteAll();
-        return "index";
-    }
+//    @RequestMapping(value = "/delete_inproceedings", method = GET)
+//    public String inproceedingsDeleteAll() {
+//        inproRepo.deleteAll();
+//        return "index";
+//    }
 
 }

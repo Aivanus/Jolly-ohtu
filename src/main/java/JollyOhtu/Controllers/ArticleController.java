@@ -53,11 +53,11 @@ public class ArticleController {
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_articles", method = GET)
-    public String articleDeleteAll() {
-        artRepo.deleteAll();
-        return "index";
-    }
+//    @RequestMapping(value = "/delete_articles", method = GET)
+//    public String articleDeleteAll() {
+//        artRepo.deleteAll();
+//        return "index";
+//    }
 
 
 }

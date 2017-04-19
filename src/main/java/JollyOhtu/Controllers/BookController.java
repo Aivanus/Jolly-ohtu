@@ -52,10 +52,10 @@ public class BookController {
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_books")
-    public String bookDeleteAll() {
-        repository.deleteAll();
-        return "index";
-    }
+//    @RequestMapping(value = "/delete_books")
+//    public String bookDeleteAll() {
+//        repository.deleteAll();
+//        return "index";
+//    }
 
 }
