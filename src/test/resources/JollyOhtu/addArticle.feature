@@ -87,7 +87,7 @@ Feature: As a user I want to be able to add article references
       | volume  | 12      |
     And User presses button Add
     And Message "Reference was saved succesfully!" is presented
-    When Valid mandatory article information is entered::
+    When Valid mandatory article information is entered:
       | author  | newtest |
       | title   | newtest |
       | journal | newtest |
