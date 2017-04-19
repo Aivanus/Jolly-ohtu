@@ -87,6 +87,11 @@ public class Stepdefs {
     public void valid_mandatory_article_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
     }
+    @When("^No mandatory article information is entered:$")
+    public void no_mandatory_article_information_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
 
     @When("^User presses button Add$")
     public void user_presses_button_add() throws Throwable {

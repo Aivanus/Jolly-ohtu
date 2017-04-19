@@ -80,7 +80,7 @@ When Valid mandatory article information is entered::
     Then Message "Invalid input. Check your input." is presented
 
   Scenario: User cannot create an article reference if reference already exists
-    When Valid mandatory article information is entered::
+    When Valid mandatory article information is entered:
       | author  | newtest |
       | title   |  newtest|
       | journal |  newtest|
