@@ -15,12 +15,12 @@ public class ArticleTest {
 
     @Test
     public void getId() throws Exception {
-
     }
 
     @Test
     public void setId() throws Exception {
-
+        a.setId(((long) 5));
+        assertEquals((long) 5, a.getId(), 0.1);
     }
 
     @Test

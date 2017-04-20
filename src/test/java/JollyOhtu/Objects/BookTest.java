@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
  */
 public class BookTest {
     private Book b;
+    private Book bMand;
     
     @BeforeClass
     public static void setUpClass() {
@@ -31,6 +32,7 @@ public class BookTest {
     @Before
     public void setUp() {
         b = new Book("author", "title", "publisher", 1995, 1, "series", "address", "edition", 1, "note");
+        bMand = new Book("author", "title", "publisher", 1995);
     }
     
     @After
@@ -38,14 +40,21 @@ public class BookTest {
     }
     
     @Test
-    public void getId() throws Exception {
-
+    public void mandatoryConstructorWorksProperly(){
+        assertEquals(bMand.getAuthor(), "author");
+        assertEquals(bMand.getTitle(), "title");
+        assertEquals(bMand.getPublisher(), "publisher");
+        assertEquals(bMand.getYear(), 1995);
     }
-
+    
     @Test
-    public void setId() throws Exception {
-
+    public void setAndGetId() throws Exception {
+        b.setId(new Long (5L));
+        assertEquals(b.getId(), new Long(5L));
+        
     }
+
+    
 
     @Test
     public void getAuthor() throws Exception {

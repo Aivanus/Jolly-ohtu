@@ -69,6 +69,7 @@ public class Book {
         this.id = id;
     }
 
+    
     public String getAuthor() {
         return author;
     }
@@ -151,6 +152,14 @@ public class Book {
     
     public Boolean mandatoryFieldsAreFilled(){
         if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.publisher.equalsIgnoreCase("")){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean bookHasInvalidInfo(){
+        if (this.month >= 0 && this.month < 13) {
             return false;
         } else {
             return true;

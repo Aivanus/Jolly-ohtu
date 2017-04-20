@@ -137,8 +137,16 @@ public class Article {
                 author, title, journal, year, volume, number, pages, month, note);
     }
 
-    public Boolean mandatoryFieldsAreFilled() {
+    public Boolean mandatoryFieldsArentFilled() {
         if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.journal.equalsIgnoreCase("")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean articleHasInvalidInfo() {
+        if (this.month >= 0 && this.month < 13) {
             return false;
         } else {
             return true;

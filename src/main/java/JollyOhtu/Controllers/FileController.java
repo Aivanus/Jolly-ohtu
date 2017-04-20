@@ -4,7 +4,7 @@ import JollyOhtu.Objects.FileObject;
 import JollyOhtu.Repository.ArticleRepository;
 import JollyOhtu.Repository.BookRepository;
 import JollyOhtu.Repository.InproceedingsRepository;
-import JollyOhtu.Service.FileGeneratorService;
+import JollyOhtu.Services.FileGeneratorService;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

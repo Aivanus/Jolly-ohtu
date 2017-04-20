@@ -1,4 +1,4 @@
-package JollyOhtu.Service;
+package JollyOhtu.Services;
 
 import JollyOhtu.Objects.Article;
 import JollyOhtu.Objects.Book;

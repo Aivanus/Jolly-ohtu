@@ -172,12 +172,20 @@ public class Inproceedings {
         this.note = note;
     }
 
-    public Boolean mandatoryFieldsAreFilled(){
+    public Boolean mandatoryFieldsArentFilled(){
         if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.booktitle.equalsIgnoreCase("")){
+            return true;
+        } else {
+            return false;
+        }
+    }    
+    
+    public boolean inproceedingsHasInvalidInfo() {
+        if (this.month >= 0 && this.month < 13) {
             return false;
         } else {
             return true;
         }
-    }    
+    }
     
 }

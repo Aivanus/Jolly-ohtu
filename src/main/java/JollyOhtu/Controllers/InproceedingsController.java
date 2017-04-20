@@ -7,6 +7,8 @@ package JollyOhtu.Controllers;
 
 import JollyOhtu.Objects.Inproceedings;
 import JollyOhtu.Repository.InproceedingsRepository;
+import JollyOhtu.Services.AuthenticationService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,23 +35,26 @@ public class InproceedingsController {
 
     @RequestMapping(value = "/add_inproceedings", method = POST)
     public String inproceedingsSubmit(@ModelAttribute Inproceedings inpro, Model model) {
-        if(!inpro.mandatoryFieldsAreFilled()){
-            model.addAttribute("error", new String("You must fill in the fields marked by *"));
-        } else if (inproRepo.save(inpro) != null) {
-            model.addAttribute("success", new String("Reference was saved succesfully!"));
-            model.addAttribute("inproceedings", new Inproceedings());
-        } else {
-            model.addAttribute("error", new String("There was an error saving"
-                    + " the reference. Reference not saved"));
+        List<String> errors = AuthenticationService.validateAddInproceedings(inpro, inproRepo);
+        if (errors.isEmpty()) {
+            if (inproRepo.save(inpro) != null) {
+                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("inproceedings", new Inproceedings());
+            } else {
+                errors.add(new String("There was an error saving"
+                        + " the reference. Reference not saved"));
+            }
         }
-        return "add_inproceedings"; 
+        model.addAttribute("errors", errors);
+        
+        return "add_inproceedings";
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_inproceedings", method = GET)
-    public String inproceedingsDeleteAll() {
-        inproRepo.deleteAll();
-        return "index";
-    }
+//    @RequestMapping(value = "/delete_inproceedings", method = GET)
+//    public String inproceedingsDeleteAll() {
+//        inproRepo.deleteAll();
+//        return "index";
+//    }
 
 }

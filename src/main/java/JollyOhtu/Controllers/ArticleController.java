@@ -7,6 +7,8 @@ package JollyOhtu.Controllers;
 
 import JollyOhtu.Objects.Article;
 import JollyOhtu.Repository.ArticleRepository;
+import JollyOhtu.Services.AuthenticationService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,25 +35,29 @@ public class ArticleController {
 
     @RequestMapping(value = "/add_article", method = POST)
     public String articleSubmit(@ModelAttribute Article article, Model model) {
-        
-        if (!article.mandatoryFieldsAreFilled()) {
-            model.addAttribute("error", new String("You must fill in the fields marked by *"));
-        } else if (artRepo.save(article) != null) {
-            model.addAttribute("success", new String("Reference was saved succesfully!"));
-            model.addAttribute("article", new Article());
-        } else {
-            model.addAttribute("error", new String("There was an error saving"
-                    + " the reference. Reference not saved"));
+
+        List<String> errors = AuthenticationService.validateAddArticle(article, artRepo);
+        if (errors.isEmpty()) {
+            if (artRepo.save(article) != null) {
+                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("article", new Article());
+            } else {
+                errors.add(new String("There was an error saving"
+                        + " the reference. Reference not saved"));
+            }
         }
+        model.addAttribute("errors", errors);
+
 //        System.out.println(artRepo.count()); //for testing
         return "add_article";
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_articles", method = GET)
-    public String articleDeleteAll() {
-        artRepo.deleteAll();
-        return "index";
-    }
+//    @RequestMapping(value = "/delete_articles", method = GET)
+//    public String articleDeleteAll() {
+//        artRepo.deleteAll();
+//        return "index";
+//    }
+
 
 }

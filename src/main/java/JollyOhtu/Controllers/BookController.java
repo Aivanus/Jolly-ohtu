@@ -11,6 +11,7 @@ package JollyOhtu.Controllers;
  */
 import JollyOhtu.Objects.Book;
 import JollyOhtu.Repository.BookRepository;
+import JollyOhtu.Services.AuthenticationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,23 +35,27 @@ public class BookController {
 
     @RequestMapping(value = "/add_book", method = POST)
     public String bookSubmit(@ModelAttribute Book book, Model model) {
-        Book tallennettu = repository.save(book);
-        if (!tallennettu.mandatoryFieldsAreFilled()){
-            model.addAttribute("error", new String("You must fill in the fields marked by *"));
-        } else if (tallennettu != null) {
-            model.addAttribute("success", new String("Reference was saved succesfully!"));
-            model.addAttribute("book", new Book());
-        } else {
-            model.addAttribute("error", new String("An error occurred. Reference was not saved."));
+        
+        List<String> errors = AuthenticationService.validateAddBook(book, repository);
+        if (errors.isEmpty()) {
+            Book tallennettu = repository.save(book);
+            if (tallennettu != null) {
+                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("book", new Book());
+            } else {
+               errors.add( new String("An error occurred. Reference was not saved."));
+            }
         }
+        model.addAttribute("errors", errors);
+
         return "add_book";
     }
 
     //HUOM. vain testausta varten
-    @RequestMapping(value = "/delete_books")
-    public String bookDeleteAll() {
-        repository.deleteAll();
-        return "index";
-    }
+//    @RequestMapping(value = "/delete_books")
+//    public String bookDeleteAll() {
+//        repository.deleteAll();
+//        return "index";
+//    }
 
 }

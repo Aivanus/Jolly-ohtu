@@ -64,18 +64,15 @@ public class InproceedingsTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-//    /**
-//     * Test of setId method, of class Inproceedings.
-//     */
-//    @Test
-//    public void testSetId() {
-//        System.out.println("setId");
-//        Long id = null;
-//        Inproceedings instance = new Inproceedings();
-//        instance.setId(id);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    /**
+     * Test of setId method, of class Inproceedings.
+     */
+    @Test
+    public void testSetId() {
+        inpro.setId(5L);
+        assertEquals(5L, inpro.getId(), 0.1);
+    }
+
     /**
      * Test of getAuthor method, of class Inproceedings.
      */
