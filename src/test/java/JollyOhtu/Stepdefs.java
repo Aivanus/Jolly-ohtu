@@ -48,6 +48,12 @@ public class Stepdefs {
         driver.get(baseUrl);
         driver.findElement(By.linkText("Add Inproceedings")).click();
     }
+    
+     @Given("^Download file is selected$")
+    public void download_file_view_is_selected() throws Throwable {
+        driver.get(baseUrl);
+        driver.findElement(By.linkText("Generate file")).click();
+    }
 
     @When("^Valid mandatory book information is entered:$")
     public void valid_mandatory_book_information_is_entered(List<List<String>> table) throws Throwable {
@@ -109,6 +115,11 @@ public class Stepdefs {
         enterValuesById(table);
     }
 
+    @When("File name is entered:$")
+    public void file_name_is_entered(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+    
     @When("^No mandatory inproceedings information is entered:$")
     public void no_mandatory_inproceedings_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
