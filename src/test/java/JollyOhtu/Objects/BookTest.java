@@ -49,12 +49,13 @@ public class BookTest {
     
     @Test
     public void setAndGetId() throws Exception {
-        b.setId(new Long (5L));
+        b.setId(5L);
         assertEquals(b.getId(), new Long(5L));
         
     }
 
-    @Test void setAndGetCallId() throws Exception {
+    @Test 
+    public void setAndGetCallId() throws Exception {
         b.setCallId("callId2");
         assertEquals("callId2", b.getCallId());
     }
@@ -175,9 +176,6 @@ public class BookTest {
     public void setNote() throws Exception {
         b.setNote("note1");
         assertEquals("note1", b.getNote());
-    }
-
-    public BookTest() {
     }
     
     
