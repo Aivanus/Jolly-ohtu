@@ -26,7 +26,7 @@ public class InproceedingsTest {
     @Before
     public void setUp() throws Exception {
 
-        inpro = new Inproceedings("author", "title", "booktitle", 1995, "editor", 5, "series", "3-4", "address", 5, "organization", "publisher", "note");
+        inpro = new Inproceedings("callId", "author", "title", "booktitle", 1995, "editor", 5, "series", "3-4", "address", 5, "organization", "publisher", "note");
 
     }
 
@@ -42,10 +42,10 @@ public class InproceedingsTest {
 //    }
     @Test
     public void inproceedingsIsCreatedCorrectly() throws Exception {
-        Inproceedings inproceedings = new Inproceedings("Author", "Title",
+        Inproceedings inproceedings = new Inproceedings("callId", "Author", "Title",
                 "Booktitle", 1995, "Editor", 5, "Series", "5-25", "Address", 4,
                 "Organization", "Publisher", "Note");
-        assertEquals("@inproceedings{ tunnus, \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
+        assertEquals("@inproceedings{ \"inprocallId\", \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
                 + "editor = \"Editor\",\n volumeNumber = \"5\",\n series = \"Series\",\n pages = \"5-25\",\n address = \"Address\",\n "
                 + "month = \"4\",\n organization = \"Organization\",\n publisher = \"Publisher\",\n note = \"Note\"} \n", inproceedings.toString());
         ;
@@ -71,6 +71,12 @@ public class InproceedingsTest {
     public void testSetId() {
         inpro.setId(5L);
         assertEquals(5L, inpro.getId(), 0.1);
+    }
+    
+    @Test 
+    public void testSetAndGetCallId(){
+        inpro.setCallId("callId2");
+        assertEquals("callId2", inpro.getCallId());
     }
 
     /**

@@ -18,6 +18,7 @@ public class Inproceedings {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String callId;
     private String author;
     private String title;
     private String booktitle;
@@ -34,7 +35,8 @@ public class Inproceedings {
     private String publisher;
     private String note;
 
-    public Inproceedings(String author, String title, String booktitle, int year, String editor, int volumeNumber, String series, String pages, String address, int month, String organization, String publisher, String note) {
+    public Inproceedings(String callId, String author, String title, String booktitle, int year, String editor, int volumeNumber, String series, String pages, String address, int month, String organization, String publisher, String note) {
+        this.callId = "inpro"+callId;
         this.author = author;
         this.title = title;
         this.booktitle = booktitle;
@@ -52,7 +54,7 @@ public class Inproceedings {
 
     @Override
     public String toString() {
-        return "@inproceedings{ tunnus, \n " + "author = \"" + author + "\",\n title = \"" + title + 
+        return "@inproceedings{ "+ callId + ", \n " + "author = \"" + author + "\",\n title = \"" + title + 
                 "\",\n booktitle = \"" + booktitle + "\",\n year = \"" + year + "\",\n editor = \"" + 
                 editor + "\",\n volumeNumber = \"" + volumeNumber + "\",\n series = \"" + 
                 series + "\",\n pages = \"" + pages + "\",\n address = \"" + address + 
@@ -66,6 +68,14 @@ public class Inproceedings {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
     public String getAuthor() {

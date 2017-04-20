@@ -19,46 +19,57 @@ import java.util.List;
  * @author as
  */
 public class AuthenticationService {
-    
-    
-    public static List<String> validateAddBook(Book book, BookRepository books){
-        
-        List<String> errors = new ArrayList<String>();
-        if (!book.mandatoryFieldsAreFilled()){
-            errors.add(new String("You must fill in the fields marked by *"));
+
+    public static List<String> validateAddBook(Book book, BookRepository books) {
+
+        List<String> errors = new ArrayList<>();
+        if (!book.mandatoryFieldsAreFilled()) {
+            errors.add("You must fill in the fields marked by *");
         }
         if (book.bookHasInvalidInfo()) {
-            errors.add(new String("Invalid input. Check your input."));
+            errors.add("Invalid input. Check your input.");
         }
-        if(books.copyExists(book)){
-            errors.add(new String("The book reference already exists."));
+        if (books.copyExists(book)) {
+            errors.add("The book reference already exists with the Call Id: "+ books.findCallId(book).get(0)+ ".");
         }
-        return errors;
-    }
-    
-    public static List<String> validateAddArticle(Article article, ArticleRepository articles){
-        List<String> errors = new ArrayList<String>();
-         if (article.mandatoryFieldsArentFilled()) {
-            errors.add(new String("You must fill in the fields marked by *"));
-        } if (article.articleHasInvalidInfo()) {
-            errors.add(new String("Invalid input. Check your input."));
-        } if (articles.copyExists(article)) {
-            errors.add(new String("The article reference already exists."));
+        if (books.callIdExists1(book) ){//|| books.callIdExists2(book) || books.callIdExists3(book)) {
+            errors.add("That call Id already exists, choose another one.");
         }
         return errors;
     }
-    
-    public static List<String> validateAddInproceedings(Inproceedings inpro, InproceedingsRepository inpros){
-        List<String> errors = new ArrayList<String>();
+
+    public static List<String> validateAddArticle(Article article, ArticleRepository articles) {
+        List<String> errors = new ArrayList<>();
+        if (article.mandatoryFieldsArentFilled()) {
+            errors.add("You must fill in the fields marked by *");
+        }
+        if (article.articleHasInvalidInfo()) {
+            errors.add("Invalid input. Check your input.");
+        }
+        if (articles.copyExists(article)) {
+            errors.add(("The article reference already exists with the Call Id: " + articles.findCallId(article).get(0) + "."));
+        }
+        if (articles.callIdExists1(article) ){//|| articles.callIdExists2(article) || articles.callIdExists3(article)) {
+            errors.add("That call Id already exists, choose another one.");
+        }
+        return errors;
+    }
+
+    public static List<String> validateAddInproceedings(Inproceedings inpro, InproceedingsRepository inpros) {
+        List<String> errors = new ArrayList<>();
         if (inpro.mandatoryFieldsArentFilled()) {
-            errors.add(new String("You must fill in the fields marked by *"));
-        } 
+            errors.add("You must fill in the fields marked by *");
+        }
         if (inpro.inproceedingsHasInvalidInfo()) {
-            errors.add(new String("Invalid input. Check your input."));
-        } 
+            errors.add("Invalid input. Check your input.");
+        }
         if (inpros.copyExists(inpro)) {
-            errors.add(new String("The inproceedings reference already exists."));
-        } 
+            errors.add("The inproceedings reference already exists with the Call Id: " + inpros.findCallId(inpro).get(0));
+        }
+        if (inpros.callIdExists1(inpro) ){//|| inpros.callIdExists1(inpro) || inpros.callIdExists1(inpro)) {
+            errors.add("That call Id already exists, choose another one.");
+        }
         return errors;
     }
+
 }
