@@ -9,17 +9,18 @@ import static org.junit.Assert.*;
 /**
  * Created by topi on 5.4.2017.
  */
-
 public class ArticleTest {
+
     private Article a;
+
     @Test
     public void getId() throws Exception {
-
     }
 
     @Test
     public void setId() throws Exception {
-
+        a.setId(((long) 5));
+        assertEquals((long) 5, a.getId(), 0.1);
     }
 
     @Test
