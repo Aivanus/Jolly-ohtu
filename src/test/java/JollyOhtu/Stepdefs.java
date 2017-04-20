@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
@@ -24,11 +25,12 @@ public class Stepdefs {
 
     @Before
     public void setUp() {
-        if (System.getProperty("os.name").startsWith("Windows")) {
+        /*if (System.getProperty("os.name").startsWith("Windows")) {
             driver = new ChromeDriver();
         } else {
             driver = new FirefoxDriver();
-        }
+        }*/
+        driver = new HtmlUnitDriver();
     }
 
     @Given("^Add book view is selected$")
@@ -48,11 +50,11 @@ public class Stepdefs {
         driver.get(baseUrl);
         driver.findElement(By.linkText("Add Inproceedings")).click();
     }
-    
-     @Given("^Download file is selected$")
-    public void download_file_view_is_selected() throws Throwable {
+
+    @Given("^Download file view has been selected$")
+    public void download_file_view_has_been_selected() throws Throwable {
         driver.get(baseUrl);
-        driver.findElement(By.linkText("Generate file")).click();
+        driver.findElement(By.linkText("Download file")).click();
     }
 
     @When("^Valid mandatory book information is entered:$")
@@ -115,14 +117,20 @@ public class Stepdefs {
         enterValuesById(table);
     }
 
-    @When("File name is entered:$")
-    public void file_name_is_entered(List<List<String>> table) throws Throwable {
-        enterValuesById(table);
-    }
-    
     @When("^No mandatory inproceedings information is entered:$")
     public void no_mandatory_inproceedings_information_is_entered(List<List<String>> table) throws Throwable {
         enterValuesById(table);
+    }
+
+    @When("^File name \"([^\"]*)\" is entered$")
+    public void file_name_is_entered(String name) throws Throwable {
+        driver.findElement(By.name("name")).sendKeys(name);
+
+    }
+
+    @When("^I press Generate file button")
+    public void user_presses_button_generate_file() throws Throwable {
+        driver.findElement(By.xpath("//button[contains(.,'Generate file')]")).submit();
     }
 
     @Then("^Message \"([^\"]*)\" is presented$")
