@@ -181,6 +181,8 @@ public class BookTest {
     @Test
     public void bookIsCreatedCorrectly() {
         Book book = new Book("Lee Child", "Killing Floor", "Bantam (UK)", 1997, 4, "Jack Reacher", "", "", 3, "");
-        assertEquals("Book: author='Lee Child', title='Killing Floor', publisher='Bantam (UK)', year='1997', volume='4', series='Jack Reacher', address='', edition='', month='3', note=''", book.toString());
+        assertEquals("@book{ tunnus, \n author = \"Lee Child\",\n title = \"Killing Floor\",\n publisher = \"Bantam (UK)\",\n"
+                + " year = \"1997\",\n volume = \"4\",\n series = \"Jack Reacher\",\n address = \"\",\n edition = \"\",\n"
+                + " month = \"3\",\n note = \"\"}\n", book.toString());
     }
 }

@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
  * Created by topi on 5.4.2017.
  */
 public class InproceedingsTest {
-    
+
     private Inproceedings inpro;
 
     @BeforeClass
@@ -25,9 +25,9 @@ public class InproceedingsTest {
 
     @Before
     public void setUp() throws Exception {
-        
+
         inpro = new Inproceedings("author", "title", "booktitle", 1995, "editor", 5, "series", "3-4", "address", 5, "organization", "publisher", "note");
-        
+
     }
 
     @After
@@ -40,18 +40,16 @@ public class InproceedingsTest {
 //        Inproceedings inproceedings = new Inproceedings();
 //        assertEquals("Inproceedings: title=null year=0", proceeding.toString());
 //    }
-    
     @Test
     public void inproceedingsIsCreatedCorrectly() throws Exception {
         Inproceedings inproceedings = new Inproceedings("Author", "Title",
                 "Booktitle", 1995, "Editor", 5, "Series", "5-25", "Address", 4,
                 "Organization", "Publisher", "Note");
-        assertEquals("Inproceedings{author=Author, title=Title, booktitle=Booktitle,"
-                + " year=1995, editor=Editor, volumeNumber=5, series=Series, pages=5-25,"
-                + " address=Address, month=4, organization=Organization,"
-                + " publisher=Publisher, note=Note}", inproceedings.toString());
+        assertEquals("@inproceedings{ tunnus, \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
+                + "editor = \"Editor\",\n volumeNumber = \"5\",\n series = \"Series\",\n pages = \"5-25\",\n address = \"Address\",\n "
+                + "month = \"4\",\n organization = \"Organization\",\n publisher = \"Publisher\",\n note = \"Note\"} \n", inproceedings.toString());
+        ;
     }
-
 
 //    /**
 //     * Test of getId method, of class Inproceedings.
@@ -66,7 +64,6 @@ public class InproceedingsTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of setId method, of class Inproceedings.
      */
@@ -134,7 +131,7 @@ public class InproceedingsTest {
         String booktitle = "title2";
         inpro.setBooktitle(booktitle);
         assertEquals("title2", inpro.getBooktitle());
-}
+    }
 
     /**
      * Test of getYear method, of class Inproceedings.
@@ -154,7 +151,7 @@ public class InproceedingsTest {
         int year = 2000;
         inpro.setYear(year);
         assertEquals(2000, inpro.getYear());
-        }
+    }
 
     /**
      * Test of getEditor method, of class Inproceedings.

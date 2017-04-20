@@ -6,6 +6,7 @@ bin/
 .settings/
 nbproject/
 out/
+data/
 
 # Ignore Visual Studio Code stuff
 .vscode/*

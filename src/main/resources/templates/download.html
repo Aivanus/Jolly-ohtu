@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>JollyOhtu</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css"
+              href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+
+    </head>
+    <body>
+        <div th:include="fragments/header"></div>
+        <form action="#" th:action="@{/download}" method="post">
+            <div class="form-group">
+                <label>File name</label>
+                <input type="text" class="form-control" name="name"/>
+            </div>
+            <button type="submit" class="btn btn-default">Generate file</button>
+        </form>
+
+        <script type="text/javascript"
+        src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    </body>
+</html>
