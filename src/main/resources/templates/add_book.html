@@ -14,7 +14,11 @@
 
         <div class="container">
             <form action="#" th:action="@{/add_book}" th:object="${book}" method="post">
-                <p>Fields marked by * are mandatory.</p>     
+                <p>Fields marked by * are mandatory.</p>  
+                <div class="form-group">
+                    <label>Call Id *</label>
+                    <input type="text" class="form-control" th:field="*{callId}" id="callId"></input>
+                </div>
                 <div class="form-group">
                     <label>Author *</label>
                     <input type="text" class="form-control" th:field="*{author}" id="author"></input>

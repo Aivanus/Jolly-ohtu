@@ -5,6 +5,7 @@ Feature: As a user I want to be able to add inproceedings references
 
   Scenario: User can create an inproceedings reference with valid mandatory fields
     When Valid mandatory inproceedings information is entered:
+      | callId    | callId         |
       | author    | Jack Proceeder |
       | title     | Outproceedings |
       | booktitle | Art of memes   |
@@ -14,6 +15,7 @@ Feature: As a user I want to be able to add inproceedings references
 
   Scenario: User can create an inproceedings reference with valid mandatory and optional fields
     When Valid mandatory inproceedings information is entered:
+      | callId    | callId2        |
       | author    | Ray Yarrr     |
       | title     | Piratceedings |
       | booktitle | Book of Yarr  |
@@ -64,6 +66,7 @@ Feature: As a user I want to be able to add inproceedings references
 
   Scenario: User cannot create an inproceedings reference with invalid month
     When Valid mandatory inproceedings information is entered:
+      | callId    | callId3        |
       | author    | Ray Yarrr2     |
       | title     | Piratceedings2 |
       | booktitle | Book of Yarr 2 |
@@ -82,6 +85,7 @@ Feature: As a user I want to be able to add inproceedings references
 
   Scenario: User cannot create an inproceedings reference if reference already exists
     When Valid mandatory inproceedings information is entered:
+      | callId    | callId4        |
       | author    | Ray test       |
       | title     | Piratest       |
       | booktitle | Book of Yarr 4 |
@@ -89,9 +93,10 @@ Feature: As a user I want to be able to add inproceedings references
     And User presses button Add
     And Message "Reference was saved succesfully!" is presented
     When Valid mandatory inproceedings information is entered:
+      | callId    | callId5        |
       | author    | Ray test       |
       | title     | Piratest       |
       | booktitle | Book of Yarr 4 |
       | year      | 1779           |
     And User presses button Add
-    Then Message "The inproceedings reference already exists." is presented
+    Then Message "The inproceedings reference already exists with the Call Id: callId4." is presented

@@ -22,6 +22,17 @@ public class ArticleTest {
         a.setId(((long) 5));
         assertEquals((long) 5, a.getId(), 0.1);
     }
+    
+    @Test
+    public void getCallId(){
+        assertEquals("articallId", a.getCallId());
+    }
+    
+    @Test
+    public void setCallId(){
+        a.setCallId("callId2");
+        assertEquals("callId2", a.getCallId());
+    }
 
     @Test
     public void getAuthor() throws Exception {
@@ -141,7 +152,7 @@ public class ArticleTest {
 
     @Before
     public void setUp() throws Exception {
-        a = new Article("author", "title", "journal", 1995, 1, 1, "1-5", 1, "note");
+        a = new Article("callId", "author", "title", "journal", 1995, 1, 1, "1-5", 1, "note");
 
     }
 
@@ -153,21 +164,15 @@ public class ArticleTest {
     @Test
     public void emptyConstructor() throws Exception {
         Article article = new Article();
-        assertEquals("@article{ tunnus, \n author = \"null\",\n title = \"null\",\n journal = \"null\",\n year = \"0\",\n "
+        assertEquals("@article{ \"null\", \n author = \"null\",\n title = \"null\",\n journal = \"null\",\n year = \"0\",\n "
                 + "volume = \"0\",\n number = \"0\",\n pages = \"null\",\n month = \"0\",\n note = \"null\"} \n", article.toString());
     }
 
-    @Test
-    public void articleIsCreatedProperly() throws Exception {
-        Article article = new Article("Author", "Title", "Journal", 1995, 1);
-        assertEquals("@article{ tunnus, \n author = \"Author\",\n title = \"Title\",\n journal = \"Journal\",\n year = \"1995\",\n "
-                + "volume = \"1\",\n number = \"0\",\n pages = \"null\",\n month = \"0\",\n note = \"null\"} \n", article.toString());
-    }
-
+    
     @Test
     public void articleCreatedProperlyLongConstructor() throws Exception {
-        Article article = new Article("Author", "Title", "Journal", 1995, 1, 0, "10-15", 9, "Note");
-        assertEquals("@article{ tunnus, \n author = \"Author\",\n title = \"Title\",\n journal = \"Journal\",\n year = \"1995\",\n "
+        Article article = new Article("callId", "Author", "Title", "Journal", 1995, 1, 0, "10-15", 9, "Note");
+        assertEquals("@article{ \"articallId\", \n author = \"Author\",\n title = \"Title\",\n journal = \"Journal\",\n year = \"1995\",\n "
                 + "volume = \"1\",\n number = \"0\",\n pages = \"10-15\",\n month = \"9\",\n note = \"Note\"} \n", article.toString());
     }
 

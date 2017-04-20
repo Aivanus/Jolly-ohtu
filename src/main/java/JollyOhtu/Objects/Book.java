@@ -18,6 +18,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String callId;
     private String author;
     private String title;
     private String publisher;
@@ -37,8 +38,10 @@ public class Book {
         this.publisher = publisher;
         this.year = year;
     }
+    
 
-    public Book(String author, String title, String publisher, int year, int volume, String series, String address, String edition, int month, String note) {
+    public Book(String callId, String author, String title, String publisher, int year, int volume, String series, String address, String edition, int month, String note) {
+        this.callId = "book"+callId;
         this.author = author;
         this.title = title;
         this.publisher = publisher;
@@ -50,15 +53,15 @@ public class Book {
         this.month = month;
         this.note = note;
     }
-    
-    
 
+    
+    
     @Override
     public String toString() {
-        return String.format("@book{ tunnus, \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
+        return String.format("@book{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
                 + "year = \"%d\",\n volume = \"%d\",\n series = \"%s\",\n address = \"%s\",\n edition = \"%s\",\n "
                 + "month = \"%d\",\n note = \"%s\"}\n",
-                author, title, publisher, year, volume, series, address, edition, month, note);
+                callId, author, title, publisher, year, volume, series, address, edition, month, note);
     }
 
     public Long getId() {
@@ -69,6 +72,13 @@ public class Book {
         this.id = id;
     }
 
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
+    }
     
     public String getAuthor() {
         return author;

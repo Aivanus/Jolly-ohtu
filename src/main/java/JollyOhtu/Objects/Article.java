@@ -18,6 +18,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String callId;
     private String author;
     private String title;
     private String journal;
@@ -30,15 +31,7 @@ public class Article {
     private int month;
     private String note;
 
-    public Article(String author, String title, String journal, int year, int volume) {
-        this.author = author;
-        this.title = title;
-        this.journal = journal;
-        this.year = year;
-        this.volume = volume;
-    }
-
-    public Article(String author, String title, String journal, int year, int volume, int number, String pages, int month, String note) {
+    public Article(String callId, String author, String title, String journal, int year, int volume, int number, String pages, int month, String note) {
         this.author = author;
         this.title = title;
         this.journal = journal;
@@ -48,6 +41,7 @@ public class Article {
         this.pages = pages;
         this.month = month;
         this.note = note;
+        this.callId = "arti"+callId;
     }
 
     public Long getId() {
@@ -56,6 +50,14 @@ public class Article {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
     public String getAuthor() {
@@ -132,9 +134,9 @@ public class Article {
 
     @Override
     public String toString() {
-        return String.format("@article{ tunnus, \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
+        return String.format("@article{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
                 + "year = \"%d\",\n volume = \"%d\",\n number = \"%d\",\n pages = \"%s\",\n month = \"%d\",\n note = \"%s\"} \n",
-                author, title, journal, year, volume, number, pages, month, note);
+                callId, author, title, journal, year, volume, number, pages, month, note);
     }
 
     public Boolean mandatoryFieldsArentFilled() {
