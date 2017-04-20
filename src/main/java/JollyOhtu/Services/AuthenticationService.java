@@ -64,7 +64,7 @@ public class AuthenticationService {
             errors.add("Invalid input. Check your input.");
         }
         if (inpros.copyExists(inpro)) {
-            errors.add("The inproceedings reference already exists with the Call Id: " + inpros.findCallId(inpro).get(0));
+            errors.add("The inproceedings reference already exists with the Call Id: " + inpros.findCallId(inpro).get(0)+".");
         }
         if (inpros.callIdExists1(inpro) ){//|| inpros.callIdExists1(inpro) || inpros.callIdExists1(inpro)) {
             errors.add("That call Id already exists, choose another one.");
