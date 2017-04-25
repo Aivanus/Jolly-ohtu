@@ -22,11 +22,6 @@ Feature: As a user I want to be able to list all the references
       | callID2LVBook       |
       | Jonh Jon            |
       | Interesting Book 76 |
-      | 1977                |
       | PaperPresser        |
-      | 11                  |
-      | 1                   |
       | Bakerstreet 13      |
-      | 52                  |
-      | 1                   |
       | ListViewBookTest    |
