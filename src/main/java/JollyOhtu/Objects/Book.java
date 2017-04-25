@@ -18,13 +18,14 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String callId;
     private String author;
     private String title;
     private String publisher;
     private int year;
 
     //Optional fields
+    private String callId;
+    private String callIdOrigin;
     private int volume;
     private String series;
     private String address;
@@ -32,16 +33,8 @@ public class Book {
     private int month;
     private String note;
 
-    public Book(String author, String title, String publisher, Integer year) {
-        this.author = author;
-        this.title = title;
-        this.publisher = publisher;
-        this.year = year;
-    }
-    
-
     public Book(String callId, String author, String title, String publisher, int year, int volume, String series, String address, String edition, int month, String note) {
-        this.callId = "book"+callId;
+        this.callId = callId;
         this.author = author;
         this.title = title;
         this.publisher = publisher;
@@ -54,8 +47,6 @@ public class Book {
         this.note = note;
     }
 
-    
-    
     @Override
     public String toString() {
         return String.format("@book{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
@@ -79,7 +70,15 @@ public class Book {
     public void setCallId(String callId) {
         this.callId = callId;
     }
-    
+
+    public String getCallIdOrigin() {
+        return callIdOrigin;
+    }
+
+    public void setCallIdOrigin(String callIdOrigin) {
+        this.callIdOrigin = callIdOrigin;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -159,16 +158,16 @@ public class Book {
     public void setNote(String note) {
         this.note = note;
     }
-    
-    public Boolean mandatoryFieldsAreFilled(){
-        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.publisher.equalsIgnoreCase("")){
+
+    public Boolean mandatoryFieldsAreFilled() {
+        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.publisher.equalsIgnoreCase("")) {
             return false;
         } else {
             return true;
         }
     }
-    
-    public boolean bookHasInvalidInfo(){
+
+    public boolean bookHasInvalidInfo() {
         if (this.month >= 0 && this.month < 13) {
             return false;
         } else {
@@ -176,4 +175,40 @@ public class Book {
         }
     }
 
+    public Boolean initCallId() {
+        if (callId.equals("")) {
+            callId += authorIntoCallId();
+            callId += yearIntoCallId();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private String authorIntoCallId() {
+        if (this.author.isEmpty()){
+            return null;
+        }
+        String trueId = "";
+        String trimmed = this.author.trim();
+        trueId += trimmed.charAt(0);
+        for (int i = 0; i < trimmed.length(); i++) {
+            if (trimmed.charAt(i) == ' ') {
+                trueId += trimmed.charAt(i + 1);
+            }
+        }
+        return trueId;
+    }
+
+    private String yearIntoCallId() {
+        String trueId = "";
+        String yearInString = Integer.toString(this.year);
+        if (yearInString.length() < 2) {
+            trueId += yearInString;
+        } else {
+            trueId += yearInString.charAt(yearInString.length() - 2);
+            trueId += yearInString.charAt(yearInString.length() - 1);
+        }
+        return trueId;
+    }
 }

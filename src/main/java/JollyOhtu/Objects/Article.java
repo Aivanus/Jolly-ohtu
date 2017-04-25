@@ -18,7 +18,6 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String callId;
     private String author;
     private String title;
     private String journal;
@@ -26,6 +25,8 @@ public class Article {
     private int volume;
 
     //optional
+    private String callId;
+    private String callIdOrigin;
     private int number;
     private String pages;
     private int month;
@@ -41,7 +42,7 @@ public class Article {
         this.pages = pages;
         this.month = month;
         this.note = note;
-        this.callId = "arti"+callId;
+        this.callId = callId;
     }
 
     public Long getId() {
@@ -60,6 +61,14 @@ public class Article {
         this.callId = callId;
     }
 
+    public String getCallIdOrigin() {
+        return callIdOrigin;
+    }
+
+    public void setCallIdOrigin(String callIdOrigin) {
+        this.callIdOrigin = callIdOrigin;
+    }
+    
     public String getAuthor() {
         return author;
     }
@@ -153,5 +162,42 @@ public class Article {
         } else {
             return true;
         }
+    }
+
+    public Boolean initCallId() {
+        if (callId.equals("")) {
+            callId += authorIntoCallId();
+            callId += yearIntoCallId();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private String authorIntoCallId() {
+        if (this.author.isEmpty()){
+            return null;
+        }
+        String trueId = "";
+        String trimmed = this.author.trim();
+        trueId += trimmed.charAt(0);
+        for (int i = 0; i < trimmed.length(); i++) {
+            if (trimmed.charAt(i) == ' ') {
+                trueId += trimmed.charAt(i + 1);
+            }
+        }
+        return trueId;
+    }
+
+    private String yearIntoCallId() {
+        String trueId = "";
+        String yearInString = Integer.toString(this.year);
+        if (yearInString.length() < 2) {
+            trueId += yearInString;
+        } else {
+            trueId += yearInString.charAt(yearInString.length() - 2);
+            trueId += yearInString.charAt(yearInString.length() - 1);
+        }
+        return trueId;
     }
 }

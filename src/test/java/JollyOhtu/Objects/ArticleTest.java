@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 public class ArticleTest {
 
     private Article a;
+    private Article aMand;
 
     @Test
     public void getId() throws Exception {
@@ -25,7 +26,7 @@ public class ArticleTest {
     
     @Test
     public void getCallId(){
-        assertEquals("articallId", a.getCallId());
+        assertEquals("callId", a.getCallId());
     }
     
     @Test
@@ -34,6 +35,12 @@ public class ArticleTest {
         assertEquals("callId2", a.getCallId());
     }
 
+    @Test
+    public void setAndGetCallIdOrigin(){
+        a.setCallIdOrigin("callIdOrigin");
+        assertEquals("callIdOrigin", a.getCallIdOrigin());
+    }
+    
     @Test
     public void getAuthor() throws Exception {
         assertEquals("author", a.getAuthor());
@@ -147,13 +154,12 @@ public class ArticleTest {
     public void setNote() throws Exception {
         a.setNote("note1");
         assertEquals("note1", a.getNote());
-
     }
 
     @Before
     public void setUp() throws Exception {
         a = new Article("callId", "author", "title", "journal", 1995, 1, 1, "1-5", 1, "note");
-
+        aMand = new Article("", "author", "title", "journal", 1995, 1, 0, "", 0, "");
     }
 
     @After
@@ -172,8 +178,33 @@ public class ArticleTest {
     @Test
     public void articleCreatedProperlyLongConstructor() throws Exception {
         Article article = new Article("callId", "Author", "Title", "Journal", 1995, 1, 0, "10-15", 9, "Note");
-        assertEquals("@article{ \"articallId\", \n author = \"Author\",\n title = \"Title\",\n journal = \"Journal\",\n year = \"1995\",\n "
+        assertEquals("@article{ \"callId\", \n author = \"Author\",\n title = \"Title\",\n journal = \"Journal\",\n year = \"1995\",\n "
                 + "volume = \"1\",\n number = \"0\",\n pages = \"10-15\",\n month = \"9\",\n note = \"Note\"} \n", article.toString());
     }
-
+    
+    @Test
+    public void articleHasInvalidorValidInfo(){
+        Article arti = new Article("callId", "author", "title", "journal", 1995, 1, 1, "1-5", 13, "note");
+        assertTrue(arti.articleHasInvalidInfo());
+        arti.setMonth(5);
+        assertFalse(arti.articleHasInvalidInfo());
+    }
+    
+    @Test
+    public void InitCallIdWorks(){
+        assertTrue(aMand.initCallId());
+        assertFalse(a.initCallId());
+    }
+    
+    @Test
+    public void authorIntoCallIDWorks(){
+        Article arti = new Article("", "", "title", "journal", 1995, 1, 1, "1-5", 13, "note");
+        assertTrue(arti.initCallId());
+    }
+    
+    @Test
+    public void yearIntoCallIdWorks(){
+        Article arti = new Article("", "author", "title", "journal", 3, 1, 1, "1-5", 13, "note");
+        assertTrue(arti.initCallId());
+    }
 }

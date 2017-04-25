@@ -35,7 +35,14 @@ public class InproceedingsController {
 
     @RequestMapping(value = "/add_inproceedings", method = POST)
     public String inproceedingsSubmit(@ModelAttribute Inproceedings inpro, Model model) {
+        Boolean callIdRepeats = false;
+        if(inpro.initCallId()){
+            callIdRepeats = AuthenticationService.validateInproceedingsCallId(inpro, inproRepo);
+        }
         List<String> errors = AuthenticationService.validateAddInproceedings(inpro, inproRepo);
+        if (callIdRepeats){
+            errors.add("There was an error with automatic ID generation, please enter one manually.");
+        }
         if (errors.isEmpty()) {
             if (inproRepo.save(inpro) != null) {
                 model.addAttribute("success", new String("Reference was saved succesfully!"));

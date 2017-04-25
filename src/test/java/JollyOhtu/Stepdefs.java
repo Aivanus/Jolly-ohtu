@@ -25,13 +25,13 @@ public class Stepdefs {
 
     @Before
     public void setUp() {
-       if (System.getProperty("os.name").startsWith("Windows")) {
-            driver = new ChromeDriver();
-        } else {
-            driver = new FirefoxDriver();
-        }
+//       if (System.getProperty("os.name").startsWith("Windows")) {
+//            driver = new ChromeDriver();
+//        } else {
+//            driver = new FirefoxDriver();
+//        }
        
-       //  driver = new HtmlUnitDriver();  //for testing purposes
+         driver = new HtmlUnitDriver();  //for testing purposes
     }
 
     @Given("^Add book view is selected$")

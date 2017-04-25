@@ -5,7 +5,6 @@ Feature: As a user I want to be able to add article references
 
   Scenario: User can create an article reference with valid mandatory fields
     When Valid mandatory article information is entered:
-      | callId  | CallId                |
       | author  | Writer von Articlesen |
       | title   | Groundbreaking stuff  |
       | journal | Unnaturell            |
@@ -16,7 +15,6 @@ Feature: As a user I want to be able to add article references
 
   Scenario: User can create an article reference with valid mandatory fields and optional fields
     When Valid mandatory article information is entered:
-      | callId  | CallId2      |
       | author  | Johnny Extra |
       | title   | Super long   |
       | journal | Measure      |
@@ -24,6 +22,7 @@ Feature: As a user I want to be able to add article references
       | volume  | 872          |
     And Optional fields are chosen
     And Valid optional field information is entered:
+      | callId | CallId |
       | number | 43      |
       | pages  | 9001    |
       | month  | 1       |
@@ -40,7 +39,6 @@ Feature: As a user I want to be able to add article references
 
   Scenario: User cannot create an article reference if all of the mandatory fields are empty
     When No mandatory article information is entered:
-      | callId  |  |
       | author  |  |
       | title   |  |
       | journal |  |
@@ -51,7 +49,6 @@ Feature: As a user I want to be able to add article references
 
   Scenario: User cannot create an article reference with empty mandatory fields and valid optional fields
     When No mandatory article information is entered:
-      | callId  |  |
       | author  |  |
       | title   |  |
       | journal |  |
@@ -59,16 +56,16 @@ Feature: As a user I want to be able to add article references
       | volume  |  |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | number | 1    |
-      | pages  | 12   |
-      | month  | 1    |
-      | note   | smtn |
+      | callId | CallId2  |
+      | number | 1        |
+      | pages  | 12       |
+      | month  | 1        |
+      | note   | smtn     |
     And User presses button Add
     Then Message "You must fill in the fields marked by *" is presented
 
   Scenario: User cannot create an article reference with invalid month
     When Valid mandatory article information is entered:
-      | callId  | CallId3 |
       | author  | test    |
       | title   | test    | 
       | journal | test    |
@@ -76,29 +73,42 @@ Feature: As a user I want to be able to add article references
       | volume  | 12      |
     And Optional fields are chosen
     And Invalid optional field information is entered:
-      | number | 1    |
-      | pages  | 12   |
-      | month  | 13   |
-      | note   | smtn |
+      | callId | CallId3  |
+      | number | 1        |
+      | pages  | 12       |
+      | month  | 13       |
+      | note   | smtn     |
     And User presses button Add
     Then Message "Invalid input. Check your input." is presented
 
   Scenario: User cannot create an article reference if reference already exists
     When Valid mandatory article information is entered:
-      | callId  | CallId4  |
-      | author  | newtest  |
-      | title   | newtest  |
-      | journal | newtest  |
+      | author  | author5  |
+      | title   | title5   |
+      | journal | journal5 |
       | year    | 2001     |
       | volume  | 12       |
+    And Optional fields are chosen
+    And Valid optional field information is entered:
+      | callId | CallId4  |
+      | number | 1        |
+      | pages  | 12       |
+      | month  | 12       |
+      | note   | smtn     |
     And User presses button Add
     And Message "Reference was saved succesfully!" is presented
-    When Valid mandatory article information is entered:
-      | callId  | CallId5 |
-      | author  | newtest |
-      | title   | newtest |
-      | journal | newtest |
-      | year    | 2001    |
-      | volume  | 12      |
+    And Valid mandatory article information is entered:
+      | author  | author5  |  
+      | title   | title5   |
+      | journal | journal5 |
+      | year    | 2001     |
+      | volume  | 12       |
+    And Optional fields are chosen
+    And Valid optional field information is entered:
+      | callId | CallId5  |
+      | number | 1        |
+      | pages  | 12       |
+      | month  | 12       |
+      | note   | smtn     |
     And User presses button Add
-    Then Message "The article reference already exists with the Call Id: CallId4." is presented
+    Then Message "The article reference already exists with the ID: CallId4." is presented

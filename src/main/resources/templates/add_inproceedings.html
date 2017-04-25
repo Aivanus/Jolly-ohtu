@@ -16,10 +16,6 @@
             <form action="#" th:action="@{/add_inproceedings}" th:object="${inproceedings}" method="post">
                 <p>Fields marked by * are mandatory.</p>
                 <div class="form-group">
-                    <label>Call Id *</label>
-                    <input type="text" class="form-control" th:field= "*{callId}" id="callId"></input>
-                </div>
-                <div class="form-group">
                     <label>Author *</label>
                     <input type="text" class="form-control" th:field= "*{author}" id="author"></input>
                 </div>
@@ -37,6 +33,10 @@
                 </div>
 
                 <div id="additional" class="cointainer">
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" class="form-control" th:field= "*{callId}" id="callId"></input>
+                    </div>
                     <div class="form-group">
                         <label>Editor</label>
                         <input type="text" class="form-control" th:field= "*{editor}" id="editor"></input>
@@ -76,7 +76,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-default">Add</button>
-                
+
             </form>
 
             <button onclick="hideShow()">Additional fields</button>

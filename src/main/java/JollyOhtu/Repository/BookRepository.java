@@ -32,13 +32,13 @@ public interface BookRepository extends CrudRepository<Book, Long> {
             + " from Book b where b.callId = :#{#book.callId}")
     public boolean callIdExists1(@Param("book") Book book);
 
-//    @Query("select case when count(a) > 0 then 'true' else 'false' end"
-//            + " from Article a where a.callId = :#{#book.callId}")
-//    public boolean callIdExists2(@Param("book") Book book);
-//
-//    @Query("select case when count(i) > 0 then 'true' else 'false' end"
-//            + " from Inproceedings i where i.callId = :#{#book.callId}")
-//    public boolean callIdExists3(@Param("book") Book book);
+    @Query("select case when count(a) > 0 then 'true' else 'false' end"
+            + " from Article a where a.callId = :#{#book.callId}")
+    public boolean callIdExists2(@Param("book") Book book);
+
+    @Query("select case when count(i) > 0 then 'true' else 'false' end"
+            + " from Inproceedings i where i.callId = :#{#book.callId}")
+    public boolean callIdExists3(@Param("book") Book book);
 
     @Query("SELECT callId FROM Book b where b.title = :#{#book.title} and"
             + " b.year=:#{#book.year} and"
