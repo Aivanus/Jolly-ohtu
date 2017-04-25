@@ -67,7 +67,7 @@ Feature: As a user I want to be able to add article references
   Scenario: User cannot create an article reference with invalid month
     When Valid mandatory article information is entered:
       | author  | test    |
-      | title   | test    | 
+      | title   | test    |
       | journal | test    |
       | year    | 1337    |
       | volume  | 12      |

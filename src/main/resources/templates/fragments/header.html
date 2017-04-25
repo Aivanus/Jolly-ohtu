@@ -14,7 +14,7 @@
                             <li th:classappend="${#httpServletRequest.getRequestURI() == '/add_book' ? 'active':''}"><a th:href="@{/add_book}">Add Book</a></li>
                             <li th:classappend="${#httpServletRequest.getRequestURI() == '/add_article' ? 'active':''}"><a th:href="@{/add_article}">Add Article</a></li>
                             <li th:classappend="${#httpServletRequest.getRequestURI() == '/add_inproceedings' ? 'active':''}"><a th:href="@{/add_inproceedings}">Add Inproceedings</a></li>
-                            <li th:classappend="${#httpServletRequest.getRequestURI() == '/list_references' ? 'active':''}"><a th:href="@{/list_references}">List references</a></li>
+                            <li th:classappend="${#httpServletRequest.getRequestURI() == '/list_references' ? 'active':''}"><a th:href="@{/list_references}">List References</a></li>
                             <li th:classappend="${#httpServletRequest.getRequestURI() == '/donwload' ? 'active':''}"><a th:href="@{/download}">Download file</a></li>
                             <li role="separator" ></li>
                         </ul>
