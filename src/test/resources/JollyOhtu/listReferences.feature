@@ -1,10 +1,32 @@
-
 Feature: As a user I want to be able to list all the references
-  
-Background:
-Given I am on the front page
 
-  Scenario: Add two numbers
-    When I press the List references button
-    Then the result should be "Test" on the screen
-    
+  Scenario: List view exists
+    Given List view is selected
+    Then List view is shown
+
+  Scenario: Book reference is visible after successful reference creation
+    Given Book reference is successfully created with following fields:
+      | callId    | callID2LVBook       |
+      | author    | Jonh Jon            |
+      | title     | Interesting Book 76 |
+      | year      | 1977                |
+      | publisher | PaperPresser        |
+      | volume    | 11                  |
+      | series    | 1                   |
+      | address   | Bakerstreet 13      |
+      | edition   | 52                  |
+      | month     | 1                   |
+      | note      | ListViewBookTest    |
+    When List view is selected
+    Then Book reference row should be visible with following fields:
+      | callID2LVBook       |
+      | Jonh Jon            |
+      | Interesting Book 76 |
+      | 19770                |
+      | PaperPresser        |
+      | 110                  |
+      | 10                   |
+      | Bakerstreet 13      |
+      | 520                  |
+      | 10                   |
+      | ListViewBookTest    |
