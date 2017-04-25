@@ -15,6 +15,7 @@
             <h4>Books</h4>
             <table class="table table-responsive">
                 <tr>
+                    <th>ID</th>
                     <th>Author</th>
                     <th>Title</th>
                     <th>Publisher</th>
@@ -27,7 +28,8 @@
                 </tr>
                 <tr th:each="book : ${books}">
 
-                    <td th:text="${book.author}">Title...</td>
+                    <td th:text="${book.callId}">ID...</td>
+                    <td th:text="${book.author}">Author...</td>
                     <td th:text="${book.title}">Title...</td>
                     <td th:text="${book.publisher}">Publisher...</td>
                     <td th:text="${book.year}">Year...</td>
@@ -44,6 +46,7 @@
             <h4>Articles</h4>
             <table class="table table-responsive">
                 <tr>
+                    <th>ID</th>
                     <th>Author</th>
                     <th>Title</th>
                     <th>Journal</th>
@@ -56,6 +59,7 @@
                 </tr>
                 <tr th:each="article : ${articles}">
 
+                    <td th:text="${article.callId}">ID...</td>
                     <td th:text="${article.author}">Author...</td>
                     <td th:text="${article.title}">Title...</td>
                     <td th:text="${article.journal}">Publisher...</td>
@@ -71,9 +75,10 @@
         </div>
 
         <div class ="container">
-            <h4>Inproceedins</h4>
+            <h4>Inproceedings</h4>
             <table class="table table-responsive">
                 <tr>
+                    <th> ID </th>
                     <th> Author </th>
                     <th> Title </th>
                     <th>Booktitle</th>
@@ -90,6 +95,7 @@
                 </tr>
                 <tr th:each="inproceeding : ${inproceedings}">
 
+                    <td th:text="${inproceeding.callId}">ID...</td>
                     <td th:text="${inproceeding.author}">Author...</td>
                     <td th:text="${inproceeding.title}">Title...</td>
                     <td th:text="${inproceeding.booktitle}">Publisher...</td>

@@ -93,10 +93,10 @@ Feature: As a user I want to be able to add book references
     And User presses button Add
     And Message "Reference was saved succesfully!" is presented
     And Valid mandatory book information is entered:
-      | callId    | callID5|
-      | author    | testi  |
-      | title     | testi  |
-      | year      | 1337   |
-      | publisher | testi  |
+      | callId    | callID5 |
+      | author    | testi   |
+      | title     | testi   |
+      | year      | 1337    |
+      | publisher | testi   |
     And User presses button Add
     Then Message "The book reference already exists with the Call Id: callID4." is presented

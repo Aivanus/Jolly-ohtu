@@ -70,7 +70,7 @@ Feature: As a user I want to be able to add article references
     When Valid mandatory article information is entered:
       | callId  | CallId3 |
       | author  | test    |
-      | title   | test    | 
+      | title   | test    |
       | journal | test    |
       | year    | 1337    |
       | volume  | 12      |
@@ -85,12 +85,12 @@ Feature: As a user I want to be able to add article references
 
   Scenario: User cannot create an article reference if reference already exists
     When Valid mandatory article information is entered:
-      | callId  | CallId4  |
-      | author  | newtest  |
-      | title   | newtest  |
-      | journal | newtest  |
-      | year    | 2001     |
-      | volume  | 12       |
+      | callId  | CallId4 |
+      | author  | newtest |
+      | title   | newtest |
+      | journal | newtest |
+      | year    | 2001    |
+      | volume  | 12      |
     And User presses button Add
     And Message "Reference was saved succesfully!" is presented
     When Valid mandatory article information is entered:
