@@ -84,7 +84,7 @@ Feature: As a user I want to be able to list all the references
       | Davy Jones incorporatedwithyou |
       | ListViewInproceedingsTest      |
 
-Scenario: Inproceedings reference is not visible after unsuccessfull reference creation
+  Scenario: Inproceedings reference is not visible after unsuccessfull reference creation
     Given Inproceedings reference with author "ListViewInproceedingsTestNotSuccessfull" is not created
     When List view is selected
     Then Row with author "ListViewInproceedingsTestNotSuccessfull" should not be visible

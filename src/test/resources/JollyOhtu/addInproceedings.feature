@@ -15,7 +15,7 @@ Feature: As a user I want to be able to add inproceedings references
 
   Scenario: User can create an inproceedings reference with valid mandatory and optional fields
     When Valid mandatory inproceedings information is entered:
-      | callId    | callId2        |
+      | callId    | callId2       |
       | author    | Ray Yarrr     |
       | title     | Piratceedings |
       | booktitle | Book of Yarr  |
