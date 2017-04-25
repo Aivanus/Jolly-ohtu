@@ -22,11 +22,11 @@ Feature: As a user I want to be able to list all the references
       | callID2LVBook       |
       | Jonh Jon            |
       | Interesting Book 76 |
-      | 19770                |
+      | 1977                |
       | PaperPresser        |
-      | 110                  |
-      | 10                   |
+      | 11                  |
+      | 1                   |
       | Bakerstreet 13      |
-      | 520                  |
-      | 10                   |
+      | 52                  |
+      | 1                   |
       | ListViewBookTest    |
