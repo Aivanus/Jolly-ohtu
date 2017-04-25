@@ -117,11 +117,6 @@ public class Stepdefs {
         message_is_presented("You must fill in the fields marked by *");
     }
 
-    @Given("^Download file is selected$")
-    public void download_file_view_is_selected() throws Throwable {
-        driver.get(baseUrl);
-        driver.findElement(By.linkText("Generate file")).click();
-    }
 
     @Given("^Download file view has been selected$")
     public void download_file_view_has_been_selected() throws Throwable {
@@ -266,6 +261,12 @@ public class Stepdefs {
     public void row_with_author_should_not_be_visible(String author) throws Throwable {
         pageDoesntHaveContent(author);
     }
+    
+     @Then("^User is on download page$")
+    public void user_is_on_download_page() throws Throwable {
+         pageHasContent("File name");
+    }
+
 
     /*
     

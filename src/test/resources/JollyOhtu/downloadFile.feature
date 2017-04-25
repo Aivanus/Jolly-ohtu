@@ -1,9 +1,6 @@
-
 Feature: As a user I want to be able to download references in a file
   
 
-  Scenario: Can download file
+  Scenario: User can go to download page
     Given Download file view has been selected
-    When File name "test" is entered
-    And I press Generate file button
-    Then the file is downloaded
+    Then User is on download page
