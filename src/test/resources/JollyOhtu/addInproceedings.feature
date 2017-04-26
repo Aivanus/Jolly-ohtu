@@ -125,15 +125,17 @@ Feature: As a user I want to be able to add inproceedings references
 
     Scenario: User can create an inproceedings reference with an empty callId
     When Valid mandatory inproceedings information is entered:
-      | author    | Ray test       |
+      | author    | Ray tost       |
       | title     | Piratest       |
       | booktitle | Book of Yarr 4 |
       | year      | 1779           |
+    And User presses button Add
+    And Message "Reference was saved successfully!" is presented
     And Valid mandatory inproceedings information is entered:
-      | author    | roi tost     |
-      | title     | testi        |
-      | year      | 2137         |
-      | publisher | testi        |
+      | author    | Roi tost       |
+      | title     | Piratest       |
+      | booktitle | Book of Yarr 4 |
+      | year      | 1779           |
     And User presses button Add
     Then Message "Reference was saved successfully!" is presented
 
@@ -146,7 +148,7 @@ Feature: As a user I want to be able to add inproceedings references
     And User presses button Add
     And Message "Reference was saved successfully!" is presented
     And Valid mandatory inproceedings information is entered:
-      | author    | Ray test       |
+      | author    | Ray text       |
       | title     | Piratest       |
       | booktitle | Book of Yarr 4 |
       | year      | 1779           |
