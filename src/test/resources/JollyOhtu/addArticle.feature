@@ -115,17 +115,17 @@ Feature: As a user I want to be able to add article references
 
   Scenario: User can create an article reference with an empty callId
     When Valid mandatory article information is entered:
-      | author  | jee mon jee  |
-      | title   | title6       |
-      | journal | journal6     |
-      | year    | 2001         |
-      | volume  | 12           |   
+      | author  | Johnny Extra  |
+      | title   | title6        |
+      | journal | journal6      |
+      | year    | 2013          |
+      | volume  | 12            |   
     And Valid mandatory article information is entered:
-      | author  | jou man jou  |
-      | title   | title6       |
-      | journal | journal6     |
-      | year    | 2001         |
-      | volume  | 12           |    
+      | author  | Jouni Ekstra  |
+      | title   | title6        |
+      | journal | journal6      |
+      | year    | 1913          |
+      | volume  | 12            |    
     And User presses button Add
     Then Message "Reference was saved successfully!" is presented
 

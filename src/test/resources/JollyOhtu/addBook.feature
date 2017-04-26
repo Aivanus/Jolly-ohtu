@@ -118,14 +118,14 @@ Feature: As a user I want to be able to add book references
 
     Scenario: User can create a book reference with an empty callId
     When Valid mandatory book information is entered:
-      | author    | jou man mou  |
+      | author    | Jonh Johnman |
       | title     | testi        |
-      | year      | 1337         |
+      | year      | 1995         |
       | publisher | testi        |
     And Valid mandatory book information is entered:
-      | author    | jee man mee  |
+      | author    | Joo Jeeeeee  |
       | title     | testi        |
-      | year      | 1337         |
+      | year      | 2095         |
       | publisher | testi        |
     And User presses button Add
     Then Message "Reference was saved successfully!" is presented
