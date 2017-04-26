@@ -46,10 +46,10 @@ public class BookController {
         if (errors.isEmpty()) {
             Book tallennettu = repository.save(book);
             if (tallennettu != null) {
-                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("success", "Reference was saved successfully!");
                 model.addAttribute("book", new Book());
             } else {
-               errors.add( new String("An error occurred. Reference was not saved."));
+               errors.add("An error occurred. Reference was not saved.");
             }
         }
         model.addAttribute("errors", errors);

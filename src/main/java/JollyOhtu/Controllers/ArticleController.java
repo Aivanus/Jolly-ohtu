@@ -45,16 +45,13 @@ public class ArticleController {
         }
         if (errors.isEmpty()) {
             if (artRepo.save(article) != null) {
-                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("success", "Reference was saved successfully!");
                 model.addAttribute("article", new Article());
             } else {
-                errors.add(new String("There was an error saving"
-                        + " the reference. Reference not saved"));
+                errors.add("There was an error saving the reference. Reference not saved");
             }
         }
         model.addAttribute("errors", errors);
-
-//        System.out.println(artRepo.count()); //for testing
         return "add_article";
     }
 

@@ -45,11 +45,10 @@ public class InproceedingsController {
         }
         if (errors.isEmpty()) {
             if (inproRepo.save(inpro) != null) {
-                model.addAttribute("success", new String("Reference was saved succesfully!"));
+                model.addAttribute("success", "Reference was saved successfully!");
                 model.addAttribute("inproceedings", new Inproceedings());
             } else {
-                errors.add(new String("There was an error saving"
-                        + " the reference. Reference not saved"));
+                errors.add("There was an error saving the reference. Reference not saved");
             }
         }
         model.addAttribute("errors", errors);

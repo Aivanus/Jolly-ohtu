@@ -10,7 +10,7 @@ Feature: As a user I want to be able to add inproceedings references
       | booktitle | Art of memes   |
       | year      | 1989           |
     And User presses button Add
-    Then Message "Reference was saved succesfully!" is presented
+    Then Message "Reference was saved successfully!" is presented
 
   Scenario: User can create an inproceedings reference with valid mandatory and optional fields
     When Valid mandatory inproceedings information is entered:
@@ -31,7 +31,7 @@ Feature: As a user I want to be able to add inproceedings references
       | publisher    | Davy Jones inc |
       | note         | Yarrrr!        |
     And User presses button Add
-    Then Message "Reference was saved succesfully!" is presented
+    Then Message "Reference was saved successfully!" is presented
 
   Scenario: User cannot create an inproceedings reference if some of mandatory fields is empty
     When Mandatory inproceedings information with only author and title is entered:
@@ -102,7 +102,7 @@ Feature: As a user I want to be able to add inproceedings references
       | publisher    | Davy Jones inc |
       | note         | Yarrrr!        |
     And User presses button Add
-    And Message "Reference was saved succesfully!" is presented
+    And Message "Reference was saved successfully!" is presented
     When Valid mandatory inproceedings information is entered:
       | author    | Ray test       |
       | title     | Piratest       |
@@ -122,3 +122,35 @@ Feature: As a user I want to be able to add inproceedings references
       | note         | Yarrrr!        |
     And User presses button Add
     Then Message "The inproceedings reference already exists with the ID: callId4." is presented
+
+    Scenario: User can create an inproceedings reference with an empty callId
+    Given inproceedings reference is successfully created with following fields:
+      | author    | Ray test       |
+      | title     | Piratest       |
+      | booktitle | Book of Yarr 4 |
+      | year      | 1779           |
+    When Valid mandatory inproceedings information is entered:
+      | author    | roi tost     |
+      | title     | testi        |
+      | year      | 2137         |
+      | publisher | testi        |
+    And User presses button Add
+    Then Message "Reference was saved successfully!" is presented
+
+  Scenario: User can't create an inproceedings reference with an existing callId
+    Given article reference is successfully created with following fields:
+      | author    | jou man mou  |
+      | title     | testi        |
+      | year      | 1337         |
+      | publisher | testi        |
+      | callId    | callId       |
+    When Valid mandatory inproceedings information is entered:
+      | author    | Ray test       |
+      | title     | Piratest       |
+      | booktitle | Book of Yarr 4 |
+      | year      | 1779           |
+    And Optional fields are chosen
+    And Valid optional field information is entered:
+      | callId | CallId  |
+    And User presses Button Add
+    Then Message "That ID already exists, choose another one." is presented
