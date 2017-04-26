@@ -14,7 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
@@ -76,7 +75,7 @@ public class Stepdefs {
         optional_fields_are_chosen();
         enterValuesById(table);
         user_presses_button_add();
-        message_is_presented("Reference was saved succesfully!");
+        message_is_presented("Reference was saved successfully!");
     }
     
     @Given("^Book reference with author \"([^\"]*)\" is not created$")
@@ -93,7 +92,7 @@ public class Stepdefs {
         optional_fields_are_chosen();
         enterValuesById(table);
         user_presses_button_add();
-        message_is_presented("Reference was saved succesfully!");
+        message_is_presented("Reference was saved successfully!");
     }
     
     @Given("^Article reference with author \"([^\"]*)\" is not created$")
@@ -110,7 +109,7 @@ public class Stepdefs {
         optional_fields_are_chosen();
         enterValuesById(table);
         user_presses_button_add();
-        message_is_presented("Reference was saved succesfully!");
+        message_is_presented("Reference was saved successfully!");
     }
     
     @Given("^Inproceedings reference with author \"([^\"]*)\" is not created$")

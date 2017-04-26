@@ -114,13 +114,13 @@ Feature: As a user I want to be able to add article references
     Then Message "The article reference already exists with the ID: CallId4." is presented
 
   Scenario: User can create an article reference with an empty callId
-    Given article reference is successfully created with following fields:
+    When Valid mandatory article information is entered:
       | author  | jee mon jee  |
       | title   | title6       |
       | journal | journal6     |
       | year    | 2001         |
       | volume  | 12           |   
-    When Valid mandatory article information is entered:
+    And Valid mandatory article information is entered:
       | author  | jou man jou  |
       | title   | title6       |
       | journal | journal6     |
@@ -130,13 +130,15 @@ Feature: As a user I want to be able to add article references
     Then Message "Reference was saved successfully!" is presented
 
   Scenario: User can't create an article reference with an existing callId
-    Given book reference is successfully created with following fields:
-      | author    | jou man mou  |
-      | title     | testi        |
-      | year      | 1337         |
-      | publisher | testi        |
-      | callId    | callId       |
     When Valid mandatory article information is entered:
+      | author  | jee man jooi |
+      | title   | title6       |
+      | journal | journal6     |
+      | year    | 2001         |
+      | volume  | 12           | 
+    And User presses button Add
+    And Message "Reference was saved successfully!" is presented
+    And Valid mandatory article information is entered:
       | author  | jou man jou  |
       | title   | title6       |
       | journal | journal6     |
@@ -144,6 +146,6 @@ Feature: As a user I want to be able to add article references
       | volume  | 12           |  
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | CallId  |
-    And User presses Button Add
-    Then Message "That ID already exists, choose another one." is presented
+      | callId | jmj01  |
+    And User presses button Add
+    Then Message "That Id already exists, choose another one." is presented

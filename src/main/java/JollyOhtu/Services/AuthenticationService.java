@@ -33,7 +33,7 @@ public class AuthenticationService {
             errors.add("The book reference already exists with the ID: " + books.findCallId(book).get(0) + ".");
         }
         if (books.callIdExists1(book) || books.callIdExists2(book) || books.callIdExists3(book)) {
-            errors.add("That call Id already exists, choose another one.");
+            errors.add("That Id already exists, choose another one.");
         }
         return errors;
     }
@@ -50,7 +50,7 @@ public class AuthenticationService {
             errors.add(("The article reference already exists with the ID: " + articles.findCallId(article).get(0) + "."));
         }
         if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
-            errors.add("That call Id already exists, choose another one.");
+            errors.add("That Id already exists, choose another one.");
         }
         return errors;
     }
@@ -67,7 +67,7 @@ public class AuthenticationService {
             errors.add("The inproceedings reference already exists with the ID: " + inpros.findCallId(inpro).get(0) + ".");
         }
         if (inpros.callIdExists1(inpro) || inpros.callIdExists2(inpro) || inpros.callIdExists3(inpro)) {
-            errors.add("That ID already exists, choose another one.");
+            errors.add("That Id already exists, choose another one.");
         }
         return errors;
     }

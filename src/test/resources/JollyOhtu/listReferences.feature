@@ -5,7 +5,7 @@ Feature: As a user I want to be able to list all the references
     Then List view is shown
 
   Scenario: Book reference is visible after successful reference creation
-    Given book reference is successfully created with following fields:
+    Given Book reference is successfully created with following fields:
       | author    | Jonh Jon            |
       | title     | Interesting Book 76 |
       | publisher | PaperPresser        |
@@ -31,7 +31,7 @@ Feature: As a user I want to be able to list all the references
     Then Row with author "ListViewBookTestNotSuccessful" should not be visible
 
   Scenario: Article reference is visible after successful reference creation
-    Given article reference is successfully created with following fields:
+    Given Article reference is successfully created with following fields:
       | callId  | CallID3LVARTICLE    |
       | author  | DarthnotVader       |
       | title   | asfasf              |
@@ -56,7 +56,7 @@ Feature: As a user I want to be able to list all the references
     Then Row with author "ListViewArticleTestNotSuccessfull" should not be visible
 
   Scenario: Inproceedings reference is visible after successful reference creation
-    Given inproceedings reference is successfully created with following fields:
+    Given Inproceedings reference is successfully created with following fields:
       | callId       | callId2LVINPROCEEDINGS         |
       | author       | Imreallttiredofmaking          |
       | title        | Piratceedingsthese             |

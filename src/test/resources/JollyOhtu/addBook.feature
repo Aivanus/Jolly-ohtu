@@ -117,12 +117,12 @@ Feature: As a user I want to be able to add book references
     Then Message "The book reference already exists with the ID: callID4." is presented
 
     Scenario: User can create a book reference with an empty callId
-    Given book reference is successfully created with following fields:
+    When Valid mandatory book information is entered:
       | author    | jou man mou  |
       | title     | testi        |
       | year      | 1337         |
       | publisher | testi        |
-    When Valid mandatory book information is entered:
+    And Valid mandatory book information is entered:
       | author    | jee man mee  |
       | title     | testi        |
       | year      | 1337         |
@@ -131,19 +131,20 @@ Feature: As a user I want to be able to add book references
     Then Message "Reference was saved successfully!" is presented
 
   Scenario: User can't create a book reference with an existing callId
-    Given inproceedings reference is successfully created with following fields:
-      | author    | Ray test       |
-      | title     | Piratest       |
-      | booktitle | Book of Yarr 4 |
-      | year      | 1779           |
-      | callId    | callId         |
     When Valid mandatory book information is entered:
+      | author    | jou man mee  |
+      | title     | testi        |
+      | year      | 1337         |
+      | publisher | testi        | 
+    And User presses button Add
+    And Message "Reference was saved successfully!" is presented
+    And Valid mandatory book information is entered:
       | author    | jou man mou  |
       | title     | testi        |
       | year      | 1337         |
       | publisher | testi        |  
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | CallId  |
-    And User presses Button Add
-    Then Message "That ID already exists, choose another one." is presented
+      | callId | jmm37           |
+    And User presses button Add
+    Then Message "That Id already exists, choose another one." is presented

@@ -20,7 +20,7 @@ Feature: As a user I want to be able to add inproceedings references
       | year      | 1777          |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId       | callId         |
+      | callId       | callId8        |
       | editor       | S. Bluebeard   |
       | volumenumber | 2              |
       | series       | 13             |
@@ -124,12 +124,12 @@ Feature: As a user I want to be able to add inproceedings references
     Then Message "The inproceedings reference already exists with the ID: callId4." is presented
 
     Scenario: User can create an inproceedings reference with an empty callId
-    Given inproceedings reference is successfully created with following fields:
+    When Valid mandatory inproceedings information is entered:
       | author    | Ray test       |
       | title     | Piratest       |
       | booktitle | Book of Yarr 4 |
       | year      | 1779           |
-    When Valid mandatory inproceedings information is entered:
+    And Valid mandatory inproceedings information is entered:
       | author    | roi tost     |
       | title     | testi        |
       | year      | 2137         |
@@ -138,19 +138,20 @@ Feature: As a user I want to be able to add inproceedings references
     Then Message "Reference was saved successfully!" is presented
 
   Scenario: User can't create an inproceedings reference with an existing callId
-    Given article reference is successfully created with following fields:
-      | author    | jou man mou  |
-      | title     | testi        |
-      | year      | 1337         |
-      | publisher | testi        |
-      | callId    | callId       |
     When Valid mandatory inproceedings information is entered:
+      | author       | author yep i am                |
+      | title        | Piratceedingsthese             |
+      | booktitle    | BookasgofasfdYarr              |
+      | year         | 1777                           |
+    And User presses button Add
+    And Message "Reference was saved successfully!" is presented
+    And Valid mandatory inproceedings information is entered:
       | author    | Ray test       |
       | title     | Piratest       |
       | booktitle | Book of Yarr 4 |
       | year      | 1779           |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | CallId  |
-    And User presses Button Add
-    Then Message "That ID already exists, choose another one." is presented
+      | callId | ayia77  |
+    And User presses button Add
+    Then Message "That Id already exists, choose another one." is presented
