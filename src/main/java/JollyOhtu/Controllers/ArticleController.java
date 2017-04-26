@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -51,6 +52,13 @@ public class ArticleController {
 //        System.out.println(artRepo.count()); //for testing
         return "add_article";
     }
+    @RequestMapping(value = "edit_article/{id}", method = GET)
+    public String editForm(@PathVariable("id")long id, Model model) {
+        model.addAttribute("article", artRepo.findOne(id));
+        return "edit_article";
+    }
+    
+    
 
     //HUOM. vain testausta varten
 //    @RequestMapping(value = "/delete_articles", method = GET)

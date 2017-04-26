@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -49,6 +50,11 @@ public class BookController {
         model.addAttribute("errors", errors);
 
         return "add_book";
+    }
+    @RequestMapping(value = "edit_book/{id}", method = GET)
+    public String editForm(@PathVariable("id")long id, Model model) {
+        model.addAttribute("book", repository.findOne(id));
+        return "edit_book";
     }
 
     //HUOM. vain testausta varten

@@ -25,6 +25,7 @@
                     <th>Edition</th>
                     <th>Month</th>
                     <th>Note</th>
+                    <th></th>
                 </tr>
                 <tr th:each="book : ${books}">
 
@@ -38,6 +39,7 @@
                     <td th:text="${book.edition}">Edition...</td>
                     <td th:text="${book.month}">Month...</td>
                     <td th:text="${book.note}">Note...</td>
+                    <td><a th:href="@{/edit_book/(id=${book.id})}"> Edit </a></td>
                 </tr>
             </table>
         </div>
@@ -56,6 +58,7 @@
                     <th>Pages</th>
                     <th>Month</th>
                     <th>Note</th>
+                    <th></th>
                 </tr>
                 <tr th:each="article : ${articles}">
 
@@ -69,7 +72,7 @@
                     <td th:text="${article.pages}">Year...</td>
                     <td th:text="${article.month}">Year...</td>
                     <td th:text="${article.note}">Year...</td>
-
+                    <td><a th:href="@{/edit_article/(id=${article.id})}"> Edit </a></td>
                 </tr>
             </table>
         </div>
