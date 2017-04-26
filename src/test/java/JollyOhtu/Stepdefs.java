@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
@@ -26,13 +27,13 @@ public class Stepdefs {
     @Before
     public void setUp() {
 
-        if (System.getProperty("os.name").startsWith("Windows")) {
-            driver = new ChromeDriver();
-        } else {
-            driver = new FirefoxDriver();
-        }
+//        if (System.getProperty("os.name").startsWith("Windows")) {
+//            driver = new ChromeDriver();
+//        } else {
+//            driver = new FirefoxDriver();
+//        }
 
-//        driver = new HtmlUnitDriver();  //for testing purposes
+        driver = new HtmlUnitDriver();  //for testing purposes
 
     }
 

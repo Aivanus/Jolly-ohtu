@@ -25,7 +25,6 @@ public class Book {
 
     //Optional fields
     private String callId;
-    private String callIdOrigin;
     private int volume;
     private String series;
     private String address;
@@ -69,14 +68,6 @@ public class Book {
 
     public void setCallId(String callId) {
         this.callId = callId;
-    }
-
-    public String getCallIdOrigin() {
-        return callIdOrigin;
-    }
-
-    public void setCallIdOrigin(String callIdOrigin) {
-        this.callIdOrigin = callIdOrigin;
     }
 
     public String getAuthor() {

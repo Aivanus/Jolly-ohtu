@@ -34,12 +34,6 @@ public class ArticleTest {
         a.setCallId("callId2");
         assertEquals("callId2", a.getCallId());
     }
-
-    @Test
-    public void setAndGetCallIdOrigin(){
-        a.setCallIdOrigin("callIdOrigin");
-        assertEquals("callIdOrigin", a.getCallIdOrigin());
-    }
     
     @Test
     public void getAuthor() throws Exception {

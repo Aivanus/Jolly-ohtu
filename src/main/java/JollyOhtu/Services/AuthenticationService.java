@@ -73,10 +73,10 @@ public class AuthenticationService {
     }
 
     public static Boolean validateBookCallId(Book book, BookRepository books) {
-        book.setCallIdOrigin(book.getCallId());
+        String callIdOrigin = book.getCallId();
         for (int i = 1; i <= 1000; i++) {
             if (books.callIdExists1(book) || books.callIdExists2(book) || books.callIdExists3(book)) {
-                String help = book.getCallIdOrigin();
+                String help = callIdOrigin;
                 help += "(" + i + ")";
                 book.setCallId(help);
             } else {
@@ -87,10 +87,10 @@ public class AuthenticationService {
     }
     
     public static Boolean validateArticleCallId(Article article, ArticleRepository articles) {
-        article.setCallIdOrigin(article.getCallId());
+        String callIdOrigin = article.getCallId();
         for (int i = 1; i <= 1000; i++) {
             if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
-                String help = article.getCallIdOrigin();
+                String help = callIdOrigin;
                 help += "(" + i + ")";
                 article.setCallId(help);
             } else {
@@ -101,10 +101,10 @@ public class AuthenticationService {
     }
     
     public static Boolean validateInproceedingsCallId(Inproceedings inpro, InproceedingsRepository inpros) {
-        inpro.setCallIdOrigin(inpro.getCallId());
+        String callIdOrigin = inpro.getCallId();
         for (int i = 1; i <= 1000; i++) {
             if (inpros.callIdExists1(inpro) || inpros.callIdExists2(inpro) || inpros.callIdExists3(inpro)) {
-                String help = inpro.getCallIdOrigin();
+                String help = callIdOrigin;
                 help += "(" + i + ")";
                 inpro.setCallId(help);
             } else {

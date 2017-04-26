@@ -25,7 +25,6 @@ public class Inproceedings {
 
     //Optional fields
     private String callId;
-    private String callIdOrigin;
     private String editor;
     private int volumeNumber;
     private String series;
@@ -77,14 +76,6 @@ public class Inproceedings {
 
     public void setCallId(String callId) {
         this.callId = callId;
-    }
-
-    public String getCallIdOrigin() {
-        return callIdOrigin;
-    }
-
-    public void setCallIdOrigin(String callIdOrigin) {
-        this.callIdOrigin = callIdOrigin;
     }
 
     public String getAuthor() {
