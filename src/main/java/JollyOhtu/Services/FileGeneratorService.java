@@ -30,23 +30,35 @@ public class FileGeneratorService {
         Iterable<Book> bookList = books;
         Iterable<Inproceedings> inproceedingList = inpros;
         StringBuilder sb = new StringBuilder();
-        
+
         for (Article article : articleList) {
-            sb.append(article.toString());
+            String s = replaceNordic(article.toString());
+            sb.append(s);
         }
         for (Book book : bookList) {
-            sb.append(book.toString());
+            String s = replaceNordic(book.toString());
+            sb.append(s);
         }
 
         for (Inproceedings inproceeding : inproceedingList) {
-            sb.append(inproceeding.toString());
+            String s = replaceNordic(inproceeding.toString());
+            sb.append(s);
         }
 
         String result = sb.toString();
 
-        file.setName("Testitiedosto.bib");
         file.setContentType("text/plain");
         file.setContent(result);
         return this.file;
+    }
+
+    private String replaceNordic(String str) {
+        String result = str.replaceAll("ä", "\\\\\"{a}")
+                .replaceAll("Ä", "\\\\\"{A}")
+                .replaceAll("ö", "\\\\\"{o}")
+                .replaceAll("Ö", "\\\\\"{O}")
+                .replaceAll("å", "\\\\\"{aa}")
+                .replaceAll("Å", "\\\\\"{AA}");
+        return result;
     }
 }
