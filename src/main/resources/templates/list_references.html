@@ -11,6 +11,8 @@
         <div th:include="fragments/header"></div>
         <div th:include="fragments/messages"></div>
 
+
+
         <div class ="container">
             <h4>Books</h4>
             <table class="table table-responsive">
@@ -25,6 +27,8 @@
                     <th>Edition</th>
                     <th>Month</th>
                     <th>Note</th>
+                    <th ><button class="btn btn-default" onClick="toggle_all('books')">Select All</button></th>
+                    <th ><button class="btn btn-danger">Delete Selected</button></th>
                 </tr>
                 <tr th:each="book : ${books}">
 
@@ -38,6 +42,10 @@
                     <td th:text="${book.edition}">Edition...</td>
                     <td th:text="${book.month}">Month...</td>
                     <td th:text="${book.note}">Note...</td>
+                    <td>
+                        <input type="checkbox" name="books"></input>
+                    </td>
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -56,6 +64,8 @@
                     <th>Pages</th>
                     <th>Month</th>
                     <th>Note</th>
+                    <th ><button class="btn btn-default" onClick="toggle_all('articles')">Select All</button></th>
+                    <th ><button class="btn btn-danger">Delete Selected</button></th>
                 </tr>
                 <tr th:each="article : ${articles}">
 
@@ -69,6 +79,10 @@
                     <td th:text="${article.pages}">Year...</td>
                     <td th:text="${article.month}">Year...</td>
                     <td th:text="${article.note}">Year...</td>
+                    <td>
+                        <input type="checkbox" name="articles"></input>
+                    </td>
+                    <td></td>
 
                 </tr>
             </table>
@@ -92,6 +106,8 @@
                     <th>Organization</th>
                     <th>Publisher</th>
                     <th>Note</th>
+                    <th ><button class="btn btn-default" onClick="toggle_all('inproceedings')">Select All</button></th>
+                    <th ><button class="btn btn-danger">Delete Selected</button></th>
                 </tr>
                 <tr th:each="inproceeding : ${inproceedings}">
 
@@ -109,8 +125,41 @@
                     <td th:text="${inproceeding.organization}">Year...</td>
                     <td th:text="${inproceeding.publisher}">Year...</td>
                     <td th:text="${inproceeding.note}">Year...</td>
+                    <td>
+                        <input type="checkbox" name="inproceedings"></input>
+                    </td>
+                    <td></td>
                 </tr>
             </table>
         </div>
+        <script type="text/javascript"
+        src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+                        //<![CDATA[
+                        
+                        function toggle_all(table) {
+                            var checkboxes = document.getElementsByName(table);
+                            var all_checked = true;
+                            for (var i = 0; i < checkboxes.length; i++) {
+                                if (!checkboxes[i].checked) {
+                                    all_checked = false;
+                                }
+                            }
+                            if (!all_checked) {
+                                for (var i = 0; i < checkboxes.length; i++) {
+                                    checkboxes[i].checked = true;
+                                }
+                            }else{
+                                for (var i = 0; i < checkboxes.length; i++) {
+                                    checkboxes[i].checked = false;;
+                                }
+                            }
+
+
+                        }
+                        //]]>            
+        </script>
     </body>
+
+
 </html>
