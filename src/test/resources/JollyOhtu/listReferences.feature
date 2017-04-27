@@ -6,11 +6,11 @@ Feature: As a user I want to be able to list all the references
 
   Scenario: Book reference is visible after successful reference creation
     Given Book reference is successfully created with following fields:
-      | callId    | callID2LVBook       |
       | author    | Jonh Jon            |
       | title     | Interesting Book 76 |
-      | year      | 1977                |
       | publisher | PaperPresser        |
+      | year      | 1977                |
+      | callId    | callID3LVBook       |
       | volume    | 11                  |
       | series    | 1                   |
       | address   | Bakerstreet 13      |
@@ -19,17 +19,16 @@ Feature: As a user I want to be able to list all the references
       | note      | ListViewBookTest    |
     When List view is selected
     Then Book reference row should be visible with following fields:
-      | callID2LVBook       |
+      | callID3LVBook       |
       | Jonh Jon            |
       | Interesting Book 76 |
       | PaperPresser        |
-      | Bakerstreet 13      |
-      | ListViewBookTest    |
+      | 1977                |
 
-  Scenario: Book reference is not visible after unsuccessfull reference creation
-    Given Book reference with author "ListViewBookTestNotSuccessfull" is not created
+  Scenario: Book reference is not visible after unsuccessful reference creation
+    Given Book reference with author "ListViewBookTestNotSuccessful" is not created
     When List view is selected
-    Then Row with author "ListViewBookTestNotSuccessfull" should not be visible
+    Then Row with author "ListViewBookTestNotSuccessful" should not be visible
 
   Scenario: Article reference is visible after successful reference creation
     Given Article reference is successfully created with following fields:
@@ -51,7 +50,7 @@ Feature: As a user I want to be able to list all the references
       | Measures            |
       | ListViewArticleTest |
 
-  Scenario: Aricle reference is not visible after unsuccessfull reference creation
+  Scenario: Article reference is not visible after unsuccessful reference creation
     Given Article reference with author "ListViewArticleTestNotSuccessfull" is not created
     When List view is selected
     Then Row with author "ListViewArticleTestNotSuccessfull" should not be visible
@@ -84,7 +83,7 @@ Feature: As a user I want to be able to list all the references
       | Davy Jones incorporatedwithyou |
       | ListViewInproceedingsTest      |
 
-  Scenario: Inproceedings reference is not visible after unsuccessfull reference creation
-    Given Inproceedings reference with author "ListViewInproceedingsTestNotSuccessfull" is not created
+  Scenario: Inproceedings reference is not visible after unsuccessful reference creation
+    Given Inproceedings reference with author "ListViewInproceedingsTestNotSuccessful" is not created
     When List view is selected
-    Then Row with author "ListViewInproceedingsTestNotSuccessfull" should not be visible
+    Then Row with author "ListViewInproceedingsTestNotSuccessful" should not be visible

@@ -18,13 +18,13 @@ public class Inproceedings {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String callId;
     private String author;
     private String title;
     private String booktitle;
     private int year;
 
     //Optional fields
+    private String callId;
     private String editor;
     private int volumeNumber;
     private String series;
@@ -36,7 +36,7 @@ public class Inproceedings {
     private String note;
 
     public Inproceedings(String callId, String author, String title, String booktitle, int year, String editor, int volumeNumber, String series, String pages, String address, int month, String organization, String publisher, String note) {
-        this.callId = "inpro"+callId;
+        this.callId = callId;
         this.author = author;
         this.title = title;
         this.booktitle = booktitle;
@@ -54,12 +54,12 @@ public class Inproceedings {
 
     @Override
     public String toString() {
-        return "@inproceedings{ \""+ this.callId + "\", \n " + "author = \"" + author + "\",\n title = \"" + title + 
-                "\",\n booktitle = \"" + booktitle + "\",\n year = \"" + year + "\",\n editor = \"" + 
-                editor + "\",\n volumeNumber = \"" + volumeNumber + "\",\n series = \"" + 
-                series + "\",\n pages = \"" + pages + "\",\n address = \"" + address + 
-                "\",\n month = \"" + month + "\",\n organization = \"" + organization + 
-                "\",\n publisher = \"" + publisher + "\",\n note = \"" + note + "\"} \n";
+        return "@inproceedings{ \"" + callId + "\", \n " + "author = \"" + author + "\",\n title = \"" + title
+                + "\",\n booktitle = \"" + booktitle + "\",\n year = \"" + year + "\",\n editor = \""
+                + editor + "\",\n volumeNumber = \"" + volumeNumber + "\",\n series = \""
+                + series + "\",\n pages = \"" + pages + "\",\n address = \"" + address
+                + "\",\n month = \"" + month + "\",\n organization = \"" + organization
+                + "\",\n publisher = \"" + publisher + "\",\n note = \"" + note + "\"} \n";
     }
 
     public Long getId() {
@@ -182,14 +182,14 @@ public class Inproceedings {
         this.note = note;
     }
 
-    public Boolean mandatoryFieldsArentFilled(){
-        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.booktitle.equalsIgnoreCase("")){
+    public Boolean mandatoryFieldsArentFilled() {
+        if (this.author.equalsIgnoreCase("") || this.title.equalsIgnoreCase("") || this.booktitle.equalsIgnoreCase("")) {
             return true;
         } else {
             return false;
         }
-    }    
-    
+    }
+
     public boolean inproceedingsHasInvalidInfo() {
         if (this.month >= 0 && this.month < 13) {
             return false;
@@ -198,4 +198,41 @@ public class Inproceedings {
         }
     }
     
+    public Boolean initCallId() {
+        if (callId.equals("")) {
+            callId += authorIntoCallId();
+            callId += yearIntoCallId();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private String authorIntoCallId() {
+        if (this.author.isEmpty()){
+            return null;
+        }
+        String trueId = "";
+        String trimmed = this.author.trim();
+        trueId += trimmed.charAt(0);
+        for (int i = 0; i < trimmed.length(); i++) {
+            if (trimmed.charAt(i) == ' ') {
+                trueId += trimmed.charAt(i + 1);
+            }
+        }
+        return trueId;
+    }
+
+    private String yearIntoCallId() {
+        String trueId = "";
+        String yearInString = Integer.toString(this.year);
+        if (yearInString.length() < 2) {
+            trueId += yearInString;
+        } else {
+            trueId += yearInString.charAt(yearInString.length() - 2);
+            trueId += yearInString.charAt(yearInString.length() - 1);
+        }
+        return trueId;
+    }
+
 }

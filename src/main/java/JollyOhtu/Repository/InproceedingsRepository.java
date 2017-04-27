@@ -35,13 +35,13 @@ public interface InproceedingsRepository extends CrudRepository<Inproceedings, L
             + " from Inproceedings i where i.callId = :#{#inpro.callId}")
     boolean callIdExists1(@Param("inpro") Inproceedings inpro);
 
-//    @Query("select case when count(a) > 0 then 'true' else 'false' end"
-//            + " from Article a where a.callId = :#{#inpro.callId}")
-//    boolean callIdExists2(@Param("inpro") Inproceedings inpro);
-//    
-//    @Query("select case when count(b) > 0 then 'true' else 'false' end"
-//            + " from Book b where b.callId = :#{#inpro.callId}")
-//    boolean callIdExists3(@Param("inpro") Inproceedings inpro);
+    @Query("select case when count(a) > 0 then 'true' else 'false' end"
+            + " from Article a where a.callId = :#{#inpro.callId}")
+    boolean callIdExists2(@Param("inpro") Inproceedings inpro);
+    
+    @Query("select case when count(b) > 0 then 'true' else 'false' end"
+            + " from Book b where b.callId = :#{#inpro.callId}")
+    boolean callIdExists3(@Param("inpro") Inproceedings inpro);
     
     @Query("SELECT callId FROM Inproceedings i where i.author = :#{#inpro.author} and"
             + " i.title = :#{#inpro.title} and"
