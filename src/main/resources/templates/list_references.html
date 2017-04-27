@@ -4,7 +4,7 @@
         <title>JollyOhtu</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" type="text/css"
-              href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+              href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
 
     </head>
     <body>
@@ -27,6 +27,7 @@
                         <th>Edition</th>
                         <th>Month</th>
                         <th>Note</th>
+                        <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_books')" type="button" >Select All</button></th>
                         <th ><button class="btn btn-danger" type="submit" data-toggle="confirmation">Delete Selected</button></th>
                     </tr>
@@ -42,10 +43,12 @@
                         <td th:text="${book.edition}">Edition...</td>
                         <td th:text="${book.month}">Month...</td>
                         <td th:text="${book.note}">Note...</td>
+                        <td><a th:href="@{/edit_book/{bookId}(bookId=${book.id})}"> Edit </a></td>
                         <td>
                             <input type="checkbox" name="del_books" th:value="${book.id}"></input>
                         </td>
                         <td></td>
+
                     </tr>
                 </table>
             </div>
@@ -66,6 +69,7 @@
                         <th>Pages</th>
                         <th>Month</th>
                         <th>Note</th>
+                        <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_articles')" type="button">Select All</button></th>
                         <th ><button class="btn btn-danger" type="submit" data-toggle="confirmation">Delete Selected</button></th>
                     </tr>
@@ -81,6 +85,7 @@
                         <td th:text="${article.pages}">Year...</td>
                         <td th:text="${article.month}">Year...</td>
                         <td th:text="${article.note}">Year...</td>
+                        <td><a th:href="@{/edit_article/{articleId}(articleId=${article.id})}"> Edit </a></td>
                         <td>
                             <input type="checkbox" name="del_articles" th:value="${article.id}"></input>
                         </td>
@@ -110,6 +115,7 @@
                         <th>Organization</th>
                         <th>Publisher</th>
                         <th>Note</th>
+                        <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_inproceedings')" type="button">Select All</button></th>
                         <th ><button class="btn btn-danger" type="submit" data-toggle="confirmation">Delete Selected</button></th>
                     </tr>
@@ -129,6 +135,7 @@
                         <td th:text="${inproceeding.organization}">Year...</td>
                         <td th:text="${inproceeding.publisher}">Year...</td>
                         <td th:text="${inproceeding.note}">Year...</td>
+                        <td><a th:href="@{/edit_inproceedings/{inproId}(inproId=${inproceeding.id})}"> Edit </a></td>
                         <td>
                             <input type="checkbox" name="del_inproceedings" th:value="${inproceeding.id}"></input>
                         </td>
@@ -138,43 +145,44 @@
             </div>
         </form>
 
-        <script src="webjars/jquery/3.2.0/jquery.js"></script>
-        <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.js"></script>
+        <script src="/webjars/jquery/3.2.0/jquery.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.js"></script>
         <script type="text/javascript" th:src="@{/js/bootstrap-confirmation.js}"></script>
 
         <script type="text/javascript">
-                            //<![CDATA[
+            //<![CDATA[
 
-                            function toggle_all(table) {
-                                var checkboxes = document.getElementsByName(table);
-                                var all_checked = true;
-                                for (var i = 0; i < checkboxes.length; i++) {
-                                    if (!checkboxes[i].checked) {
-                                        all_checked = false;
-                                    }
-                                }
-                                if (!all_checked) {
-                                    for (var i = 0; i < checkboxes.length; i++) {
-                                        checkboxes[i].checked = true;
-                                    }
-                                } else {
-                                    for (var i = 0; i < checkboxes.length; i++) {
-                                        checkboxes[i].checked = false;
+            function toggle_all(table) {
+            var checkboxes = document.getElementsByName(table);
+            var all_checked = true;
+            for (var i = 0; i < checkboxes.length; i++) {
+            if (!checkboxes[i].checked) {
+            all_checked = false;
+            }
+            }
+            if (!all_checked) {
+            for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true;
+            }
+            } else {
+            for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
 
-                                    }
-                                }
+            }
+            }
 
 
-                            }
-                            //]]>            
+            }
+            //]]>            
         </script>
 
         <script>
             $('[data-toggle=confirmation]').confirmation({
-                rootSelector: '[data-toggle=confirmation]',
-                // other options
+            rootSelector: '[data-toggle=confirmation]',
+            // other options
             });
         </script>
+
     </body>
 
 

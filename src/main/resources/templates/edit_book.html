@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>JollyOhtu</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css"
+              href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+
+    </head>
+    <body>
+        <div th:include="fragments/header"></div>
+        <div th:include="fragments/messages"></div>
+
+
+        <div class="container">
+            <form action="#" th:action="@{/edit_book/{bookId}(bookId=${book.id})}" th:object="${book}" method="post">
+                <p>Fields marked by * are mandatory.</p>  
+                <div class="form-group">
+                    <label>Call Id *</label>
+                    <input type="text" class="form-control" th:field="*{callId}" id="callId"></input>
+                </div>
+                <div class="form-group">
+                    <label>Author *</label>
+                    <input type="text" class="form-control" th:field="*{author}" id="author"></input>
+                </div>
+                <div class="form-group">
+                    <label>Title *</label>
+                    <input type="text" class="form-control" th:field="*{title}" id="title"></input>
+                </div>
+                <div class="form-group">
+                    <label>Year *</label>
+                    <input type="number" class="form-control" th:field="*{year}" id="year"></input>
+                </div>
+                <div class="form-group">
+                    <label>Publisher *</label>
+                    <input type="text" class="form-control" th:field="*{publisher}" id ="publisher"></input>
+                </div>
+
+                <div id="additional" class="cointainer">
+                    <div class="form-group">
+                        <label>Volume</label>
+                        <input type="number" class="form-control" th:field= "*{volume}" id="volume" defaultValue=""></input>
+                    </div>
+                    <div class="form-group">
+                        <label>Series</label>
+                        <input type="text" class="form-control" th:field= "*{series}" id="series"></input>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" th:field= "*{address}" id="address"></input>
+                    </div>
+                    <div class="form-group">
+                        <label>Edition</label>
+                        <input type="text" class="form-control" th:field= "*{edition}" id="edition"></input>
+                    </div>
+                    <div class="form-group">
+                        <label>Month</label>
+                        <input type="number" class="form-control" th:field= "*{month}" id="month" defaultValue=""></input>
+                    </div>
+                    <div class="form-group">
+                        <label>Note</label>
+                        <input type="text" class="form-control" th:field= "*{note}" id="note"></input>
+                    </div>
+                </div>
+
+                <button type="submit" value="Submit" class="btn btn-default">Update</button>
+
+            </form>
+
+            <button onclick="hideShow()">Additional fields</button>
+        </div>
+
+        <div th:include="fragments/footer"></div>
+
+        <script type="text/javascript"
+        src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+        <script>
+                var x = document.getElementById("additional");
+                x.style.display = 'none';
+                function hideShow() {
+                    if (x.style.display === 'none') {
+                        x.style.display = 'block';
+                    } else {
+                        x.style.display = 'none';
+                    }
+                }
+        </script>
+    </body>
+</html>

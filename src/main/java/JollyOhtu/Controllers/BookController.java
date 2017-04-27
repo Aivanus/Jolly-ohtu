@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -55,6 +56,27 @@ public class BookController {
         model.addAttribute("errors", errors);
 
         return "add_book";
+    }
+    @RequestMapping(value = "edit_book/{id}", method = GET)
+    public String editForm(@PathVariable("id")long id, Model model) {
+        model.addAttribute("book", repository.findOne(id));
+        return "edit_book";
+    }
+    
+    @RequestMapping(value = "edit_book/{id}", method = POST)
+    public String editBook(@PathVariable("id")long id,@ModelAttribute Book book, Model model, 
+            RedirectAttributes redirect) {
+        List<String> errors = AuthenticationService.validateEditBook(book, repository);
+        if (errors.isEmpty()) {
+            if (repository.save(book) != null) {
+                redirect.addFlashAttribute("success", "Reference was updated successfully!");
+                model.addAttribute("article", new Book());
+            } else {
+                errors.add("There was an error updating the reference. Changes not saved");
+            }
+        }
+        redirect.addFlashAttribute("errors", errors);
+        return "redirect:/list_references";
     }
 
     @RequestMapping(value = "/delete_books", method = POST)

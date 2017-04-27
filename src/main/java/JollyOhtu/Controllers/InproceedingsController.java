@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -69,6 +70,28 @@ public class InproceedingsController {
         }
         redirect.addFlashAttribute("errors", errors);
        return "redirect:/list_references";
+    }
+    
+    @RequestMapping(value = "edit_inproceedings/{id}", method = GET)
+    public String editForm(@PathVariable("id")long id, Model model) {
+        model.addAttribute("inproceedings", inproRepo.findOne(id));
+        return "edit_inproceedings";
+    }
+    
+    @RequestMapping(value = "edit_inproceedings/{id}", method = POST)
+    public String editInproceeding(@PathVariable("id")long id,@ModelAttribute Inproceedings inpro, Model model, 
+            RedirectAttributes redirect) {
+        List<String> errors = AuthenticationService.validateEditInproceedings(inpro, inproRepo);
+        if (errors.isEmpty()) {
+            if (inproRepo.save(inpro) != null) {
+                redirect.addFlashAttribute("success", "Reference was updated successfully!");
+                model.addAttribute("inproceedings", new Inproceedings());
+            } else {
+                errors.add("There was an error updating the reference. Changes not saved");
+            }
+        }
+        redirect.addFlashAttribute("errors", errors);
+        return "redirect:/list_references";
     }
 
 }
