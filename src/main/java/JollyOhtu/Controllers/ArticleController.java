@@ -57,10 +57,25 @@ public class ArticleController {
         return "edit_article";
     }
     
+    @RequestMapping(value = "edit_article/{id}", method = POST)
+    public String editForm(@PathVariable("id")long id,@ModelAttribute Article article, Model model, RedirectAttributes redirect) {
+        List<String> errors = AuthenticationService.validateEditArticle(article, artRepo);
+        if (errors.isEmpty()) {
+            if (artRepo.save(article) != null) {
+                redirect.addFlashAttribute("success", "Reference was updated successfully!");
+                model.addAttribute("article", new Article());
+            } else {
+                errors.add("There was an error updating the reference. Changes not saved");
+            }
+        }
+        redirect.addFlashAttribute("errors", errors);
+        return "redirect:/list_references";
+    }
+    
     
 
     @RequestMapping(value = "/delete_articles", method = POST)
-    public String bookDeleteChecked(@RequestParam(value="del_articles", required=false)ArrayList<String> del,
+    public String articleDeleteChecked(@RequestParam(value="del_articles", required=false)ArrayList<String> del,
             RedirectAttributes redirect) {
           
         List<String> errors = AuthenticationService.validateDeleteArticles(del);

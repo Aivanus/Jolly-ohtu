@@ -4,7 +4,7 @@
         <title>JollyOhtu</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css"
-              href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+              href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
 
     </head>
     <body>
@@ -13,7 +13,7 @@
 
 
         <div class="container">
-            <form action="#" th:action="@{/add_book}" th:object="${book}" method="post">
+            <form action="#" th:action="@{/edit_book/{bookId}(bookId=${book.id})}" th:object="${book}" method="post">
                 <p>Fields marked by * are mandatory.</p>  
                 <div class="form-group">
                     <label>Call Id *</label>

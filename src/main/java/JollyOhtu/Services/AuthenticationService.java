@@ -43,6 +43,25 @@ public class AuthenticationService {
         return errors;
     }
 
+    public static List<String> validateEditBook(Book book, BookRepository books) {
+
+        List<String> errors = new ArrayList<>();
+        if (!book.mandatoryFieldsAreFilled()) {
+            errors.add("You must fill in the fields marked by *");
+        }
+        if (book.bookHasInvalidInfo()) {
+            errors.add("Invalid input. Check your input.");
+        }
+
+        if (book.initCallId()) {
+            if (validateBookCallId(book, books)) {
+                errors.add("There was an error with automatic ID generation, please enter one manually.");
+            }
+        }
+
+        return errors;
+    }
+
     public static List<String> validateAddArticle(Article article, ArticleRepository articles) {
         List<String> errors = new ArrayList<>();
         if (article.mandatoryFieldsArentFilled()) {
@@ -62,6 +81,24 @@ public class AuthenticationService {
         if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
             errors.add("That Id already exists, choose another one.");
         }
+        return errors;
+    }
+
+    public static List<String> validateEditArticle(Article article, ArticleRepository articles) {
+        List<String> errors = new ArrayList<>();
+        if (article.mandatoryFieldsArentFilled()) {
+            errors.add("You must fill in the fields marked by *");
+        }
+        if (article.articleHasInvalidInfo()) {
+            errors.add("Invalid input. Check your input.");
+        }
+
+        if (article.initCallId()) {
+            if (validateArticleCallId(article, articles)) {
+                errors.add("There was an error with automatic ID generation, please enter one manually.");
+            }
+        }
+
         return errors;
     }
 
@@ -86,32 +123,48 @@ public class AuthenticationService {
         }
         return errors;
     }
-    
-    public static List<String> validateDeleteBooks(ArrayList<String> ids){
+
+    public static List<String> validateEditInproceedings(Inproceedings inpro, InproceedingsRepository inpros) {
         List<String> errors = new ArrayList<>();
-        if(ids==null){
+        if (inpro.mandatoryFieldsArentFilled()) {
+            errors.add("You must fill in the fields marked by *");
+        }
+        if (inpro.inproceedingsHasInvalidInfo()) {
+            errors.add("Invalid input. Check your input.");
+        }
+
+        if (inpro.initCallId()) {
+            if (validateInproceedingsCallId(inpro, inpros)) {
+                errors.add("There was an error with automatic ID generation, please enter one manually.");
+            }
+        }
+
+        return errors;
+    }
+
+    public static List<String> validateDeleteBooks(ArrayList<String> ids) {
+        List<String> errors = new ArrayList<>();
+        if (ids == null) {
             errors.add("Please check the books you want to delete.");
         }
         return errors;
     }
-    
-    public static List<String> validateDeleteArticles(ArrayList<String> ids){
+
+    public static List<String> validateDeleteArticles(ArrayList<String> ids) {
         List<String> errors = new ArrayList<>();
-        if(ids==null){
+        if (ids == null) {
             errors.add("Please check the articles you want to delete.");
         }
         return errors;
     }
-    
-    public static List<String> validateDeleteInproceedings(ArrayList<String> ids){
+
+    public static List<String> validateDeleteInproceedings(ArrayList<String> ids) {
         List<String> errors = new ArrayList<>();
-        if(ids==null){
+        if (ids == null) {
             errors.add("Please check the inproceedings you want to delete.");
         }
         return errors;
     }
-    
-    
 
     private static Boolean validateBookCallId(Book book, BookRepository books) {
         String callIdOrigin = book.getCallId();
