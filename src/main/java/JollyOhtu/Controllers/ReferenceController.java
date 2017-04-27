@@ -14,9 +14,6 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-/**
- * Created by topi on 14.4.2017.
- */
 
 @Controller
 public class ReferenceController {
@@ -36,10 +33,6 @@ public class ReferenceController {
         mav.addObject("inproceedings", inproRepo.findAll());
         
         return mav;
-    }
-
-    public void getReferences() {
-
     }
 
 }
