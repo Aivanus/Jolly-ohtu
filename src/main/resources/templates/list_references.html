@@ -29,7 +29,7 @@
                         <th>Note</th>
                         <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_books')" type="button" >Select All</button></th>
-                        <th ><button class="btn btn-danger" type="submit" data-toggle="confirmation">Delete Selected</button></th>
+                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>
                     </tr>
                     <tr th:each="book : ${books}">
 
@@ -71,7 +71,7 @@
                         <th>Note</th>
                         <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_articles')" type="button">Select All</button></th>
-                        <th ><button class="btn btn-danger" type="submit" data-toggle="confirmation">Delete Selected</button></th>
+                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>
                     </tr>
                     <tr th:each="article : ${articles}">
 
@@ -117,7 +117,7 @@
                         <th>Note</th>
                         <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_inproceedings')" type="button">Select All</button></th>
-                        <th ><button class="btn btn-danger" type="submit" data-toggle="confirmation">Delete Selected</button></th>
+                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>
                     </tr>
                     <tr th:each="inproceeding : ${inproceedings}">
 
