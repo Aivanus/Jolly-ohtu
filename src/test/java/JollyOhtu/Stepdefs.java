@@ -216,14 +216,32 @@ public class Stepdefs {
         driver.findElement(By.xpath("//button[contains(.,'Generate file')]")).submit();
     }
 
-    @When("^Checkbox next to the book with title \"([^\"]*)\" is selected$")
-    public void checkbox_next_to_the_book_is_selected(String title) throws Throwable {
+    @When("^Checkbox next to the book is selected$")
+    public void checkbox_next_to_the_book_is_selected() throws Throwable {
         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
     }
 
+    @When("^Checkbox next to the article is selected$")
+    public void checkbox_next_to_the_article_is_selected() throws Throwable {
+        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
+    }
+    @When("^Checkbox next to the inproceedings is selected$")
+    public void checkbox_next_to_the_inproceedings_is_selected() throws Throwable {
+        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr[2]/td[15]/input[@type='checkbox']")).click();
+    }
+
     @When("^User presses button Delete Selected for books$")
-    public void user_presses_button_Delete_Selected() throws Throwable {
+    public void user_presses_button_Delete_Selected_for_books() throws Throwable {
         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[1]/th[12]/button")).click();
+    }
+
+    @When("^User presses button Delete Selected for articles$")
+    public void user_presses_button_Delete_Selected_for_articles() throws Throwable {
+        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[12]/button")).click();
+    }
+    @When("^User presses button Delete Selected for inrpoceedings$")
+    public void user_presses_button_Delete_Selected_for_inproceedings() throws Throwable {
+        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[16]/button")).click();
     }
 
 
@@ -272,11 +290,6 @@ public class Stepdefs {
     @Then("^Row with author \"([^\"]*)\" should not be visible$")
     public void row_with_author_should_not_be_visible(String author) throws Throwable {
         pageDoesntHaveContent(author);
-    }
-
-    @Then("^Row with ID \"([^\"]*)\" should not be visible$")
-    public void row_with_ID_should_not_be_visible(String id) throws Throwable {
-        pageDoesntHaveContent(id);
     }
 
     @Then("^User is on download page$")
