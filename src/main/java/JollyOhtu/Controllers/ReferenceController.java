@@ -34,6 +34,7 @@ public class ReferenceController {
         mav.addObject("books", bookRepo.findAll());
         mav.addObject("articles", artRepo.findAll());
         mav.addObject("inproceedings", inproRepo.findAll());
+        
         return mav;
     }
 

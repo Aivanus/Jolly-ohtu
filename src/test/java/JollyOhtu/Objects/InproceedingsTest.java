@@ -45,25 +45,13 @@ public class InproceedingsTest {
         Inproceedings inproceedings = new Inproceedings("callId", "Author", "Title",
                 "Booktitle", 1995, "Editor", 5, "Series", "5-25", "Address", 4,
                 "Organization", "Publisher", "Note");
-        assertEquals("@inproceedings{ \"inprocallId\", \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
+        assertEquals("@inproceedings{ \"callId\", \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
                 + "editor = \"Editor\",\n volumeNumber = \"5\",\n series = \"Series\",\n pages = \"5-25\",\n address = \"Address\",\n "
                 + "month = \"4\",\n organization = \"Organization\",\n publisher = \"Publisher\",\n note = \"Note\"} \n", inproceedings.toString());
         ;
     }
 
-//    /**
-//     * Test of getId method, of class Inproceedings.
-//     */
-//    @Test
-//    public void testGetId() {
-//        System.out.println("getId");
-//        Inproceedings instance = new Inproceedings();
-//        Long expResult = null;
-//        Long result = instance.getId();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+
     /**
      * Test of setId method, of class Inproceedings.
      */

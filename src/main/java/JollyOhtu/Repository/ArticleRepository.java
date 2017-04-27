@@ -41,13 +41,14 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
             + " from Article a where a.callId = :#{#article.callId}")
     public boolean callIdExists1(@Param("article") Article article);
     
-//    @Query("select case when count(b) > 0 then 'true' else 'false' end"
-//            + " from Book b where b.callId = :#{#article.callId}")
-//    public boolean callIdExists2(Article article);
+    @Query("select case when count(b) > 0 then 'true' else 'false' end"
+            + " from Book b where b.callId = :#{#article.callId}")
+    public boolean callIdExists2(@Param("article")Article article);
 //
-//    @Query("select case when count(i) > 0 then 'true' else 'false' end"
-//            + " from Inproceedings i where i.callId = :#{#article.callId}")
-//    public boolean callIdExists3(Article article);
+    @Query("select case when count(i) > 0 then 'true' else 'false' end"
+            + " from Inproceedings i where i.callId = :#{#article.callId}")
+    public boolean callIdExists3(@Param("article")Article article);
     
+     
     
 }

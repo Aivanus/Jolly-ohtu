@@ -16,10 +16,6 @@
             <form action="#" th:action="@{/add_article}" th:object="${article}" method="post">
                 <p>Fields marked by * are mandatory.</p>
                 <div class="form-group">
-                    <label>Call Id *</label>
-                    <input type="text" class="form-control" th:field= "*{callId}" id="callId"></input>
-                </div>
-                <div class="form-group">
                     <label>Author *</label>
                     <input type="text" class="form-control" th:field= "*{author}" id="author"></input>
                 </div>
@@ -41,6 +37,10 @@
                 </div>
 
                 <div id="additional" class="cointainer">
+                    <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" class="form-control" th:field= "*{callId}" id="callId"></input>
+                </div>
                     <div class="form-group">
                         <label>Number</label>
                         <input type="number" class="form-control" th:field= "*{number}" id="number" defaultValue=""></input>

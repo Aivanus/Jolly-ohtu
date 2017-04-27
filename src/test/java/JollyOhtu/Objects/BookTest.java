@@ -32,7 +32,7 @@ public class BookTest {
     @Before
     public void setUp() {
         b = new Book("callId", "author", "title", "publisher", 1995, 1, "series", "address", "edition", 1, "note");
-        bMand = new Book("author", "title", "publisher", 1995);
+        bMand = new Book("", "author", "title", "publisher", 1995, 0, "", "", "", 0, "");
     }
     
     @After
@@ -183,7 +183,7 @@ public class BookTest {
     @Test
     public void bookIsCreatedCorrectly() {
         Book book = new Book("callId", "Lee Child", "Killing Floor", "Bantam (UK)", 1997, 4, "Jack Reacher", "", "", 3, "");
-        assertEquals("@book{ \"bookcallId\", \n author = \"Lee Child\",\n title = \"Killing Floor\",\n publisher = \"Bantam (UK)\",\n"
+        assertEquals("@book{ \"callId\", \n author = \"Lee Child\",\n title = \"Killing Floor\",\n publisher = \"Bantam (UK)\",\n"
                 + " year = \"1997\",\n volume = \"4\",\n series = \"Jack Reacher\",\n address = \"\",\n edition = \"\",\n"
                 + " month = \"3\",\n note = \"\"}\n", book.toString());
     }
