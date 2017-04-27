@@ -70,7 +70,7 @@ dependencies {
 
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.webjars:jquery:3.2.0")
-    compile 'org.webjars:bootstrap:3.3.7-1'
+    compile('org.webjars:bootstrap:3.3.7-1')
     
 
 

@@ -8,6 +8,7 @@ package JollyOhtu.Controllers;
 import JollyOhtu.Objects.Inproceedings;
 import JollyOhtu.Repository.InproceedingsRepository;
 import JollyOhtu.Services.AuthenticationService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -56,11 +59,23 @@ public class InproceedingsController {
         return "add_inproceedings";
     }
 
-    //HUOM. vain testausta varten
-//    @RequestMapping(value = "/delete_inproceedings", method = GET)
-//    public String inproceedingsDeleteAll() {
-//        inproRepo.deleteAll();
-//        return "index";
-//    }
+  @RequestMapping(value = "/delete_inproceedings", method = POST)
+    public String bookDeleteChecked(@RequestParam(value="del_inproceedings", required=false)ArrayList<String> del, 
+            RedirectAttributes redirect) {
+          
+        List<String> errors = AuthenticationService.validateDeleteInproceedings(del);
+        if (errors.isEmpty()) {
+            for (String id : del) {
+                inproRepo.delete(Long.parseLong(id));
+            }
+            if(del.size()==1){
+                redirect.addFlashAttribute("success", "One inproceeding reference was deleted succesfully.");
+            }else{
+                redirect.addFlashAttribute("success", del.size()+" inproceeding references were deleted succesfully.");
+            }
+        }
+        redirect.addFlashAttribute("errors", errors);
+       return "redirect:/list_references";
+    }
 
 }

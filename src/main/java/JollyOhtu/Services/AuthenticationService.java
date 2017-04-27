@@ -71,6 +71,32 @@ public class AuthenticationService {
         }
         return errors;
     }
+    
+    public static List<String> validateDeleteBooks(ArrayList<String> ids){
+        List<String> errors = new ArrayList<>();
+        if(ids==null){
+            errors.add("Please check the books you want to delete.");
+        }
+        return errors;
+    }
+    
+    public static List<String> validateDeleteArticles(ArrayList<String> ids){
+        List<String> errors = new ArrayList<>();
+        if(ids==null){
+            errors.add("Please check the articles you want to delete.");
+        }
+        return errors;
+    }
+    
+    public static List<String> validateDeleteInproceedings(ArrayList<String> ids){
+        List<String> errors = new ArrayList<>();
+        if(ids==null){
+            errors.add("Please check the inproceedings you want to delete.");
+        }
+        return errors;
+    }
+    
+    
 
     public static Boolean validateBookCallId(Book book, BookRepository books) {
         String callIdOrigin = book.getCallId();
