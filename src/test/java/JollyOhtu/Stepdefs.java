@@ -12,6 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
@@ -225,6 +226,7 @@ public class Stepdefs {
     public void checkbox_next_to_the_article_is_selected() throws Throwable {
         driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
     }
+
     @When("^Checkbox next to the inproceedings is selected$")
     public void checkbox_next_to_the_inproceedings_is_selected() throws Throwable {
         driver.findElement(By.xpath("//form[3]/div/table/tbody/tr[2]/td[15]/input[@type='checkbox']")).click();
@@ -239,11 +241,29 @@ public class Stepdefs {
     public void user_presses_button_Delete_Selected_for_articles() throws Throwable {
         driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[12]/button")).click();
     }
+
     @When("^User presses button Delete Selected for inrpoceedings$")
     public void user_presses_button_Delete_Selected_for_inproceedings() throws Throwable {
         driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[16]/button")).click();
+        sleep(4000);
     }
 
+    @When("^User presses button Select All for books$")
+    public void user_presses_button_Select_All_for_books() throws Throwable {
+
+        driver.findElement(By.xpath("//form[1]/div/table/tbody/tr/th[11]/button")).click();
+
+    }
+
+    @When("^User presses button Select All for articles$")
+    public void user_presses_button_Select_All_for_articles() throws Throwable {
+        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[12]/button")).click();
+    }
+
+    @When("^User presses button Select All for inproceedings$")
+    public void user_presses_button_Select_All_for_inproceedings() throws Throwable {
+        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[16]/button")).click();
+    }
 
     /*
     
