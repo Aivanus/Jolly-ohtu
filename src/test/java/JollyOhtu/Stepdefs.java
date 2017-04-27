@@ -232,12 +232,13 @@ public class Stepdefs {
 
     @When("^Checkbox next to the book with title \"([^\"]*)\" is selected$")
     public void checkbox_next_to_the_book_is_selected(String title) throws Throwable {
-        List<Book> list = bookRepo.findByTitle(title);
-         long id = list.get(0).getId();
-         System.out.println(id);
+//        List<Book> list = bookRepo.findByTitle(title);
+//         long id = list.get(0).getId();
+//         System.out.println(id);
          sleep(2000);
-         driver.findElement(By.xpath("//input[@type='checkbox'][@name='del_books'][@value="+id+"]")).click();
-        sleep(2000);
+         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
+        
+         sleep(2000);
     }
 
 
