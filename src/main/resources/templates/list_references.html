@@ -39,7 +39,7 @@
                     <td th:text="${book.edition}">Edition...</td>
                     <td th:text="${book.month}">Month...</td>
                     <td th:text="${book.note}">Note...</td>
-                    <td><a th:href="@{/edit_book/(id=${book.id})}"> Edit </a></td>
+                    <td><a th:href="@{/edit_book/{bookId}(bookId=${book.id})}"> Edit </a></td>
                 </tr>
             </table>
         </div>
