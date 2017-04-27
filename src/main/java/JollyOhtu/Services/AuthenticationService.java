@@ -30,10 +30,10 @@ public class AuthenticationService {
             errors.add("Invalid input. Check your input.");
         }
         if (books.copyExists(book)) {
-            errors.add("The book reference already exists with the Call Id: "+ books.findCallId(book).get(0)+ ".");
+            errors.add("The book reference already exists with the ID: " + books.findCallId(book).get(0) + ".");
         }
-        if (books.callIdExists1(book) ){//|| books.callIdExists2(book) || books.callIdExists3(book)) {
-            errors.add("That call Id already exists, choose another one.");
+        if (books.callIdExists1(book) || books.callIdExists2(book) || books.callIdExists3(book)) {
+            errors.add("That Id already exists, choose another one.");
         }
         return errors;
     }
@@ -47,10 +47,10 @@ public class AuthenticationService {
             errors.add("Invalid input. Check your input.");
         }
         if (articles.copyExists(article)) {
-            errors.add(("The article reference already exists with the Call Id: " + articles.findCallId(article).get(0) + "."));
+            errors.add(("The article reference already exists with the ID: " + articles.findCallId(article).get(0) + "."));
         }
-        if (articles.callIdExists1(article) ){//|| articles.callIdExists2(article) || articles.callIdExists3(article)) {
-            errors.add("That call Id already exists, choose another one.");
+        if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
+            errors.add("That Id already exists, choose another one.");
         }
         return errors;
     }
@@ -64,10 +64,10 @@ public class AuthenticationService {
             errors.add("Invalid input. Check your input.");
         }
         if (inpros.copyExists(inpro)) {
-            errors.add("The inproceedings reference already exists with the Call Id: " + inpros.findCallId(inpro).get(0)+".");
+            errors.add("The inproceedings reference already exists with the ID: " + inpros.findCallId(inpro).get(0) + ".");
         }
-        if (inpros.callIdExists1(inpro) ){//|| inpros.callIdExists1(inpro) || inpros.callIdExists1(inpro)) {
-            errors.add("That call Id already exists, choose another one.");
+        if (inpros.callIdExists1(inpro) || inpros.callIdExists2(inpro) || inpros.callIdExists3(inpro)) {
+            errors.add("That Id already exists, choose another one.");
         }
         return errors;
     }
@@ -98,4 +98,45 @@ public class AuthenticationService {
     
     
 
+    public static Boolean validateBookCallId(Book book, BookRepository books) {
+        String callIdOrigin = book.getCallId();
+        for (int i = 1; i <= 1000; i++) {
+            if (books.callIdExists1(book) || books.callIdExists2(book) || books.callIdExists3(book)) {
+                String help = callIdOrigin;
+                help += "(" + i + ")";
+                book.setCallId(help);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static Boolean validateArticleCallId(Article article, ArticleRepository articles) {
+        String callIdOrigin = article.getCallId();
+        for (int i = 1; i <= 1000; i++) {
+            if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
+                String help = callIdOrigin;
+                help += "(" + i + ")";
+                article.setCallId(help);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static Boolean validateInproceedingsCallId(Inproceedings inpro, InproceedingsRepository inpros) {
+        String callIdOrigin = inpro.getCallId();
+        for (int i = 1; i <= 1000; i++) {
+            if (inpros.callIdExists1(inpro) || inpros.callIdExists2(inpro) || inpros.callIdExists3(inpro)) {
+                String help = callIdOrigin;
+                help += "(" + i + ")";
+                inpro.setCallId(help);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 }
