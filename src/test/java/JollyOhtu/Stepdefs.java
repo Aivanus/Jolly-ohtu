@@ -240,29 +240,30 @@ public class Stepdefs {
     @When("^User presses button Delete Selected for articles$")
     public void user_presses_button_Delete_Selected_for_articles() throws Throwable {
         driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[12]/button")).click();
+  
     }
 
     @When("^User presses button Delete Selected for inrpoceedings$")
     public void user_presses_button_Delete_Selected_for_inproceedings() throws Throwable {
         driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[16]/button")).click();
-        sleep(4000);
+        sleep(2000);
     }
 
     @When("^User presses button Select All for books$")
     public void user_presses_button_Select_All_for_books() throws Throwable {
-
         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr/th[11]/button")).click();
-
     }
 
     @When("^User presses button Select All for articles$")
     public void user_presses_button_Select_All_for_articles() throws Throwable {
-        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[12]/button")).click();
+        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[11]/button")).click();
+
     }
 
     @When("^User presses button Select All for inproceedings$")
     public void user_presses_button_Select_All_for_inproceedings() throws Throwable {
-        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[16]/button")).click();
+        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[15]/button")).click();
+
     }
 
     /*
