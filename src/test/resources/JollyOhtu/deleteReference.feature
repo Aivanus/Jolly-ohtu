@@ -15,6 +15,6 @@ Feature: User can delete references
       | note      | DeleteOneBookTest    |
       When List view is selected
       And Checkbox next to the book with title "InterestingBook76234" is selected
-And User presses button Delete Selected
+And User presses button Delete Selected for books
 Then Message "One book reference was deleted succesfully." is presented
 But Row with ID "callID3DELBOOK" should not be visible

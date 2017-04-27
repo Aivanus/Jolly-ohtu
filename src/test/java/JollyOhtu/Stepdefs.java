@@ -1,15 +1,10 @@
 package JollyOhtu;
 
-import JollyOhtu.Objects.Book;
-import JollyOhtu.Repository.ArticleRepository;
-import JollyOhtu.Repository.BookRepository;
-import JollyOhtu.Repository.InproceedingsRepository;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,10 +12,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 
 //@RunWith(SpringRunner.class)
 //@ContextConfiguration(classes = Main.class)
@@ -35,7 +28,7 @@ public class Stepdefs {
 
         if (System.getProperty("os.name").startsWith("Windows")) {
             driver = new HtmlUnitDriver();
-            //            driver = new ChromeDriver();
+//                        driver = new ChromeDriver();
         } else {
             driver = new FirefoxDriver();
         }
@@ -228,7 +221,7 @@ public class Stepdefs {
         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
     }
 
-    @When("^User presses button Delete Selected$")
+    @When("^User presses button Delete Selected for books$")
     public void user_presses_button_Delete_Selected() throws Throwable {
         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[1]/th[12]/button")).click();
     }
