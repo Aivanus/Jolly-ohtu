@@ -120,11 +120,13 @@ Feature: As a user I want to be able to add article references
       | journal | journal6      |
       | year    | 2013          |
       | volume  | 12            |   
+    And User presses button Add
+    And Message "Reference was saved successfully!" is presented
     And Valid mandatory article information is entered:
       | author  | Jouni Ekstra  |
       | title   | title6        |
       | journal | journal6      |
-      | year    | 1913          |
+      | year    | 2013          |
       | volume  | 12            |    
     And User presses button Add
     Then Message "Reference was saved successfully!" is presented

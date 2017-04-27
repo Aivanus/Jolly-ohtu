@@ -122,10 +122,12 @@ Feature: As a user I want to be able to add book references
       | title     | testi        |
       | year      | 1995         |
       | publisher | testi        |
+    And User presses button Add
+    And Message "Reference was saved successfully!" is presented
     And Valid mandatory book information is entered:
       | author    | Joo Jeeeeee  |
       | title     | testi        |
-      | year      | 2095         |
+      | year      | 1995         |
       | publisher | testi        |
     And User presses button Add
     Then Message "Reference was saved successfully!" is presented
