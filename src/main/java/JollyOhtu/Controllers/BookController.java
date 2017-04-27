@@ -12,14 +12,18 @@ package JollyOhtu.Controllers;
 import JollyOhtu.Objects.Book;
 import JollyOhtu.Repository.BookRepository;
 import JollyOhtu.Services.AuthenticationService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class BookController {
@@ -35,7 +39,7 @@ public class BookController {
 
     @RequestMapping(value = "/add_book", method = POST)
     public String bookSubmit(@ModelAttribute Book book, Model model) {
-        
+
         List<String> errors = AuthenticationService.validateAddBook(book, repository);
         if (errors.isEmpty()) {
             Book tallennettu = repository.save(book);
@@ -43,7 +47,7 @@ public class BookController {
                 model.addAttribute("success", new String("Reference was saved succesfully!"));
                 model.addAttribute("book", new Book());
             } else {
-               errors.add( new String("An error occurred. Reference was not saved."));
+                errors.add(new String("An error occurred. Reference was not saved."));
             }
         }
         model.addAttribute("errors", errors);
@@ -51,11 +55,24 @@ public class BookController {
         return "add_book";
     }
 
-    //HUOM. vain testausta varten
-//    @RequestMapping(value = "/delete_books")
-//    public String bookDeleteAll() {
-//        repository.deleteAll();
-//        return "index";
-//    }
+    @RequestMapping(value = "/delete_books", method = POST)
+    public String bookDeleteChecked(@RequestParam(value = "del_books", 
+            required=false) ArrayList<String> del, RedirectAttributes redirect) {
+        
+        List<String> errors = AuthenticationService.validateDeleteBooks(del);
+        if (errors.isEmpty()) {
+            for (String id : del) {
+                this.repository.delete(Long.parseLong(id));
+            }
+            if(del.size()==1){
+                redirect.addFlashAttribute("success", "One book reference was deleted succesfully.");
+            }else{
+                redirect.addFlashAttribute("success", del.size()+" book references were deleted succesfully.");
+            }
+        }
+        redirect.addFlashAttribute("errors", errors);
+
+        return "redirect:/list_references";
+    }
 
 }
