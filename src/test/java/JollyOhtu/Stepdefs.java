@@ -26,13 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 //@ContextConfiguration(classes = Main.class)
 //@SpringBootTest
 public class Stepdefs {
-    
-    @Autowired
-    private ArticleRepository artRepo;
-    @Autowired
-    private BookRepository bookRepo;
-    @Autowired
-    private InproceedingsRepository inproRepo;
 
     private WebDriver driver = null;
     String baseUrl = "http://localhost:8080/";
@@ -41,8 +34,8 @@ public class Stepdefs {
     public void setUp() {
 
         if (System.getProperty("os.name").startsWith("Windows")) {
-//            driver = new HtmlUnitDriver();
-            driver = new ChromeDriver();
+            driver = new HtmlUnitDriver();
+            //            driver = new ChromeDriver();
         } else {
             driver = new FirefoxDriver();
         }
@@ -232,10 +225,10 @@ public class Stepdefs {
 
     @When("^Checkbox next to the book with title \"([^\"]*)\" is selected$")
     public void checkbox_next_to_the_book_is_selected(String title) throws Throwable {
-         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[2]/td[11]/input[@type='checkbox']")).click();
     }
-    
-     @When("^User presses button Delete Selected$")
+
+    @When("^User presses button Delete Selected$")
     public void user_presses_button_Delete_Selected() throws Throwable {
         driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[1]/th[12]/button")).click();
     }
@@ -287,25 +280,16 @@ public class Stepdefs {
     public void row_with_author_should_not_be_visible(String author) throws Throwable {
         pageDoesntHaveContent(author);
     }
-    
-     @Then("^Row with ID \"([^\"]*)\" should not be visible$")
+
+    @Then("^Row with ID \"([^\"]*)\" should not be visible$")
     public void row_with_ID_should_not_be_visible(String id) throws Throwable {
         pageDoesntHaveContent(id);
     }
-
 
     @Then("^User is on download page$")
     public void user_is_on_download_page() throws Throwable {
         pageHasContent("File name");
     }
-    
-    @When("^User confirms action Delete$")
-    public void user_confirms_action_Delete() throws Throwable {
-        sleep(2000);
-        driver.findElement(By.xpath("//*[@id=\"confirmation647748\"]/div[2]/div/div/a[1]")).click();
-        sleep(2000);
-    }
-
 
 
     /*
