@@ -32,6 +32,11 @@ public class AuthenticationService {
         if (books.copyExists(book)) {
             errors.add("The book reference already exists with the ID: " + books.findCallId(book).get(0) + ".");
         }
+        if (book.initCallId()) {
+            if (validateBookCallId(book, books)) {
+                errors.add("There was an error with automatic ID generation, please enter one manually.");
+            }
+        }
         if (books.callIdExists1(book) || books.callIdExists2(book) || books.callIdExists3(book)) {
             errors.add("That Id already exists, choose another one.");
         }
@@ -49,6 +54,11 @@ public class AuthenticationService {
         if (articles.copyExists(article)) {
             errors.add(("The article reference already exists with the ID: " + articles.findCallId(article).get(0) + "."));
         }
+        if (article.initCallId()) {
+            if (validateArticleCallId(article, articles)) {
+                errors.add("There was an error with automatic ID generation, please enter one manually.");
+            }
+        }
         if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
             errors.add("That Id already exists, choose another one.");
         }
@@ -65,6 +75,11 @@ public class AuthenticationService {
         }
         if (inpros.copyExists(inpro)) {
             errors.add("The inproceedings reference already exists with the ID: " + inpros.findCallId(inpro).get(0) + ".");
+        }
+        if (inpro.initCallId()) {
+            if (validateInproceedingsCallId(inpro, inpros)) {
+                errors.add("There was an error with automatic ID generation, please enter one manually.");
+            }
         }
         if (inpros.callIdExists1(inpro) || inpros.callIdExists2(inpro) || inpros.callIdExists3(inpro)) {
             errors.add("That Id already exists, choose another one.");
@@ -98,7 +113,7 @@ public class AuthenticationService {
     
     
 
-    public static Boolean validateBookCallId(Book book, BookRepository books) {
+    private static Boolean validateBookCallId(Book book, BookRepository books) {
         String callIdOrigin = book.getCallId();
         for (int i = 1; i <= 1000; i++) {
             if (books.callIdExists1(book) || books.callIdExists2(book) || books.callIdExists3(book)) {
@@ -111,8 +126,8 @@ public class AuthenticationService {
         }
         return true;
     }
-    
-    public static Boolean validateArticleCallId(Article article, ArticleRepository articles) {
+
+    private static Boolean validateArticleCallId(Article article, ArticleRepository articles) {
         String callIdOrigin = article.getCallId();
         for (int i = 1; i <= 1000; i++) {
             if (articles.callIdExists1(article) || articles.callIdExists2(article) || articles.callIdExists3(article)) {
@@ -125,8 +140,8 @@ public class AuthenticationService {
         }
         return true;
     }
-    
-    public static Boolean validateInproceedingsCallId(Inproceedings inpro, InproceedingsRepository inpros) {
+
+    private static Boolean validateInproceedingsCallId(Inproceedings inpro, InproceedingsRepository inpros) {
         String callIdOrigin = inpro.getCallId();
         for (int i = 1; i <= 1000; i++) {
             if (inpros.callIdExists1(inpro) || inpros.callIdExists2(inpro) || inpros.callIdExists3(inpro)) {
