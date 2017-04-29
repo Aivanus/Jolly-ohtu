@@ -45,7 +45,7 @@ public class Stepdefs {
         artRepo.deleteAll();
         bookRepo.deleteAll();
         inproRepo.deleteAll();
-        
+
         if (System.getProperty("os.name").startsWith("Windows")) {
             driver = new HtmlUnitDriver();
 //                        driver = new ChromeDriver();
@@ -54,9 +54,9 @@ public class Stepdefs {
         }
 
     }
-    
+
     @Test
-    public void mandatoryTest(){
+    public void mandatoryTest() {
         assertTrue(true);
     }
 
@@ -331,15 +331,20 @@ public class Stepdefs {
         }
     }
 
+    @Then("^Row with id \"([^\"]*)\" is visible$")
+    public void row_with_id_is_visible(String id) throws Throwable {
+        pageDoesntHaveContent(id);
+    }
+
     @Then("^Row with author \"([^\"]*)\" should not be visible$")
     public void row_with_author_should_not_be_visible(String author) throws Throwable {
         pageDoesntHaveContent(author);
     }
+
     @Then("^Row with id \"([^\"]*)\" is not be visible$")
     public void row_with_id_is_not_be_visible(String id) throws Throwable {
         pageDoesntHaveContent(id);
     }
-
 
     @Then("^User is on download page$")
     public void user_is_on_download_page() throws Throwable {

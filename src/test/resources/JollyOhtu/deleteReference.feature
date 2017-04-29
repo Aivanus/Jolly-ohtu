@@ -172,3 +172,40 @@ Feature: User can delete references
     But Row with id "callId2DeleteINPROCEEDINGSsadfsdf" is not be visible
     But Row with id "callId2DeleteINPROCEEDInbvmbnvmNGS" is not be visible
     But Row with id "callId2DeleteIzxcvzxcvNPROCEEDINGS" is not be visible
+
+  Scenario: No books are deleted if none are chosen
+    Given Book reference is successfully created with following fields:
+      | author    | DeleteThis1dfahesjdhdfhgfh     |
+      | title     | IntefdshdsdfsstingBook76234gaf |
+      | publisher | PaperPfdshdsjsdghdsfgresser23  |
+      | year      | 1937                           |
+      | callId    | callID3DELBOOdsfgsdfgsdfK      |
+    When List view is selected
+    And User presses button Delete Selected for books
+    Then Message "Please check the books you want to delete." is presented
+    But Row with id "callID3DELBOOdsfgsdfgsdfK" is visible
+
+  Scenario: No articles are deleted if none are chosen
+    Given Article reference is successfully created with following fields:
+      | callId  | CallID3DELETEARTICLE |
+      | author  | DarthnotVaderasfdasf |
+      | title   | asfasf123saf         |
+      | journal | Measuresasfd234      |
+      | year    | 2014                 |
+      | volume  | 87                   |
+    When List view is selected
+    And User presses button Delete Selected for articles
+    Then Message "Please check the articles you want to delete." is presented
+    But Row with id "CallID3DELETEARTICLE" is visible
+
+  Scenario: User can delete an inproceedings reference
+    Given Inproceedings reference is successfully created with following fields:
+      | callId    | callId2DeleteINPROCEEDINGS    |
+      | author    | Imreallttiredofmakingsadfasf  |
+      | title     | Piratceedingsthesasfasfasfe   |
+      | booktitle | BookasgofasfdYsfasfasfsadfarr |
+      | year      | 1773                          |
+    When List view is selected
+    And User presses button Delete Selected for inrpoceedings
+    Then Message "Please check the inproceedings you want to delete." is presented
+    But Row with id "callId2DeleteINPROCEEDINGS" is visible
