@@ -15,7 +15,7 @@ Feature: User can delete references
       | note      | DeleteOneBookTest    |
     When List view is selected
     And Checkbox next to the book is selected
-    And User presses button Delete Selected for books
+    And User presses button Delete Selected
     Then Message "Selected references deleted succesfully." is presented
     But Row with id "callID3DELBOOK" is not be visible
 
@@ -33,7 +33,7 @@ Feature: User can delete references
       | note    | DeleteArticleTest    |
     When List view is selected
     And Checkbox next to the article is selected
-    And User presses button Delete Selected for articles
+    And User presses button Delete Selected
     Then Message "Selected references deleted succesfully" is presented
     But Row with id "CallID3DELETEARTICLE" is not be visible
 
@@ -55,7 +55,7 @@ Feature: User can delete references
       | note         | DeleteInproceedingsTest               |
     When List view is selected
     And Checkbox next to the inproceedings is selected
-    And User presses button Delete Selected for inrpoceedings
+    And User presses button Delete Selected
     Then Message "Selected references deleted succesfully" is presented
     But Row with id "callId2DeleteINPROCEEDINGS" is not be visible
 
@@ -98,7 +98,7 @@ Feature: User can delete references
       | note      | DeleteOneBookTestuipo    |
     When List view is selected
     And User presses button Select All for books
-    And User presses button Delete Selected for books
+    And User presses button Delete Selected
     Then Message "Selected references deleted succesfully" is presented
     But Row with id "callID3DELBOOKasdf" is not be visible
     But Row with id "callID3DELBOOKfgj" is not be visible
@@ -140,7 +140,7 @@ Feature: User can delete references
       | note    | DeletvbnmvbmeArticleTest     |
     When List view is selected
     And User presses button Select All for articles
-    And User presses button Delete Selected for articles
+    And User presses button Delete Selected
     Then Message "Selected references deleted succesfully" is presented
     But Row with id "CallID3DELETEARTICLEsadf" is not be visible
     But Row with id "CallID3DELETEARfdhjhgTICLE" is not be visible
@@ -167,7 +167,7 @@ Feature: User can delete references
       | year      | 1773                                  |
     When List view is selected
     And User presses button Select All for inproceedings
-    And User presses button Delete Selected for inrpoceedings
+    And User presses button Delete Selected
     Then Message "Selected references deleted succesfully" is presented
     But Row with id "callId2DeleteINPROCEEDINGSsadfsdf" is not be visible
     But Row with id "callId2DeleteINPROCEEDInbvmbnvmNGS" is not be visible
@@ -181,7 +181,7 @@ Feature: User can delete references
       | year      | 1937                           |
       | callId    | callID3DELBOOdsfgsdfgsdfK      |
     When List view is selected
-    And User presses button Delete Selected for books
+    And User presses button Delete Selected
     Then Message "Please check the books you want to delete." is presented
     But Row with id "callID3DELBOOdsfgsdfgsdfK" is visible
 
@@ -194,7 +194,7 @@ Feature: User can delete references
       | year    | 2014                 |
       | volume  | 87                   |
     When List view is selected
-    And User presses button Delete Selected for articles
+    And User presses button Delete Selected
     Then Message "Please check the articles you want to delete." is presented
     But Row with id "CallID3DELETEARTICLE" is visible
 
@@ -206,6 +206,6 @@ Feature: User can delete references
       | booktitle | BookasgofasfdYsfasfasfsadfarr |
       | year      | 1773                          |
     When List view is selected
-    And User presses button Delete Selected for inrpoceedings
+    And User presses button Delete Selected
     Then Message "Please check the inproceedings you want to delete." is presented
     But Row with id "callId2DeleteINPROCEEDINGS" is visible
