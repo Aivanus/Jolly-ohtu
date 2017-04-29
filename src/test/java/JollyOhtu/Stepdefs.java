@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,8 @@ public class Stepdefs {
             driver = new HtmlUnitDriver();
 //                        driver = new ChromeDriver();
         } else {
+            //driver = new HtmlUnitDriver();
+
             driver = new FirefoxDriver();
         }
 
@@ -289,6 +292,22 @@ public class Stepdefs {
 
     }
 
+    @When("^Edit button is pressed$")
+    public void edit_button_is_pressed() throws Throwable {
+        driver.findElement(By.linkText("Edit")).click();
+    }
+
+    @When("^User enters edited information as following:$")
+    public void user_enters_edited_information_as_following(List<List<String>> table) throws Throwable {
+        enterValuesById(table);
+    }
+
+    @When("^Update button is pressed$")
+    public void update_button_is_pressed() throws Throwable {
+        driver.findElement(By.xpath("//button[text()='Update']")).click();
+    }
+
+
     /*
     
     
@@ -350,6 +369,12 @@ public class Stepdefs {
     public void user_is_on_download_page() throws Throwable {
         pageHasContent("File name");
     }
+    
+     @Then("^Title has been changed to \"([^\"]*)\"$")
+    public void title_has_been_changed_to(String changed) throws Throwable {
+        pageHasContent(changed);
+    }
+
 
 
     /*
