@@ -333,7 +333,7 @@ public class Stepdefs {
 
     @Then("^Row with id \"([^\"]*)\" is visible$")
     public void row_with_id_is_visible(String id) throws Throwable {
-        pageDoesntHaveContent(id);
+        pageHasContent(id);
     }
 
     @Then("^Row with author \"([^\"]*)\" should not be visible$")

@@ -198,7 +198,7 @@ Feature: User can delete references
     Then Message "Please check the articles you want to delete." is presented
     But Row with id "CallID3DELETEARTICLE" is visible
 
-  Scenario: User can delete an inproceedings reference
+  Scenario: No inproceedings are deleted if none are chosen
     Given Inproceedings reference is successfully created with following fields:
       | callId    | callId2DeleteINPROCEEDINGS    |
       | author    | Imreallttiredofmakingsadfasf  |
