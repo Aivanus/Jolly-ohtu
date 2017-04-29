@@ -16,7 +16,7 @@ Feature: User can delete references
     When List view is selected
     And Checkbox next to the book is selected
     And User presses button Delete Selected for books
-    Then Message "One book reference was deleted succesfully." is presented
+    Then Message "Selected references deleted succesfully." is presented
     But Row with id "callID3DELBOOK" is not be visible
 
   Scenario: User can delete an article reference
@@ -34,7 +34,7 @@ Feature: User can delete references
     When List view is selected
     And Checkbox next to the article is selected
     And User presses button Delete Selected for articles
-    Then Message "One article reference was deleted succesfully." is presented
+    Then Message "Selected references deleted succesfully" is presented
     But Row with id "CallID3DELETEARTICLE" is not be visible
 
   Scenario: User can delete an inproceedings reference
@@ -56,7 +56,7 @@ Feature: User can delete references
     When List view is selected
     And Checkbox next to the inproceedings is selected
     And User presses button Delete Selected for inrpoceedings
-    Then Message "One inproceeding reference was deleted succesfully." is presented
+    Then Message "Selected references deleted succesfully" is presented
     But Row with id "callId2DeleteINPROCEEDINGS" is not be visible
 
   Scenario: User can delete multiple book references
@@ -99,7 +99,7 @@ Feature: User can delete references
     When List view is selected
     And User presses button Select All for books
     And User presses button Delete Selected for books
-    Then Message "3 book references were deleted succesfully." is presented
+    Then Message "Selected references deleted succesfully" is presented
     But Row with id "callID3DELBOOKasdf" is not be visible
     But Row with id "callID3DELBOOKfgj" is not be visible
     But Row with id "callID3DELBOOKiuop" is not be visible
@@ -141,7 +141,7 @@ Feature: User can delete references
     When List view is selected
     And User presses button Select All for articles
     And User presses button Delete Selected for articles
-    Then Message "3 article references were deleted succesfully." is presented
+    Then Message "Selected references deleted succesfully" is presented
     But Row with id "CallID3DELETEARTICLEsadf" is not be visible
     But Row with id "CallID3DELETEARfdhjhgTICLE" is not be visible
     But Row with id "CallID3DELETEAvbnmvbmnRTICLE" is not be visible
@@ -168,7 +168,7 @@ Feature: User can delete references
     When List view is selected
     And User presses button Select All for inproceedings
     And User presses button Delete Selected for inrpoceedings
-    Then Message "3 inproceeding references were deleted succesfully." is presented
+    Then Message "Selected references deleted succesfully" is presented
     But Row with id "callId2DeleteINPROCEEDINGSsadfsdf" is not be visible
     But Row with id "callId2DeleteINPROCEEDInbvmbnvmNGS" is not be visible
     But Row with id "callId2DeleteIzxcvzxcvNPROCEEDINGS" is not be visible
