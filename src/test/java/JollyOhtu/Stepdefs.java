@@ -13,20 +13,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = Main.class)
-//@SpringBootTest
+@SpringBootTest
 public class Stepdefs {
-    
+
     @Autowired
     private ArticleRepository artRepo;
     @Autowired
@@ -39,16 +41,23 @@ public class Stepdefs {
 
     @Before
     public void setUp() {
+        // clear database
         artRepo.deleteAll();
         bookRepo.deleteAll();
         inproRepo.deleteAll();
-            if (System.getProperty("os.name").startsWith("Windows")) {
-                driver = new HtmlUnitDriver();
+        
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            driver = new HtmlUnitDriver();
 //                        driver = new ChromeDriver();
-            } else {
-                driver = new FirefoxDriver();
-            }
+        } else {
+            driver = new FirefoxDriver();
+        }
 
+    }
+    
+    @Test
+    public void mandatoryTest(){
+        assertTrue(true);
     }
 
     /*
@@ -326,6 +335,11 @@ public class Stepdefs {
     public void row_with_author_should_not_be_visible(String author) throws Throwable {
         pageDoesntHaveContent(author);
     }
+    @Then("^Row with id \"([^\"]*)\" is not be visible$")
+    public void row_with_id_is_not_be_visible(String id) throws Throwable {
+        pageDoesntHaveContent(id);
+    }
+
 
     @Then("^User is on download page$")
     public void user_is_on_download_page() throws Throwable {
