@@ -1,5 +1,8 @@
 package JollyOhtu;
 
+import JollyOhtu.Repository.ArticleRepository;
+import JollyOhtu.Repository.BookRepository;
+import JollyOhtu.Repository.InproceedingsRepository;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -10,22 +13,38 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
-//@RunWith(SpringRunner.class)
-//@ContextConfiguration(classes = Main.class)
-//@SpringBootTest
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = Main.class)
+@SpringBootTest
 public class Stepdefs {
+
+    @Autowired
+    private ArticleRepository artRepo;
+    @Autowired
+    private BookRepository bookRepo;
+    @Autowired
+    private InproceedingsRepository inproRepo;
 
     private WebDriver driver = null;
     String baseUrl = "http://localhost:8080/";
 
     @Before
     public void setUp() {
+        // clear database
+        artRepo.deleteAll();
+        bookRepo.deleteAll();
+        inproRepo.deleteAll();
 
         if (System.getProperty("os.name").startsWith("Windows")) {
             driver = new HtmlUnitDriver();
@@ -36,11 +55,16 @@ public class Stepdefs {
 
     }
 
+    @Test
+    public void mandatoryTest() {
+        assertTrue(true);
+    }
+
     /*
     
     
     
-    Given steps
+     Given steps
     
     
     
@@ -130,7 +154,7 @@ public class Stepdefs {
     
     
     
-    When steps
+     When steps
     
     
     
@@ -269,7 +293,7 @@ public class Stepdefs {
     
     
     
-    Then steps
+     Then steps
     
     
     
@@ -307,9 +331,19 @@ public class Stepdefs {
         }
     }
 
+    @Then("^Row with id \"([^\"]*)\" is visible$")
+    public void row_with_id_is_visible(String id) throws Throwable {
+        pageHasContent(id);
+    }
+
     @Then("^Row with author \"([^\"]*)\" should not be visible$")
     public void row_with_author_should_not_be_visible(String author) throws Throwable {
         pageDoesntHaveContent(author);
+    }
+
+    @Then("^Row with id \"([^\"]*)\" is not be visible$")
+    public void row_with_id_is_not_be_visible(String id) throws Throwable {
+        pageDoesntHaveContent(id);
     }
 
     @Then("^User is on download page$")
@@ -322,7 +356,7 @@ public class Stepdefs {
     
     
     
-    Other methods
+     Other methods
     
     
     

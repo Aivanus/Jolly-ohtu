@@ -56,28 +56,28 @@ Feature: As a user I want to be able to add article references
       | volume  |  |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | CallId2  |
-      | number | 1        |
-      | pages  | 12       |
-      | month  | 1        |
-      | note   | smtn     |
+      | callId | CallId2 |
+      | number | 1       |
+      | pages  | 12      |
+      | month  | 1       |
+      | note   | smtn    |
     And User presses button Add
     Then Message "You must fill in the fields marked by *" is presented
 
   Scenario: User cannot create an article reference with invalid month
     When Valid mandatory article information is entered:
-      | author  | test    |
-      | title   | test    |
-      | journal | test    |
-      | year    | 1337    |
-      | volume  | 12      |
+      | author  | test |
+      | title   | test |
+      | journal | test |
+      | year    | 1337 |
+      | volume  | 12   |
     And Optional fields are chosen
     And Invalid optional field information is entered:
-      | callId | CallId3  |
-      | number | 1        |
-      | pages  | 12       |
-      | month  | 13       |
-      | note   | smtn     |
+      | callId | CallId3 |
+      | number | 1       |
+      | pages  | 12      |
+      | month  | 13      |
+      | note   | smtn    |
     And User presses button Add
     Then Message "Invalid input. Check your input." is presented
 
@@ -90,44 +90,44 @@ Feature: As a user I want to be able to add article references
       | volume  | 12       |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | CallId4  |
-      | number | 1        |
-      | pages  | 12       |
-      | month  | 12       |
-      | note   | smtn     |
+      | callId | CallId4 |
+      | number | 1       |
+      | pages  | 12      |
+      | month  | 12      |
+      | note   | smtn    |
     And User presses button Add
     And Message "Reference was saved successfully!" is presented
     And Valid mandatory article information is entered:
-      | author  | author5  |  
+      | author  | author5  |
       | title   | title5   |
       | journal | journal5 |
       | year    | 2001     |
       | volume  | 12       |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | CallId5  |
-      | number | 1        |
-      | pages  | 12       |
-      | month  | 12       |
-      | note   | smtn     |
+      | callId | CallId5 |
+      | number | 1       |
+      | pages  | 12      |
+      | month  | 12      |
+      | note   | smtn    |
     And User presses button Add
     Then Message "The article reference already exists with the ID: CallId4." is presented
 
   Scenario: User can create an article reference with an empty callId
     When Valid mandatory article information is entered:
-      | author  | Johnny Extra  |
-      | title   | title6        |
-      | journal | journal6      |
-      | year    | 2013          |
-      | volume  | 12            |   
+      | author  | Johnny Extra |
+      | title   | title6       |
+      | journal | journal6     |
+      | year    | 2013         |
+      | volume  | 12           |
     And User presses button Add
     And Message "Reference was saved successfully!" is presented
     And Valid mandatory article information is entered:
-      | author  | Jouni Ekstra  |
-      | title   | title6        |
-      | journal | journal6      |
-      | year    | 2013          |
-      | volume  | 12            |    
+      | author  | Jouni Ekstra |
+      | title   | title6       |
+      | journal | journal6     |
+      | year    | 2013         |
+      | volume  | 12           |
     And User presses button Add
     Then Message "Reference was saved successfully!" is presented
 
@@ -137,17 +137,17 @@ Feature: As a user I want to be able to add article references
       | title   | title6       |
       | journal | journal6     |
       | year    | 2001         |
-      | volume  | 12           | 
+      | volume  | 12           |
     And User presses button Add
     And Message "Reference was saved successfully!" is presented
     And Valid mandatory article information is entered:
-      | author  | jou man jou  |
-      | title   | title6       |
-      | journal | journal6     |
-      | year    | 2001         |
-      | volume  | 12           |  
+      | author  | jou man jou |
+      | title   | title6      |
+      | journal | journal6    |
+      | year    | 2001        |
+      | volume  | 12          |
     And Optional fields are chosen
     And Valid optional field information is entered:
-      | callId | jmj01  |
+      | callId | jmj01 |
     And User presses button Add
     Then Message "That Id already exists, choose another one." is presented
