@@ -11,8 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -34,5 +38,18 @@ public class ReferenceController {
         
         return mav;
     }
+    
+    @RequestMapping(value = "/search", method = GET)
+    public ModelAndView searchReferences(@RequestParam("word") String searchedWord){
+        ModelAndView mav = new ModelAndView("search");
+        mav.addObject("books", bookRepo.findWord(searchedWord));
+        mav.addObject("articles", artRepo.findWord(searchedWord));
+        mav.addObject("inproceedings", inproRepo.findWord(searchedWord));
+        
+        return mav;
 
+    }
+    
+
+    
 }
