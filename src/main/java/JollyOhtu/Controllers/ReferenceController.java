@@ -41,7 +41,7 @@ public class ReferenceController {
     
     @RequestMapping(value = "/search", method = GET)
     public ModelAndView searchReferences(@RequestParam("word") String searchedWord){
-        ModelAndView mav = new ModelAndView("search");
+        ModelAndView mav = new ModelAndView("list_references");
         mav.addObject("books", bookRepo.findWord(searchedWord));
         mav.addObject("articles", artRepo.findWord(searchedWord));
         mav.addObject("inproceedings", inproRepo.findWord(searchedWord));
