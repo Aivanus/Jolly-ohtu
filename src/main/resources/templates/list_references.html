@@ -14,8 +14,10 @@
 
         <form th:action="@{/handle_references}" method="post">
             <div class ="container">
-                <h4 class="col-md-10">Books</h4>
-                <div class="col-md-2">
+                <h4 class="col-md-7">Books</h4>
+                <div>
+                    <label>File name</label>
+                    <input type="text" name="fileName"/>
                     <button class="btn btn-primary" type="submit" name="action" value="download">Download selected</button>
                 </div>
                 <table class="table table-responsive">

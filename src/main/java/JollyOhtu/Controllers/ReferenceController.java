@@ -1,9 +1,14 @@
 package JollyOhtu.Controllers;
 
+import JollyOhtu.Objects.Article;
+import JollyOhtu.Objects.Book;
+import JollyOhtu.Objects.FileObject;
+import JollyOhtu.Objects.Inproceedings;
 import JollyOhtu.Repository.ArticleRepository;
 import JollyOhtu.Repository.BookRepository;
 import JollyOhtu.Repository.InproceedingsRepository;
 import JollyOhtu.Services.AuthenticationService;
+import JollyOhtu.Services.FileGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -54,7 +62,7 @@ public class ReferenceController {
 
         deleteFromDatabase(bookErrors, books, articleErrors, articles, inproErrors, inpros);
 
-        if (books != null|| articles != null || inpros != null) {
+        if (books != null || articles != null || inpros != null) {
             redirect.addFlashAttribute("success", "Selected references deleted succesfully.");
         }
         bookErrors.addAll(inproErrors);
@@ -89,8 +97,37 @@ public class ReferenceController {
     public ResponseEntity<String> loadFile(@RequestParam(value = "del_inproceedings", required = false) ArrayList<String> inpros,
             @RequestParam(value = "del_books", required = false) ArrayList<String> books,
             @RequestParam(value = "del_articles", required = false) ArrayList<String> articles,
-            @RequestParam(value = "action", required = true) String action) throws Exception {
-        
-        return null;
+            @RequestParam(value = "action", required = true) String action,
+            @RequestParam(value = "fileName", required = false) String name) throws Exception {
+
+        FileGeneratorService fgs = new FileGeneratorService();
+        List<Book> selectedBooks = new ArrayList<>();
+        List<Article> selectedArticles = new ArrayList<>();
+        List<Inproceedings> selectedInpros = new ArrayList<>();
+
+        if (books != null) {
+            for (String id : books) {
+                selectedBooks.add(bookRepo.findOne(Long.parseLong(id)));
+            }
+        }
+        if (articles != null) {
+            for (String id : articles) {
+                selectedArticles.add(artRepo.findOne(Long.parseLong(id)));
+            }
+        }
+
+        if (inpros != null) {
+            for (String id : inpros) {
+                selectedInpros.add(inproRepo.findOne(Long.parseLong(id)));
+            }
+        }
+
+        FileObject fo = fgs.generateFile(selectedBooks, selectedArticles, selectedInpros);
+        fo.setName(name);
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.add("Content-Disposition", "attachment; filename=" + fo.getName());
+
+        return new ResponseEntity<>(fo.getContent(), headers, HttpStatus.CREATED);
     }
 }
