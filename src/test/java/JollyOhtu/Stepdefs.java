@@ -53,9 +53,9 @@ public class Stepdefs {
             driver = new HtmlUnitDriver();
 //                        driver = new ChromeDriver();
         } else {
-            driver = new HtmlUnitDriver();
+            //driver = new HtmlUnitDriver();
 
-            //driver = new FirefoxDriver();
+            driver = new FirefoxDriver();
         }
 
     }
