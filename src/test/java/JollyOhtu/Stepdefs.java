@@ -147,11 +147,6 @@ public class Stepdefs {
         message_is_presented("You must fill in the fields marked by *");
     }
 
-    @Given("^Download file view has been selected$")
-    public void download_file_view_has_been_selected() throws Throwable {
-        driver.get(baseUrl);
-        driver.findElement(By.linkText("Download file")).click();
-    }
 
     /*
     
@@ -318,6 +313,12 @@ public class Stepdefs {
         pageHasContent("Inproceedings");
     }
 
+    @Then("^Download button is shown$")
+    public void download_button_is_shown() throws Throwable {
+        pageHasContent("File name");
+        pageHasContent("Download selected");
+    }
+
     @Then("^Book reference row should be visible with following fields:$")
     public void book_reference_row_should_be_visible_with_following_fields(List<String> list) throws Throwable {
         for (String string : list) {
@@ -354,17 +355,10 @@ public class Stepdefs {
         pageDoesntHaveContent(id);
     }
 
-    @Then("^User is on download page$")
-    public void user_is_on_download_page() throws Throwable {
-        pageHasContent("File name");
-    }
-    
-     @Then("^Title has been changed to \"([^\"]*)\"$")
+    @Then("^Title has been changed to \"([^\"]*)\"$")
     public void title_has_been_changed_to(String changed) throws Throwable {
         pageHasContent(changed);
     }
-
-
 
     /*
     

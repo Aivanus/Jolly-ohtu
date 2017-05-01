@@ -49,37 +49,18 @@ public class InproceedingsController {
             }
         }
         model.addAttribute("errors", errors);
-        
+
         return "add_inproceedings";
     }
 
-  @RequestMapping(value = "/delete_inproceedings", method = POST)
-    public String bookDeleteChecked(@RequestParam(value="del_inproceedings", required=false)ArrayList<String> del, 
-            RedirectAttributes redirect) {
-          
-        List<String> errors = AuthenticationService.validateDeleteInproceedings(del);
-        if (errors.isEmpty()) {
-            for (String id : del) {
-                inproRepo.delete(Long.parseLong(id));
-            }
-            if(del.size()==1){
-                redirect.addFlashAttribute("success", "One inproceeding reference was deleted succesfully.");
-            }else{
-                redirect.addFlashAttribute("success", del.size()+" inproceeding references were deleted succesfully.");
-            }
-        }
-        redirect.addFlashAttribute("errors", errors);
-       return "redirect:/list_references";
-    }
-    
     @RequestMapping(value = "edit_inproceedings/{id}", method = GET)
-    public String editForm(@PathVariable("id")long id, Model model) {
+    public String editForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("inproceedings", inproRepo.findOne(id));
         return "edit_inproceedings";
     }
-    
+
     @RequestMapping(value = "edit_inproceedings/{id}", method = POST)
-    public String editInproceeding(@PathVariable("id")long id,@ModelAttribute Inproceedings inpro, Model model, 
+    public String editInproceeding(@PathVariable("id") long id, @ModelAttribute Inproceedings inpro, Model model,
             RedirectAttributes redirect) {
         List<String> errors = AuthenticationService.validateEditInproceedings(inpro, inproRepo);
         if (errors.isEmpty()) {

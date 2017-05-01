@@ -11,13 +11,11 @@ import JollyOhtu.Services.AuthenticationService;
 import JollyOhtu.Services.FileGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -98,7 +96,8 @@ public class ReferenceController {
             @RequestParam(value = "del_books", required = false) ArrayList<String> books,
             @RequestParam(value = "del_articles", required = false) ArrayList<String> articles,
             @RequestParam(value = "action", required = true) String action,
-            @RequestParam(value = "fileName", required = false) String name) throws Exception {
+            @RequestParam(value = "fileName", required = false) String name,
+            RedirectAttributes redirect) throws Exception {
 
         FileGeneratorService fgs = new FileGeneratorService();
         List<Book> selectedBooks = new ArrayList<>();
@@ -125,7 +124,7 @@ public class ReferenceController {
         FileObject fo = fgs.generateFile(selectedBooks, selectedArticles, selectedInpros);
         fo.setName(name);
         final HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentType(MediaType.TEXT_PLAIN);
         headers.add("Content-Disposition", "attachment; filename=" + fo.getName());
 
         return new ResponseEntity<>(fo.getContent(), headers, HttpStatus.CREATED);
