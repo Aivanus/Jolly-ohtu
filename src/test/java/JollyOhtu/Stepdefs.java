@@ -55,7 +55,7 @@ public class Stepdefs {
         } else {
             //driver = new HtmlUnitDriver();
 
-            driver = new HtmlUnitDriver();
+            driver = new FirefoxDriver();
         }
 
     }
