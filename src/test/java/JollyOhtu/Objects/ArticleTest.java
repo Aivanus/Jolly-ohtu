@@ -102,14 +102,14 @@ public class ArticleTest {
 
     @Test
     public void getNumber() throws Exception {
-        assertEquals(1, a.getNumber());
+        assertEquals("1", a.getNumber());
 
     }
 
     @Test
     public void setNumber() throws Exception {
-        a.setNumber(2);
-        assertEquals(2, a.getNumber());
+        a.setNumber("2");
+        assertEquals("2", a.getNumber());
 
     }
 
@@ -128,14 +128,14 @@ public class ArticleTest {
 
     @Test
     public void getMonth() throws Exception {
-        assertEquals(1, a.getMonth());
+        assertEquals("1", a.getMonth());
 
     }
 
     @Test
     public void setMonth() throws Exception {
-        a.setMonth(2);
-        assertEquals(2, a.getMonth());
+        a.setMonth("2");
+        assertEquals("2", a.getMonth());
     }
 
     @Test
@@ -152,8 +152,8 @@ public class ArticleTest {
 
     @Before
     public void setUp() throws Exception {
-        a = new Article("callId", "author", "title", "journal", 1995, 1, 1, "1-5", 1, "note");
-        aMand = new Article("", "author", "title", "journal", 1995, 1, 0, "", 0, "");
+        a = new Article("callId", "author", "title", "journal", 1995, 1, "1", "1-5", "1", "note");
+        aMand = new Article("", "author", "title", "journal", 1995, 1, "", "", "", "");
     }
 
     @After
@@ -165,22 +165,22 @@ public class ArticleTest {
     public void emptyConstructor() throws Exception {
         Article article = new Article();
         assertEquals("@article{ \"null\", \n author = \"null\",\n title = \"null\",\n journal = \"null\",\n year = \"0\",\n "
-                + "volume = \"0\",\n number = \"0\",\n pages = \"null\",\n month = \"0\",\n note = \"null\"} \n", article.toString());
+                + "volume = \"0\",\n number = \"null\",\n pages = \"null\",\n month = \"null\",\n note = \"null\"} \n", article.toString());
     }
 
     
     @Test
     public void articleCreatedProperlyLongConstructor() throws Exception {
-        Article article = new Article("callId", "Author", "Title", "Journal", 1995, 1, 0, "10-15", 9, "Note");
+        Article article = new Article("callId", "Author", "Title", "Journal", 1995, 1, "0", "10-15", "9", "Note");
         assertEquals("@article{ \"callId\", \n author = \"Author\",\n title = \"Title\",\n journal = \"Journal\",\n year = \"1995\",\n "
                 + "volume = \"1\",\n number = \"0\",\n pages = \"10-15\",\n month = \"9\",\n note = \"Note\"} \n", article.toString());
     }
     
     @Test
     public void articleHasInvalidorValidInfo(){
-        Article arti = new Article("callId", "author", "title", "journal", 1995, 1, 1, "1-5", 13, "note");
+        Article arti = new Article("callId", "author", "title", "journal", 1995, 1, "1", "1-5", "13", "note");
         assertTrue(arti.articleHasInvalidInfo());
-        arti.setMonth(5);
+        arti.setMonth("5");
         assertFalse(arti.articleHasInvalidInfo());
     }
     
@@ -192,13 +192,13 @@ public class ArticleTest {
     
     @Test
     public void authorIntoCallIDWorks(){
-        Article arti = new Article("", "", "title", "journal", 1995, 1, 1, "1-5", 13, "note");
+        Article arti = new Article("", "", "title", "journal", 1995, 1, "1", "1-5", "13", "note");
         assertTrue(arti.initCallId());
     }
     
     @Test
     public void yearIntoCallIdWorks(){
-        Article arti = new Article("", "author", "title", "journal", 3, 1, 1, "1-5", 13, "note");
+        Article arti = new Article("", "author", "title", "journal", 3, 1, "1", "1-5", "13", "note");
         assertTrue(arti.initCallId());
     }
 }
