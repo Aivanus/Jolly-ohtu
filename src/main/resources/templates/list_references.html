@@ -10,7 +10,7 @@
     <body>
         <div th:include="fragments/header"></div>
         <div th:include="fragments/messages"></div>
-
+       
         <form th:action="@{/search}" method="get">
             <div class ="container">
                 <label>Search</label>
@@ -18,7 +18,7 @@
                 <button type="submit" value="Submit" class="btn btn-default">Search!</button>
             </div>
         </form>
-
+        
         <form th:action="@{/handle_references}" method="post">
             <div class ="container">
                 <h4 class="col-md-7">Books</h4>
@@ -100,7 +100,6 @@
                             <input type="checkbox" name="del_articles" th:value="${article.id}"></input>
                         </td>
                         <td></td>
-
                     </tr>
                 </table>
             </div>
@@ -128,7 +127,6 @@
                         <!--                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>-->
                     </tr>
                     <tr th:each="inproceeding : ${inproceedings}">
-
                         <td th:text="${inproceeding.callId}">ID...</td>
                         <td th:text="${inproceeding.author}">Author...</td>
                         <td th:text="${inproceeding.title}">Title...</td>
@@ -152,6 +150,8 @@
                 </table>
             </div>
         </form>
+        
+        
 
         <script src="/webjars/jquery/3.2.0/jquery.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.js"></script>
