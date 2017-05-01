@@ -26,7 +26,7 @@ public class InproceedingsTest {
     @Before
     public void setUp() throws Exception {
 
-        inpro = new Inproceedings("callId", "author", "title", "booktitle", 1995, "editor", 5, "series", "3-4", "address", 5, "organization", "publisher", "note");
+        inpro = new Inproceedings("callId", "author", "title", "booktitle", 1995, "editor", "5", "series", "3-4", "address", "5", "organization", "publisher", "note");
 
     }
 
@@ -43,7 +43,7 @@ public class InproceedingsTest {
     @Test
     public void inproceedingsIsCreatedCorrectly() throws Exception {
         Inproceedings inproceedings = new Inproceedings("callId", "Author", "Title",
-                "Booktitle", 1995, "Editor", 5, "Series", "5-25", "Address", 4,
+                "Booktitle", 1995, "Editor", "5", "Series", "5-25", "Address", "4",
                 "Organization", "Publisher", "Note");
         assertEquals("@inproceedings{ \"callId\", \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
                 + "editor = \"Editor\",\n volumeNumber = \"5\",\n series = \"Series\",\n pages = \"5-25\",\n address = \"Address\",\n "
@@ -172,8 +172,8 @@ public class InproceedingsTest {
      */
     @Test
     public void testGetVolumeNumber() {
-        int expResult = 5;
-        int result = inpro.getVolumeNumber();
+        String expResult = "5";
+        String result = inpro.getVolumeNumber();
         assertEquals(expResult, result);
     }
 
@@ -182,9 +182,9 @@ public class InproceedingsTest {
      */
     @Test
     public void testSetVolumeNumber() {
-        int volumeNumber = 10;
+        String volumeNumber = "10";
         inpro.setVolumeNumber(volumeNumber);
-        assertEquals(10, inpro.getVolumeNumber());
+        assertEquals("10", inpro.getVolumeNumber());
     }
 
     /**
@@ -252,8 +252,8 @@ public class InproceedingsTest {
      */
     @Test
     public void testGetMonth() {
-        int expResult = 5;
-        int result = inpro.getMonth();
+        String expResult = "5";
+        String result = inpro.getMonth();
         assertEquals(expResult, result);
     }
 
@@ -262,9 +262,9 @@ public class InproceedingsTest {
      */
     @Test
     public void testSetMonth() {
-        int month = 4;
+        String month = "4";
         inpro.setMonth(month);
-        assertEquals(4, inpro.getMonth());
+        assertEquals("4", inpro.getMonth());
     }
 
     /**

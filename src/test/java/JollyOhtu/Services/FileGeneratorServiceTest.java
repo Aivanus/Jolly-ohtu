@@ -22,9 +22,9 @@ import static org.junit.Assert.*;
  */
 public class FileGeneratorServiceTest {
 
-    Book b = new Book("M15", "Mäkelä", "Kirja", "Kustantamo Yö", 2015, 0, "Series", "Yökyöpelinkatu 1", "", 0, "");
-    Article a = new Article("B98", "Bob", "Article", "Journal", 1998, 1, 0, "215-220", 0, "");
-    Inproceedings ip = new Inproceedings("C55", "Clark", "Proceeding", "Booktitle", 1955, "Edison", 0, "", "200", "", 0, "", "", "");
+    Book b = new Book("M15", "Mäkelä", "Kirja", "Kustantamo Yö", 2015, "0", "Series", "Yökyöpelinkatu 1", "", "0", "");
+    Article a = new Article("B98", "Bob", "Article", "Journal", 1998, 1, "0", "215-220", "0", "");
+    Inproceedings ip = new Inproceedings("C55", "Clark", "Proceeding", "Booktitle", 1955, "Edison", "0", "", "200", "", "0", "", "", "");
 
     public FileGeneratorServiceTest() {
     }
