@@ -25,14 +25,14 @@ public class Book {
 
     //Optional fields
     private String callId;
-    private int volume;
+    private String volume;
     private String series;
     private String address;
     private String edition;
-    private int month;
+    private String month;
     private String note;
 
-    public Book(String callId, String author, String title, String publisher, int year, int volume, String series, String address, String edition, int month, String note) {
+    public Book(String callId, String author, String title, String publisher, int year, String volume, String series, String address, String edition, String month, String note) {
         this.callId = callId;
         this.author = author;
         this.title = title;
@@ -49,8 +49,8 @@ public class Book {
     @Override
     public String toString() {
         return String.format("@book{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
-                + "year = \"%d\",\n volume = \"%d\",\n series = \"%s\",\n address = \"%s\",\n edition = \"%s\",\n "
-                + "month = \"%d\",\n note = \"%s\"}\n",
+                + "year = \"%d\",\n volume = \"%s\",\n series = \"%s\",\n address = \"%s\",\n edition = \"%s\",\n "
+                + "month = \"%s\",\n note = \"%s\"}\n",
                 callId, author, title, publisher, year, volume, series, address, edition, month, note);
     }
 
@@ -102,11 +102,11 @@ public class Book {
         this.year = year;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
@@ -134,11 +134,11 @@ public class Book {
         this.edition = edition;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 
@@ -159,11 +159,14 @@ public class Book {
     }
 
     public boolean bookHasInvalidInfo() {
-        if (this.month >= 0 && this.month < 13) {
-            return false;
-        } else {
-            return true;
+        if (!this.month.isEmpty()) {
+            if (Integer.parseInt(this.month) >= 1 && Integer.parseInt(this.month) <13) {
+                return false;
+            } else {
+                return true;
+            }
         }
+        return false;
     }
 
     public Boolean initCallId() {
@@ -177,7 +180,7 @@ public class Book {
     }
 
     private String authorIntoCallId() {
-        if (this.author.isEmpty()){
+        if (this.author.isEmpty()) {
             return null;
         }
         String trueId = "";

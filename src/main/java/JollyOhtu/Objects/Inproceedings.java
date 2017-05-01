@@ -26,16 +26,16 @@ public class Inproceedings {
     //Optional fields
     private String callId;
     private String editor;
-    private int volumeNumber;
+    private String volumeNumber;
     private String series;
     private String pages;
     private String address;
-    private int month;
+    private String month;
     private String organization;
     private String publisher;
     private String note;
 
-    public Inproceedings(String callId, String author, String title, String booktitle, int year, String editor, int volumeNumber, String series, String pages, String address, int month, String organization, String publisher, String note) {
+    public Inproceedings(String callId, String author, String title, String booktitle, int year, String editor, String volumeNumber, String series, String pages, String address, String month, String organization, String publisher, String note) {
         this.callId = callId;
         this.author = author;
         this.title = title;
@@ -118,11 +118,11 @@ public class Inproceedings {
         this.editor = editor;
     }
 
-    public int getVolumeNumber() {
+    public String getVolumeNumber() {
         return volumeNumber;
     }
 
-    public void setVolumeNumber(int volumeNumber) {
+    public void setVolumeNumber(String volumeNumber) {
         this.volumeNumber = volumeNumber;
     }
 
@@ -150,11 +150,11 @@ public class Inproceedings {
         this.address = address;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 
@@ -191,13 +191,16 @@ public class Inproceedings {
     }
 
     public boolean inproceedingsHasInvalidInfo() {
-        if (this.month >= 0 && this.month < 13) {
-            return false;
-        } else {
-            return true;
+        if (!this.month.isEmpty()) {
+            if (Integer.parseInt(this.month )>= 0 && Integer.parseInt(this.month) < 13) {
+                return false;
+            } else {
+                return true;
+            }
         }
+        return false;
     }
-    
+
     public Boolean initCallId() {
         if (callId.equals("")) {
             callId += authorIntoCallId();
@@ -209,7 +212,7 @@ public class Inproceedings {
     }
 
     private String authorIntoCallId() {
-        if (this.author.isEmpty()){
+        if (this.author.isEmpty()) {
             return null;
         }
         String trueId = "";

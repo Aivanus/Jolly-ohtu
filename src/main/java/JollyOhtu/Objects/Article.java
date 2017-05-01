@@ -26,12 +26,12 @@ public class Article {
 
     //optional
     private String callId;
-    private int number;
+    private String number;
     private String pages;
-    private int month;
+    private String month;
     private String note;
 
-    public Article(String callId, String author, String title, String journal, int year, int volume, int number, String pages, int month, String note) {
+    public Article(String callId, String author, String title, String journal, int year, int volume, String number, String pages, String month, String note) {
         this.author = author;
         this.title = title;
         this.journal = journal;
@@ -59,7 +59,7 @@ public class Article {
     public void setCallId(String callId) {
         this.callId = callId;
     }
-    
+
     public String getAuthor() {
         return author;
     }
@@ -100,11 +100,11 @@ public class Article {
         this.volume = volume;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -116,11 +116,11 @@ public class Article {
         this.pages = page;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 
@@ -135,7 +135,7 @@ public class Article {
     @Override
     public String toString() {
         return String.format("@article{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
-                + "year = \"%d\",\n volume = \"%d\",\n number = \"%d\",\n pages = \"%s\",\n month = \"%d\",\n note = \"%s\"} \n",
+                + "year = \"%d\",\n volume = \"%s\",\n number = \"%s\",\n pages = \"%s\",\n month = \"%s\",\n note = \"%s\"} \n",
                 callId, author, title, journal, year, volume, number, pages, month, note);
     }
 
@@ -148,11 +148,14 @@ public class Article {
     }
 
     public boolean articleHasInvalidInfo() {
-        if (this.month >= 0 && this.month < 13) {
-            return false;
-        } else {
-            return true;
+        if (!this.month.isEmpty()) {
+            if (Integer.parseInt(this.month) >= 1 && Integer.parseInt(this.month) < 13) {
+                return false;
+            } else {
+                return true;
+            }
         }
+        return false;
     }
 
     public Boolean initCallId() {
@@ -166,7 +169,7 @@ public class Article {
     }
 
     private String authorIntoCallId() {
-        if (this.author.isEmpty()){
+        if (this.author.isEmpty()) {
             return null;
         }
         String trueId = "";

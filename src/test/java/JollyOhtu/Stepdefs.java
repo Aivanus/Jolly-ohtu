@@ -8,6 +8,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -146,6 +148,29 @@ public class Stepdefs {
         user_presses_button_add();
         message_is_presented("You must fill in the fields marked by *");
     }
+    
+    @Given("^Test book reference is created$")
+    public void test_book_reference_is_created(List<List<String>> arg1) throws Throwable {
+        add_book_view_is_selected();
+        enterValuesById(arg1);
+        user_presses_button_add();
+        
+    }
+
+    @Given("^Test article reference is created$")
+    public void test_article_reference_is_created(List<List<String>> arg1) throws Throwable {
+        add_article_view_is_selected();
+        enterValuesById(arg1);
+        user_presses_button_add();
+    }
+
+    @Given("^Test Inproceeding reference is created$")
+    public void test_Inproceeding_reference_is_created(List<List<String>> arg1) throws Throwable {
+        add_inproceedings_view_is_selected();
+        enterValuesById(arg1);
+        user_presses_button_add();
+    }
+
 
 
     /*
@@ -290,6 +315,13 @@ public class Stepdefs {
     public void update_button_is_pressed() throws Throwable {
         driver.findElement(By.xpath("//button[text()='Update']")).click();
     }
+    
+    @Given("^Download button is pressed$")
+    public void download_button_is_pressed() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        driver.findElement(By.xpath("//button[text()='Download selected']")).click();
+    }
+
 
 
     /*
@@ -359,6 +391,12 @@ public class Stepdefs {
     public void title_has_been_changed_to(String changed) throws Throwable {
         pageHasContent(changed);
     }
+    
+    
+    
+    
+
+
 
     /*
     
@@ -397,4 +435,7 @@ public class Stepdefs {
             Logger.getLogger(Stepdefs.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+ 
+  
 }
