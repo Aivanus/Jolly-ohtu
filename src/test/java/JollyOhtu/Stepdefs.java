@@ -170,7 +170,12 @@ public class Stepdefs {
         enterValuesById(arg1);
         user_presses_button_add();
     }
-
+    
+    @Given("^Download button is pressed$")
+    public void download_button_is_pressed() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        driver.findElement(By.xpath("//button[text()='Download selected']")).click();
+    }
 
 
     /*
@@ -316,14 +321,17 @@ public class Stepdefs {
         driver.findElement(By.xpath("//button[text()='Update']")).click();
     }
     
-    @Given("^Download button is pressed$")
-    public void download_button_is_pressed() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        driver.findElement(By.xpath("//button[text()='Download selected']")).click();
+    @When("Search parameter is entered with the following field:$")
+    public void search_parameter_is_entered(List<String> searchParam) throws Throwable {
+        driver.findElement(By.id(searchParam.get(0))).sendKeys(searchParam.get(1));
     }
-
-
-
+    
+    @When("User presses button Search$")
+    public void search_button_is_pressed() throws Throwable {
+        driver.findElement(By.xpath("//button[text()='Search!']")).click();
+    }
+    
+    
     /*
     
     
@@ -395,6 +403,7 @@ public class Stepdefs {
     
     
     
+    
 
 
 
@@ -435,6 +444,8 @@ public class Stepdefs {
             Logger.getLogger(Stepdefs.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    
     
  
   
