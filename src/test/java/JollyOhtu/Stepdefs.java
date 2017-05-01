@@ -147,11 +147,6 @@ public class Stepdefs {
         message_is_presented("You must fill in the fields marked by *");
     }
 
-    @Given("^Download file view has been selected$")
-    public void download_file_view_has_been_selected() throws Throwable {
-        driver.get(baseUrl);
-        driver.findElement(By.linkText("Download file")).click();
-    }
 
     /*
     
@@ -246,49 +241,38 @@ public class Stepdefs {
 
     @When("^Checkbox next to the book is selected$")
     public void checkbox_next_to_the_book_is_selected() throws Throwable {
-        driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[2]/td[12]/input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//form/div[1]/table/tbody/tr[2]/td[12]/input[@type='checkbox']")).click();
     }
 
     @When("^Checkbox next to the article is selected$")
     public void checkbox_next_to_the_article_is_selected() throws Throwable {
-        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[2]/td[12]/input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//form/div[2]/table/tbody/tr[2]/td[12]/input[@type='checkbox']")).click();
     }
 
     @When("^Checkbox next to the inproceedings is selected$")
     public void checkbox_next_to_the_inproceedings_is_selected() throws Throwable {
-        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr[2]/td[16]/input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//form/div[3]/table/tbody/tr[2]/td[16]/input[@type='checkbox']")).click();
     }
 
-    @When("^User presses button Delete Selected for books$")
-    public void user_presses_button_Delete_Selected_for_books() throws Throwable {
-        driver.findElement(By.xpath("//form[1]/div/table/tbody/tr[1]/th[13]/button")).click();
-    }
-
-    @When("^User presses button Delete Selected for articles$")
-    public void user_presses_button_Delete_Selected_for_articles() throws Throwable {
-        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[13]/button")).click();
-    }
-
-    @When("^User presses button Delete Selected for inrpoceedings$")
-    public void user_presses_button_Delete_Selected_for_inproceedings() throws Throwable {
-        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[17]/button")).click();
-        sleep(2000);
+    @When("^User presses button Delete Selected$")
+    public void user_presses_button_Delete_Selected() throws Throwable {
+        driver.findElement(By.xpath("//form/div[1]/table/tbody/tr[1]/th[13]/button")).click();
     }
 
     @When("^User presses button Select All for books$")
     public void user_presses_button_Select_All_for_books() throws Throwable {
-        driver.findElement(By.xpath("//form[1]/div/table/tbody/tr/th[12]/button")).click();
+        driver.findElement(By.xpath("//form/div[1]/table/tbody/tr/th[12]/button")).click();
     }
 
     @When("^User presses button Select All for articles$")
     public void user_presses_button_Select_All_for_articles() throws Throwable {
-        driver.findElement(By.xpath("//form[2]/div/table/tbody/tr[1]/th[12]/button")).click();
+        driver.findElement(By.xpath("//form/div[2]/table/tbody/tr[1]/th[12]/button")).click();
 
     }
 
     @When("^User presses button Select All for inproceedings$")
     public void user_presses_button_Select_All_for_inproceedings() throws Throwable {
-        driver.findElement(By.xpath("//form[3]/div/table/tbody/tr/th[16]/button")).click();
+        driver.findElement(By.xpath("//form/div[3]/table/tbody/tr/th[16]/button")).click();
 
     }
 
@@ -329,6 +313,12 @@ public class Stepdefs {
         pageHasContent("Inproceedings");
     }
 
+    @Then("^Download button is shown$")
+    public void download_button_is_shown() throws Throwable {
+        pageHasContent("File name");
+        pageHasContent("Download selected");
+    }
+
     @Then("^Book reference row should be visible with following fields:$")
     public void book_reference_row_should_be_visible_with_following_fields(List<String> list) throws Throwable {
         for (String string : list) {
@@ -365,17 +355,10 @@ public class Stepdefs {
         pageDoesntHaveContent(id);
     }
 
-    @Then("^User is on download page$")
-    public void user_is_on_download_page() throws Throwable {
-        pageHasContent("File name");
-    }
-    
-     @Then("^Title has been changed to \"([^\"]*)\"$")
+    @Then("^Title has been changed to \"([^\"]*)\"$")
     public void title_has_been_changed_to(String changed) throws Throwable {
         pageHasContent(changed);
     }
-
-
 
     /*
     

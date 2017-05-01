@@ -79,26 +79,6 @@ public class BookController {
         return "redirect:/list_references";
     }
 
-    @RequestMapping(value = "/delete_books", method = POST)
-    public String bookDeleteChecked(@RequestParam(value = "del_books", 
-            required=false) ArrayList<String> del, RedirectAttributes redirect) {
-        
-        List<String> errors = AuthenticationService.validateDeleteBooks(del);
-        if (errors.isEmpty()) {
-            for (String id : del) {
-                this.repository.delete(Long.parseLong(id));
-            }
-            if(del.size()==1){
-                redirect.addFlashAttribute("success", "One book reference was deleted succesfully.");
-            }else{
-                redirect.addFlashAttribute("success", del.size()+" book references were deleted succesfully.");
-            }
-        }
-        redirect.addFlashAttribute("errors", errors);
-
-        return "redirect:/list_references";
-    }
-
     
 
 }
