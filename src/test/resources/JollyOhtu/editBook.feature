@@ -16,7 +16,7 @@ Feature: As a user I want to be able to edit book references
     When List view is selected
     And Edit button is pressed
     And User enters edited information as following:
-      | author | edited author |
+      | title | edited title |
     And Update button is pressed
     Then Message "Reference was updated successfully!" is presented
-    But Author has been changed to "edited authora"
+    But Title has been changed to "edited title"

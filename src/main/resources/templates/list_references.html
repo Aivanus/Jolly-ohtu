@@ -11,6 +11,13 @@
         <div th:include="fragments/header"></div>
         <div th:include="fragments/messages"></div>
 
+        <form th:action="@{/search}" method="get">
+            <div class ="container">
+                <label>Search</label>
+                <input type="text" class="form-control" name="word" ></input>
+                <button type="submit" value="Submit" class="btn btn-default">Search!</button>
+            </div>
+        </form>
 
         <form th:action="@{/handle_references}" method="post">
             <div class ="container">

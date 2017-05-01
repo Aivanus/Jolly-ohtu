@@ -53,4 +53,18 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     public List<String> findCallId(@Param("book") Book book);
 
     List<Book> findByTitle(String title);
+
+    @Query("select b from Book b where"
+            + " b.callId like concat('%', :word, '%') or"
+            + " b.title like concat('%', :word, '%') or"
+            + " b.year like concat('%', :word, '%') or"
+            + " b.publisher like concat('%', :word, '%') or"
+            + " b.author like concat('%', :word, '%') or"
+            + " b.volume like concat('%', :word, '%') or"
+            + " b.series like concat('%', :word, '%') or"
+            + " b.address like concat('%', :word, '%') or"
+            + " b.note like concat('%', :word, '%') or"
+            + " b.month like concat('%', :word, '%') or"
+            + " b.edition like concat('%', :word, '%')")
+    public List<Book> findWord(@Param("word") String word);
 }

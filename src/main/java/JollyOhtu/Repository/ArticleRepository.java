@@ -44,10 +44,24 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
     @Query("select case when count(b) > 0 then 'true' else 'false' end"
             + " from Book b where b.callId = :#{#article.callId}")
     public boolean callIdExists2(@Param("article")Article article);
-//
+
     @Query("select case when count(i) > 0 then 'true' else 'false' end"
             + " from Inproceedings i where i.callId = :#{#article.callId}")
     public boolean callIdExists3(@Param("article")Article article);
+
+    @Query("select a from Article a where"
+            + " a.callId like concat('%', :word, '%') or"
+            + " a.author like concat('%', :word, '%') or"
+            + " a.title like concat('%', :word, '%') or"
+            + " a.journal like concat('%', :word, '%') or"
+            + " a.year like concat('%', :word, '%')  or"
+            + " a.volume like concat('%', :word, '%') or"
+            + " a.number like concat('%', :word, '%') or"
+            + " a.pages like concat('%', :word, '%') or"
+            + " a.month like concat('%', :word, '%') or"
+            + " a.note like concat('%', :word, '%')")
+    public List<Article> findWord(@Param("word") String word);
+    
     
      
     

@@ -13,18 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @Controller
 public class ReferenceController {
@@ -45,6 +44,17 @@ public class ReferenceController {
         mav.addObject("inproceedings", inproRepo.findAll());
 
         return mav;
+    }
+    
+    @RequestMapping(value = "/search", method = GET)
+    public ModelAndView searchReferences(@RequestParam("word") String searchedWord){
+        ModelAndView mav = new ModelAndView("list_references");
+        mav.addObject("books", bookRepo.findWord(searchedWord));
+        mav.addObject("articles", artRepo.findWord(searchedWord));
+        mav.addObject("inproceedings", inproRepo.findWord(searchedWord));
+        
+        return mav;
+
     }
 
     @RequestMapping(value = "/handle_references", method = POST, params = "action=delete")
@@ -129,4 +139,5 @@ public class ReferenceController {
 
         return new ResponseEntity<>(fo.getContent(), headers, HttpStatus.CREATED);
     }
+
 }
