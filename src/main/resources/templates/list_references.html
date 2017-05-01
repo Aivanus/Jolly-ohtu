@@ -12,9 +12,14 @@
         <div th:include="fragments/messages"></div>
 
 
-        <form th:action="@{/delete_books}" method="post">
+        <form th:action="@{/handle_references}" method="post">
             <div class ="container">
-                <h4>Books</h4>
+                <h4 class="col-md-7">Books</h4>
+                <div>
+                    <label>File name</label>
+                    <input type="text" name="fileName"/>
+                    <button class="btn btn-primary" type="submit" name="action" value="download">Download selected</button>
+                </div>
                 <table class="table table-responsive">
                     <tr>
                         <th>ID</th>
@@ -29,7 +34,7 @@
                         <th>Note</th>
                         <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_books')" type="button" >Select All</button></th>
-                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>
+                        <th ><button class="btn btn-danger" type="submit" name="action" value="delete" >Delete Selected</button></th>
                     </tr>
                     <tr th:each="book : ${books}">
 
@@ -52,9 +57,7 @@
                     </tr>
                 </table>
             </div>
-        </form>
 
-        <form th:action="@{/delete_articles}" method="post">
             <div class ="container">
                 <h4>Articles</h4>
                 <table class="table table-responsive">
@@ -71,7 +74,7 @@
                         <th>Note</th>
                         <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_articles')" type="button">Select All</button></th>
-                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>
+                        <!--                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>-->
                     </tr>
                     <tr th:each="article : ${articles}">
 
@@ -94,9 +97,7 @@
                     </tr>
                 </table>
             </div>
-        </form>
 
-        <form th:action="@{/delete_inproceedings}" method="post">
             <div class ="container">
                 <h4>Inproceedings</h4>
                 <table class="table table-responsive">
@@ -117,7 +118,7 @@
                         <th>Note</th>
                         <th></th>
                         <th ><button class="btn btn-default" onClick="toggle_all('del_inproceedings')" type="button">Select All</button></th>
-                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>
+                        <!--                        <th ><button class="btn btn-danger" type="submit">Delete Selected</button></th>-->
                     </tr>
                     <tr th:each="inproceeding : ${inproceedings}">
 
@@ -150,36 +151,36 @@
         <script type="text/javascript" th:src="@{/js/bootstrap-confirmation.js}"></script>
 
         <script type="text/javascript">
-            //<![CDATA[
+                            //<![CDATA[
 
-            function toggle_all(table) {
-            var checkboxes = document.getElementsByName(table);
-            var all_checked = true;
-            for (var i = 0; i < checkboxes.length; i++) {
-            if (!checkboxes[i].checked) {
-            all_checked = false;
-            }
-            }
-            if (!all_checked) {
-            for (var i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = true;
-            }
-            } else {
-            for (var i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = false;
+                            function toggle_all(table) {
+                                var checkboxes = document.getElementsByName(table);
+                                var all_checked = true;
+                                for (var i = 0; i < checkboxes.length; i++) {
+                                    if (!checkboxes[i].checked) {
+                                        all_checked = false;
+                                    }
+                                }
+                                if (!all_checked) {
+                                    for (var i = 0; i < checkboxes.length; i++) {
+                                        checkboxes[i].checked = true;
+                                    }
+                                } else {
+                                    for (var i = 0; i < checkboxes.length; i++) {
+                                        checkboxes[i].checked = false;
 
-            }
-            }
+                                    }
+                                }
 
 
-            }
-            //]]>            
+                            }
+                            //]]>            
         </script>
 
         <script>
             $('[data-toggle=confirmation]').confirmation({
-            rootSelector: '[data-toggle=confirmation]',
-            // other options
+                rootSelector: '[data-toggle=confirmation]',
+                // other options
             });
         </script>
 

@@ -38,7 +38,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/add_article", method = POST)
-    public String articleSubmit(@ModelAttribute Article article, Model model) {       
+    public String articleSubmit(@ModelAttribute Article article, Model model) {
         List<String> errors = AuthenticationService.validateAddArticle(article, artRepo);
         if (errors.isEmpty()) {
             if (artRepo.save(article) != null) {
@@ -51,14 +51,15 @@ public class ArticleController {
         model.addAttribute("errors", errors);
         return "add_article";
     }
+
     @RequestMapping(value = "edit_article/{id}", method = GET)
-    public String editForm(@PathVariable("id")long id, Model model) {
+    public String editForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("article", artRepo.findOne(id));
         return "edit_article";
     }
-    
+
     @RequestMapping(value = "edit_article/{id}", method = POST)
-    public String editForm(@PathVariable("id")long id,@ModelAttribute Article article, Model model, RedirectAttributes redirect) {
+    public String editForm(@PathVariable("id") long id, @ModelAttribute Article article, Model model, RedirectAttributes redirect) {
         List<String> errors = AuthenticationService.validateEditArticle(article, artRepo);
         if (errors.isEmpty()) {
             if (artRepo.save(article) != null) {
@@ -71,27 +72,5 @@ public class ArticleController {
         redirect.addFlashAttribute("errors", errors);
         return "redirect:/list_references";
     }
-    
-    
-
-    @RequestMapping(value = "/delete_articles", method = POST)
-    public String articleDeleteChecked(@RequestParam(value="del_articles", required=false)ArrayList<String> del,
-            RedirectAttributes redirect) {
-          
-        List<String> errors = AuthenticationService.validateDeleteArticles(del);
-        if (errors.isEmpty()) {
-            for (String id : del) {
-                this.artRepo.delete(Long.parseLong(id));
-            }
-            if(del.size()==1){
-                redirect.addFlashAttribute("success", "One article reference was deleted succesfully.");
-            }else{
-                redirect.addFlashAttribute("success", del.size()+" article references were deleted succesfully.");
-            }
-        }
-        redirect.addFlashAttribute("errors", errors);
-       return "redirect:/list_references";
-    }
-
 
 }
