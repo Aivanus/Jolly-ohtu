@@ -53,12 +53,12 @@ public class FileGeneratorService {
     }
 
     private String replaceNordic(String str) {
-        String result = str.replaceAll("ä", "\\\\\\\\"{a}")
-                .replaceAll("Ä", "\\\\\\\\"{A}")
-                .replaceAll("ö", "\\\\\\\\"{o}")
-                .replaceAll("Ö", "\\\\\\\\"{O}")
-                .replaceAll("å", "\\\\\\\\"{aa}")
-                .replaceAll("Å", "\\\\\\\\"{AA}");
+        String result = str.replaceAll("ä", "\\\\\"{a}")
+                .replaceAll("Ä", "\\\\\"{A}")
+                .replaceAll("ö", "\\\\\"{o}")
+                .replaceAll("Ö", "\\\\\"{O}")
+                .replaceAll("å", "\\\\\"{aa}")
+                .replaceAll("Å", "\\\\\"{AA}");
         return result;
     }
 }
