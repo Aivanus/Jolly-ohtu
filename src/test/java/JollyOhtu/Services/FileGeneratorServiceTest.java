@@ -60,7 +60,7 @@ public class FileGeneratorServiceTest {
     }
 
     private String wantedFormat() {
-        return "@article{ \"B98\", \n"
+        return "@article{ B98, \n"
                 + " author = \"Bob\",\n"
                 + " title = \"Article\",\n"
                 + " journal = \"Journal\",\n"
@@ -70,7 +70,7 @@ public class FileGeneratorServiceTest {
                 + " pages = \"215-220\",\n"
                 + " month = \"0\",\n"
                 + " note = \"\"} \n"
-                + "@book{ \"M15\", \n"
+                + "@book{ M15, \n"
                 + " author = \"M\\\"{a}kel\\\"{a}\",\n"
                 + " title = \"Kirja\",\n"
                 + " publisher = \"Kustantamo Y\\\"{o}\",\n"
@@ -81,7 +81,7 @@ public class FileGeneratorServiceTest {
                 + " edition = \"\",\n"
                 + " month = \"0\",\n"
                 + " note = \"\"}\n"
-                + "@inproceedings{ \"C55\", \n"
+                + "@inproceedings{ C55, \n"
                 + " author = \"Clark\",\n"
                 + " title = \"Proceeding\",\n"
                 + " booktitle = \"Booktitle\",\n"
