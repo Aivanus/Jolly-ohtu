@@ -45,7 +45,7 @@ public class InproceedingsTest {
         Inproceedings inproceedings = new Inproceedings("callId", "Author", "Title",
                 "Booktitle", 1995, "Editor", "5", "Series", "5-25", "Address", "4",
                 "Organization", "Publisher", "Note");
-        assertEquals("@inproceedings{ \"callId\", \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
+        assertEquals("@inproceedings{ callId, \n author = \"Author\",\n title = \"Title\",\n booktitle = \"Booktitle\",\n year = \"1995\",\n "
                 + "editor = \"Editor\",\n volumeNumber = \"5\",\n series = \"Series\",\n pages = \"5-25\",\n address = \"Address\",\n "
                 + "month = \"4\",\n organization = \"Organization\",\n publisher = \"Publisher\",\n note = \"Note\"} \n", inproceedings.toString());
         ;

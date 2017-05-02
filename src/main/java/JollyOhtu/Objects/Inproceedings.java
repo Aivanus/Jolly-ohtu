@@ -54,7 +54,7 @@ public class Inproceedings {
 
     @Override
     public String toString() {
-        return "@inproceedings{ \"" + callId + "\", \n " + "author = \"" + author + "\",\n title = \"" + title
+        return "@inproceedings{ " + callId + ", \n " + "author = \"" + author + "\",\n title = \"" + title
                 + "\",\n booktitle = \"" + booktitle + "\",\n year = \"" + year + "\",\n editor = \""
                 + editor + "\",\n volumeNumber = \"" + volumeNumber + "\",\n series = \""
                 + series + "\",\n pages = \"" + pages + "\",\n address = \"" + address

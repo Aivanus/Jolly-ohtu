@@ -134,7 +134,7 @@ public class Article {
 
     @Override
     public String toString() {
-        return String.format("@article{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
+        return String.format("@article{ %s, \n author = \"%s\",\n title = \"%s\",\n journal = \"%s\",\n "
                 + "year = \"%d\",\n volume = \"%s\",\n number = \"%s\",\n pages = \"%s\",\n month = \"%s\",\n note = \"%s\"} \n",
                 callId, author, title, journal, year, volume, number, pages, month, note);
     }

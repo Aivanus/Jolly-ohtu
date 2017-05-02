@@ -48,7 +48,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("@book{ \"%s\", \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
+        return String.format("@book{ %s, \n author = \"%s\",\n title = \"%s\",\n publisher = \"%s\",\n "
                 + "year = \"%d\",\n volume = \"%s\",\n series = \"%s\",\n address = \"%s\",\n edition = \"%s\",\n "
                 + "month = \"%s\",\n note = \"%s\"}\n",
                 callId, author, title, publisher, year, volume, series, address, edition, month, note);
