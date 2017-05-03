@@ -57,8 +57,8 @@ public class FileGeneratorService {
                 .replaceAll("Ä", "{\\\\\"A}")
                 .replaceAll("ö", "{\\\\\"o}")
                 .replaceAll("Ö", "{\\\\\"O}")
-                .replaceAll("å", "{\\\\aa}")
-                .replaceAll("Å", "{\\\\AA}");
+                .replaceAll("å", "{\\\\\\aa}")
+                .replaceAll("Å", "{\\\\\\AA}");
         return result;
     }
 }
